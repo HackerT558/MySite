@@ -17,8 +17,8 @@ function handle_avatar_upload(string $fieldName, int $maxBytes): array {
   $ext = strtolower(pathinfo($_FILES[$fieldName]['name'], PATHINFO_EXTENSION));
   if (!in_array($ext, ['jpg','jpeg','png','gif','webp'], true)) return [null, 'Недопустимый формат аватара'];
   $newName = 'ava_' . time() . '_' . bin2hex(random_bytes(4)) . '.' . $ext;
-  $destRel = 'uploads/' . $newName;
-  $destAbs = __DIR__ . '/' . $destRel;
+  $destRel = 'avatar-uploads/' . $newName;
+  $destAbs = __DIR__ . '/../' . $destRel;
   if (!is_dir(dirname($destAbs))) @mkdir(dirname($destAbs), 0777, true);
   if (!move_uploaded_file($_FILES[$fieldName]['tmp_name'], $destAbs)) return [null, 'Не удалось сохранить аватар'];
   return [$destRel, null];
