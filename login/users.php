@@ -210,8 +210,8 @@ $positions = ['Стажер','Пиццамейкер','Кассир','Униве
 <head>
   <meta charset="UTF-8">
   <title>Управление пользователями</title>
-  <link rel="stylesheet" href="app-base.css">
-  <link rel="stylesheet" href="app-admin.css">
+  <link rel="stylesheet" href="/css/app-base.css">
+  <link rel="stylesheet" href="/css/app-admin.css">
 </head>
 <body>
   <div class="container admin-wrap">
@@ -366,6 +366,6 @@ $positions = ['Стажер','Пиццамейкер','Кассир','Униве
     </div>
   </div>
 
-  <script src="users.js"></script>
+  <script src="/js/users.js"></script>
 </body>
 </html>

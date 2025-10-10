@@ -8,7 +8,7 @@ if (empty($_SESSION['uid'])) { header('Location: login.php'); exit; }
 <head>
   <meta charset="UTF-8">
   <title>Личный кабинет</title>
-  <link rel="stylesheet" href="app-base.css">
+  <link rel="stylesheet" href="/css/app-base.css">
 </head>
 <body>
   <div class="container">
