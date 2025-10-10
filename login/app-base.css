@@ -1,0 +1,74 @@
+/* База для всех внутренних страниц (кроме login.php) */
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: auto;
+  min-height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: #f1f3f6;
+  font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+/* НИКАКОГО центрирования через flex у body */
+body { display: block; }
+
+/* Контейнер макета */
+.container {
+  display: block;
+  margin: 32px auto;
+  padding: 0 16px;
+  max-width: 1100px;
+}
+
+/* Секции/обёртки — без ограничений по высоте и без скрытия overflow */
+section {
+  position: static;
+  max-height: none;
+  overflow: visible;
+}
+
+/* Карточки/блоки */
+.card, .login-box {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(0,0,0,.08);
+  padding: 24px 28px;
+  margin: 0 auto 24px;
+}
+
+/* Кнопки базовые */
+.btn {
+  display: inline-block;
+  background: #f26822;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background .2s, transform .15s, box-shadow .2s;
+}
+.btn:hover { background:#d45915; transform: translateY(-1px); }
+.btn-gray  { background:#e8edf3; color:#333; }
+.btn-red   { background:#fbe6e9; color:#b00020; }
+.btn-orange{ background:#f26822; color:#fff; }
+
+/* Формы */
+input[type="text"], input[type="password"], input[type="email"], select, input[type="file"] {
+  padding: 10px 12px;
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
+  background: #fafafa;
+  font-size: 14px;
+}
+
+/* Утилиты */
+.inline { display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
+.row-actions { display:flex; gap:8px; flex-wrap:wrap; }
+
+.notice { color:#0a7a2f;background:#e6f6ea;border:1px solid #b6e1c2;border-radius:8px;padding:10px 12px;margin-bottom:14px; }
+.error  { color:#b00020;background:#fde7e9;border:1px solid #f5c2c7;border-radius:8px;padding:10px 12px;margin-bottom:14px; }

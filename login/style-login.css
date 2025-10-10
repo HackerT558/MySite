@@ -1,0 +1,123 @@
+body {
+    background-color: #f1f3f6;
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 35px;
+}
+
+.login-box{
+    background-color: #fff;
+    padding: 32px 40px;
+    border-radius: 18px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+    min-width: 350;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    animation: fadeInUp 1.5s cubic-bezier(.25,.8,.25,1);
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(60px) scale(0.98);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+h2{
+    color: #f26822;
+    margin-bottom: 16px;
+    font-weight: 600;
+    font-size: 22px;
+}
+
+.form-main{
+    width: 100%;
+}
+
+.input-window{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 18px;
+    width: 100%;
+}
+
+.input-window input[type="text"],
+.input-window input[type="password"] {
+    padding: 18px 0 8px 0;
+    border: none;
+    border-bottom: 2px solid #e5e5e5;
+    background: transparent;
+    box-shadow: none;
+    font-size: 15px;
+    transition: border-bottom-color 0.3s, box-shadow 0.3s, background-color 0.3s;
+}
+
+.input-window input:focus{
+    border-bottom-color: #f26822;
+    outline: none;
+}
+
+.input-window input::placeholder{
+    color: #888;
+    opacity: 1;
+    font-size: 15px;
+}
+
+button[type="submit"] {
+    width: 100%;
+    background-color: #f26822;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 14px 0;
+    font-size:  17px;
+    font-weight: 600;
+    box-shadow: none;
+    margin-top: 20px;
+    transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+}
+
+button[type="submit"]:hover,
+button[type="submit"]:active {
+    background: #d45915;
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 6px 18px -8px #f26822aa;
+}
+
+.agree {
+    display: block;
+    margin: 22px 0;
+    font-size: 18px;
+    color: #7a7a7a;
+    text-align: center;
+    text-decoration: underline;
+}
+
+footer{
+    margin-top: 32px;
+    color: #bababa;
+    text-align: center;
+    animation: fadeInUp 1.5s cubic-bezier(.25,.8,.25,1);
+}
+
+.input-window input:not(:placeholder-shown):not(:focus)::placeholder,
+.input-window input:focus::placeholder {
+    color: transparent;
+    transition: color 0.2s;
+}

@@ -1,0 +1,90 @@
+/* Дополнительные стили для админских страниц: таблицы и аватары */
+
+.admin-wrap { max-width: 1000px; }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 24px rgba(0,0,0,.08);
+}
+th, td {
+  padding: 12px 14px;
+  border-bottom: 1px solid #eef1f5;
+  font-size: 14px;
+  vertical-align: top;
+}
+th { background:#f7f8fa; text-align:left; color:#555; }
+tr:last-child td { border-bottom:none; }
+
+/* Компактная таблица */
+.table-compact th, .table-compact td {
+  padding: 8px 10px;
+  font-size: 13px;
+}
+
+/* Сортировки */
+.th-sort {
+  color:#555;
+  text-decoration:none;
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+}
+.th-sort .arrow { font-size:11px; opacity:.4; }
+.th-sort.active { color:#000; }
+.th-sort.active .arrow { opacity:.9; }
+
+/* Кнопки */
+.btn { display:inline-block; background:#f26822; color:#fff; border:none; border-radius:8px; padding:10px 12px; font-size:15px; font-weight:600; cursor:pointer; text-decoration:none; transition:background .2s, transform .15s, box-shadow .2s; }
+.btn:hover { background:#d45915; transform: translateY(-1px); }
+.btn-gray  { background:#e8edf3; color:#333; }
+.btn-red   { background:#fbe6e9; color:#b00020; }
+.btn-orange{ background:#f26822; color:#fff; }
+.link-btn  { background:none; color:#f26822; border:none; padding:0; cursor:pointer; font-weight:600; }
+
+/* Аватары */
+img.avatar-sm,
+.avatar-sm {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+.avatar-lg {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  border: 2px solid #eef1f5;
+}
+
+/* Карточки и утилиты */
+.card { background:#fff; padding:22px; border-radius:18px; box-shadow:0 4px 24px rgba(0,0,0,0.08); margin-bottom:18px; }
+.inline { display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
+.row-actions { display:flex; gap:8px; flex-wrap:wrap; }
+.notice { color:#0a7a2f; background:#e6f6ea; border:1px solid #b6e1c2; border-radius:8px; padding:10px 12px; margin-bottom:14px; }
+.error  { color:#b00020; background:#fde7e9; border:1px solid #f5c2c7; border-radius:8px; padding:10px 12px; margin-bottom:14px; }
+
+/* Модалка */
+.modal { display:none; position:fixed; inset:0; z-index:1000; background:rgba(0,0,0,.45); }
+.modal.open { display:block; }
+.modal__dialog { background:#fff; width:min(720px,92vw); margin:6vh auto; border-radius:14px; box-shadow:0 14px 48px rgba(0,0,0,.18); overflow:hidden; animation:popin .18s ease-out; }
+@keyframes popin { from{ transform:translateY(12px); opacity:.7; } to{ transform:translateY(0); opacity:1; } }
+.modal__head { padding:14px 18px; background:#f7f8fa; display:flex; justify-content:space-between; align-items:center; }
+.modal__title { margin:0; font-size:16px; font-weight:700; }
+.modal__close { border:none; background:none; font-size:22px; line-height:1; cursor:pointer; }
+.modal__body { padding:18px; }
+.modal__row { display:flex; gap:10px; flex-wrap:wrap; margin-bottom:10px; }
+.modal__row input[type="text"],
+.modal__row input[type="password"],
+.modal__row input[type="email"],
+.modal__row select,
+.modal__row input[type="file"] { padding:10px 12px; border:1px solid #e5e5e5; border-radius:8px; background:#fafafa; font-size:14px; }
+.modal__actions { display:flex; gap:10px; justify-content:flex-end; padding:14px 18px; border-top:1px solid #eef1f5; }
