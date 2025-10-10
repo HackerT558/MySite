@@ -1,3 +1,5 @@
+// js/users.js
+
 (function(){
     const modal = document.getElementById('userModal');
     const closeBtn = modal.querySelector('.modal__close');
@@ -6,13 +8,11 @@
     const avatarImg = document.getElementById('f_avatar_img');
     const avatarPH = document.getElementById('f_avatar_placeholder');
 
-    // Открывает модальное окно
     function openModal(){
         modal.classList.add('open');
         modal.setAttribute('aria-hidden','false');
     }
 
-    // Закрывает модальное окно
     function closeModal(){
         modal.classList.remove('open');
         modal.setAttribute('aria-hidden','true');
@@ -21,7 +21,6 @@
         avatarPH.style.display = 'inline';
     }
 
-    // Обработчик клика по кнопке редактирования
     document.addEventListener('click', (e) => {
         const btn = e.target.closest('.js-edit');
         if (btn) {
@@ -30,7 +29,6 @@
             const isSelf = tr.getAttribute('data-self') === '1';
             const canManage = tr.getAttribute('data-manage') === '1';
 
-            // Заполняем форму
             document.getElementById('f_id').value = data.id;
             document.getElementById('f_username').value = data.username ?? '';
             document.getElementById('f_role').value = data.role ?? 'user';
@@ -42,7 +40,6 @@
             document.getElementById('f_email').value = data.email ?? '';
             document.getElementById('f_password').value = '';
 
-            // Блокировка селектора роли
             const roleSel = document.getElementById('f_role');
             if (isSelf || !canManage) {
                 roleSel.disabled = true;
@@ -54,9 +51,8 @@
                 roleSel.title = '';
             }
 
-            // Отображение аватара
             if (data.avatar) {
-                avatarImg.src = '../avatar-uploads/' + data.avatar.split('/').pop();
+                avatarImg.src = '/MySite/avatar-uploads/' + data.avatar.split('/').pop();
                 avatarImg.style.display = 'block';
                 avatarPH.style.display = 'none';
             } else {
@@ -68,14 +64,12 @@
         }
     });
 
-    // Обработчики закрытия модального окна
     closeBtn.addEventListener('click', closeModal);
     btnClose.addEventListener('click', closeModal);
     modal.addEventListener('click', (e) => {
         if (e.target === modal) closeModal();
     });
 
-    // Предпросмотр аватара при выборе файла
     document.getElementById('f_avatar').addEventListener('change', function(){
         const file = this.files[0];
         if (file) {
