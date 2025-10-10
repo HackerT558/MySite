@@ -1,5 +1,5 @@
 <?php
-require __DIR__ . '/config.php';
+require __DIR__ . '/../config/config.php';
 $_SESSION = [];
 if (ini_get('session.use_cookies')) {
   $p = session_get_cookie_params();

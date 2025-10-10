@@ -1,5 +1,5 @@
 <?php
-require __DIR__ . '/config.php';
+require __DIR__ . '/../config/config.php';
 
 // Уже авторизован — направим по уровню
 if (!empty($_SESSION['uid'])) {

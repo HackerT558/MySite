@@ -1,5 +1,5 @@
 <?php
-require __DIR__ . '/config.php';
+require __DIR__ . '/../config/config.php';
 
 // Доступ к управлению пользователями: manager-top и выше (проверка с актуализацией роли из БД)
 require_role_min_db($mysqli, 'manager-top');
