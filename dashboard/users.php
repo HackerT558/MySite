@@ -290,7 +290,7 @@ $positions = ['Стажер','Пиццамейкер','Кассир','Униве
                 <td><?= (int)$u['id'] ?></td>
                 <td>
                   <?php if (!empty($u['avatar'])): ?>
-                    <img src="/avatar-uploads/<?= basename($u['avatar']) ?>" class="avatar-sm" alt="avatar">
+                    <img src="../avatar-uploads/<?= basename($u['avatar']) ?>" class="avatar-sm" alt="avatar">
                   <?php else: ?>
                     <div class="avatar-sm" style="background:#e8edf3;display:flex;align-items:center;justify-content:center;color:#666;font-size:12px;">—</div>
                   <?php endif; ?>

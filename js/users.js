@@ -56,7 +56,7 @@
 
             // Отображение аватара
             if (data.avatar) {
-                avatarImg.src = '/avatar-uploads/' + data.avatar.split('/').pop();
+                avatarImg.src = '../avatar-uploads/' + data.avatar.split('/').pop();
                 avatarImg.style.display = 'block';
                 avatarPH.style.display = 'none';
             } else {
