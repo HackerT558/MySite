@@ -7,8 +7,8 @@ require_role_min_db($mysqli, 'manager-top'); // доступ с manager-top и �
 <head>
   <meta charset="UTF-8">
   <title>Админ-панель</title>
-  <link rel="stylesheet" href="/css/app-base.css">
-  <link rel="stylesheet" href="/css/app-admin.css">
+  <link rel="stylesheet" href="MySite/css/app-base.css">
+  <link rel="stylesheet" href="MySite/css/app-admin.css">
 </head>
 <body>
   <div class="container admin-wrap">
