@@ -18,7 +18,7 @@ require_role_min_db($mysqli, 'manager-top'); // доступ с manager-top и �
         <p style="margin:0 0 12px 0;">Здравствуйте, <strong><?= htmlspecialchars($_SESSION['username']) ?></strong></p>
 
         <a href="users.php" class="btn btn-orange" style="display:inline-block;">Управление пользователями</a>
-        <a href="logout.php" class="btn btn-gray" style="display:inline-block;margin-left:8px;">Выйти</a>
+        <a href="../auth/logout.php" class="btn btn-gray" style="display:inline-block;margin-left:8px;">Выйти</a>
       </div>
     </section>
   </div>

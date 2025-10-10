@@ -11,17 +11,23 @@ $notice = $error = '';
 
 // ========================= helpers =========================
 function handle_avatar_upload(string $fieldName, int $maxBytes): array {
-  if (empty($_FILES[$fieldName]['name'])) return [null, null];
-  if ($_FILES[$fieldName]['error'] !== UPLOAD_ERR_OK) return [null, 'Ошибка загрузки файла'];
-  if ((int)$_FILES[$fieldName]['size'] > $maxBytes) return [null, 'Файл слишком большой (макс. 25 МБ)'];
-  $ext = strtolower(pathinfo($_FILES[$fieldName]['name'], PATHINFO_EXTENSION));
-  if (!in_array($ext, ['jpg','jpeg','png','gif','webp'], true)) return [null, 'Недопустимый формат аватара'];
-  $newName = 'ava_' . time() . '_' . bin2hex(random_bytes(4)) . '.' . $ext;
-  $destRel = 'uploads/' . $newName;
-  $destAbs = __DIR__ . '/' . $destRel;
-  if (!is_dir(dirname($destAbs))) @mkdir(dirname($destAbs), 0777, true);
-  if (!move_uploaded_file($_FILES[$fieldName]['tmp_name'], $destAbs)) return [null, 'Не удалось сохранить аватар'];
-  return [$destRel, null];
+    if (empty($_FILES[$fieldName]['name'])) return [null, null];
+    if ($_FILES[$fieldName]['error'] !== UPLOAD_ERR_OK) return [null, 'Ошибка загрузки файла'];
+    if ((int)$_FILES[$fieldName]['size'] > $maxBytes) return [null, 'Файл слишком большой (макс. 25 МБ)'];
+    
+    $ext = strtolower(pathinfo($_FILES[$fieldName]['name'], PATHINFO_EXTENSION));
+    if (!in_array($ext, ['jpg','jpeg','png','gif','webp'], true)) return [null, 'Недопустимый формат аватара'];
+    
+    $newName = 'ava_' . time() . '_' . bin2hex(random_bytes(4)) . '.' . $ext;
+    
+    // ИЗМЕНЕНИЕ: путь к новой папке avatar-uploads
+    $destRel = 'avatar-uploads/' . $newName;
+    $destAbs = __DIR__ . '/../avatar-uploads/' . $newName;
+    
+    if (!is_dir(dirname($destAbs))) @mkdir(dirname($destAbs), 0777, true);
+    if (!move_uploaded_file($_FILES[$fieldName]['tmp_name'], $destAbs)) return [null, 'Не удалось сохранить аватар'];
+    
+    return [$destRel, null];
 }
 
 function sort_link($label, $col, $currentSort, $currentDir, $filterLast) {
@@ -147,7 +153,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           $check->execute(); $check->bind_result($nr); $check->fetch(); $check->close();
           if (role_level($nr) < role_level('manager-top')) {
             session_unset(); session_destroy();
-            header('Location: login.php'); exit;
+            header('Location: ../auth/login.php'); exit;
           } else {
             $_SESSION['role'] = $nr;
           }
@@ -284,7 +290,7 @@ $positions = ['Стажер','Пиццамейкер','Кассир','Униве
                 <td><?= (int)$u['id'] ?></td>
                 <td>
                   <?php if (!empty($u['avatar'])): ?>
-                    <img src="<?= htmlspecialchars($u['avatar']) ?>" class="avatar-sm" alt="">
+                    <img src="/avatar-uploads/<?= basename($u['avatar']) ?>" class="avatar-sm" alt="avatar">
                   <?php else: ?>
                     <div class="avatar-sm" style="background:#e8edf3;display:flex;align-items:center;justify-content:center;color:#666;font-size:12px;">—</div>
                   <?php endif; ?>

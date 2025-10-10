@@ -50,10 +50,12 @@ if (!function_exists('refresh_session_role')) {
  * При недостатке прав — редирект на login.php.
  */
 if (!function_exists('require_role_min_db')) {
-  function require_role_min_db(mysqli $db, string $minRole): void {
-    $role = refresh_session_role($db);
-    if (empty($_SESSION['uid']) || role_level($role) < role_level($minRole)) {
-      header('Location: ../login/login.php'); exit;
+    function require_role_min_db(mysqli $db, string $minRole): void {
+        $role = refresh_session_role($db);
+        if (empty($_SESSION['uid']) || role_level($role) < role_level($minRole)) {
+            header('Location: ../auth/login.php');
+            exit;
+        }
     }
-  }
 }
+

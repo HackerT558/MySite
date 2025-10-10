@@ -5,9 +5,9 @@ require __DIR__ . '/../config/config.php';
 if (!empty($_SESSION['uid'])) {
   $lvl = role_level($_SESSION['role'] ?? 'user');
   if ($lvl >= role_level('manager-top')) {
-    header('Location: admin-dashboard.php');
+    header('Location: ../dashboard/admin-dashboard.php');
   } else {
-    header('Location: user-dashboard.php');
+    header('Location: ../dashboard/user-dashboard.php');
   }
   exit;
 }
