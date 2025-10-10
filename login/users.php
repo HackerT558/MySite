@@ -123,7 +123,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
       // аватар
       if (!$error && !empty($_FILES['avatar']['name'])) {
-        [$avatarPath, $upErr] = handle_avatar_upload('avatar', 25*1024*1024);
+        [$avatarPath, $upErr] = "../".handle_avatar_upload('avatar', 25*1024*1024);
         if ($upErr) { $error = $upErr; }
         else { $set[]='avatar=?'; $vals[]=$avatarPath; $types.='s'; }
       }
