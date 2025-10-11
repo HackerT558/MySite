@@ -1,4 +1,5 @@
 <?php
+// config/header-cabinet.inc.php
 require_once __DIR__ . '/config.php';
 
 if (!function_exists('avatar_url')) {
@@ -63,6 +64,7 @@ $active = $active ?? '';
   <div class="tabs">
     <a class="tab <?= $active==='schedule'?'active':'' ?>" href="user-dashboard.php">График</a>
     <a class="tab <?= $active==='contacts'?'active':'' ?>" href="contacts.php">Контакты</a>
+    <a class="tab <?= $active==='game'?'active':'' ?>" href="game.php">Игра</a>
 
     <?php if ($currentLevel >= $roleLevelMap['manager']) : ?>
       <a class="tab <?= $active==='shift'?'active':'' ?>" href="shift-manager.php">Менеджер смены</a>
