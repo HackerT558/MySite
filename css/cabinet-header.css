@@ -1,0 +1,21 @@
+/* Header (cabinet) */
+.cab-header{background:#22262b;color:#fff;padding:10px 0}
+.cab-header .wrap{max-width:1100px;margin:0 auto;padding:0 16px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.cab-brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.2px}
+.cab-brand .crumbs{color:#aab2bd;font-weight:500}
+.cab-user{position:relative;display:flex;align-items:center;gap:10px;cursor:pointer;flex-direction:row-reverse}
+.cab-user .avatar{width:36px;height:36px;border-radius:50%;object-fit:cover;object-position:center;background:#3a414a;border:1px solid #2e343b}
+.cab-user .name{font-weight:600}
+.cab-nav{background:#2b3036;border-bottom:1px solid #22262b}
+.cab-nav .tabs{max-width:1100px;margin:0 auto;padding:0 16px;display:flex;gap:10px}
+.cab-nav .tab{display:inline-block;color:#cbd2da;padding:12px 14px;text-decoration:none;border-bottom:3px solid transparent;font-weight:600}
+.cab-nav .tab:hover{color:#fff}
+.cab-nav .tab.active{color:#fff;border-bottom-color:#f26822}
+.cab-nav .spacer{flex:1}
+
+/* User dropdown */
+.user-dropdown{position:absolute;top:100%;right:0;background:#fff;border:1px solid #e0e0e0;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,0.15);min-width:140px;z-index:1000;display:none}
+.user-dropdown.show{display:block}
+.user-dropdown a{display:block;padding:10px 15px;color:#333;text-decoration:none;font-weight:500;font-size:14px;border-bottom:1px solid #f0f0f0;border-radius:6px;margin:4px}
+.user-dropdown a:last-child{border-bottom:none}
+.user-dropdown a:hover{background:#f5f5f5;color:#f26822}

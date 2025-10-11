@@ -1,0 +1,21 @@
+.contacts-wrap{max-width:1100px;margin:20px auto;padding:0 16px}
+.contacts-card{background:#fff;border-radius:12px;box-shadow:0 4px 16px rgba(0,0,0,0.08);padding:18px}
+.contacts-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.contacts-head h2{margin:0;font-size:22px;color:#222}
+.search-bar{display:flex;gap:10px;margin-bottom:12px}
+.search-bar input[type="text"]{flex:1;padding:10px 12px;border:1px solid #e5e5e5;border-radius:8px;background:#fff;font-size:14px}
+.search-bar button{padding:10px 14px;border:none;border-radius:8px;background:#f26822;color:#fff;font-weight:600;cursor:pointer}
+.search-bar button:hover{background:#d45915}
+.search-bar .btn-gray{background:#e8edf3;color:#333}
+.search-bar .btn-gray:hover{background:#dbe3ec}
+
+/* Список контактов */
+.contacts-list{width:100%;border-collapse:collapse;background:#fff;border:1px solid #eef1f5;border-radius:12px;overflow:hidden}
+.contacts-list thead th{background:#f7f8fa;color:#555;font-weight:600;text-align:left;padding:12px 14px;border-bottom:1px solid #eef1f5}
+.contacts-list tbody td{padding:12px 14px;border-bottom:1px solid #f1f3f6;color:#333}
+.contacts-list tbody tr:hover{background:#fafafa}
+.contact-row{display:flex;align-items:center;gap:10px}
+.contact-avatar{width:36px;height:36px;border-radius:50%;object-fit:cover;object-position:center;background:#e8edf3;border:1px solid #e1e6ec}
+.contact-name{font-weight:700;color:#222}
+.contact-meta{font-size:14px;color:#555}
+.empty{padding:18px;color:#777;text-align:center}

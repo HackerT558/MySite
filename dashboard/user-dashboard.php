@@ -1,6 +1,7 @@
 <?php
 require __DIR__ . '/../config/config.php';
 if (empty($_SESSION['uid'])) { header('Location: ../auth/login.php'); exit; }
+$active = 'schedule';
 // Личный кабинет доступен всем авторизованным; без редиректов по ролям
 ?>
 <!doctype html>
@@ -11,6 +12,7 @@ if (empty($_SESSION['uid'])) { header('Location: ../auth/login.php'); exit; }
   <link rel="stylesheet" href="../css/app-base.css">
 </head>
 <body>
+  <?php require __DIR__ . '/../config/header-cabinet.inc.php'; ?>
   <div class="container">
     <section>
       <div class="login-box">

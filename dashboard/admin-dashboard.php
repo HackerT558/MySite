@@ -1,6 +1,7 @@
 <?php
 require __DIR__ . '/../config/config.php';
-require_role_min_db($mysqli, 'manager-top'); // доступ с manager-top и выше
+require_role_min_db($mysqli, 'manager-top');
+$active = 'manage';
 ?>
 <!doctype html>
 <html lang="ру">
@@ -11,6 +12,7 @@ require_role_min_db($mysqli, 'manager-top'); // доступ с manager-top и �
   <link rel="stylesheet" href="../css/app-admin.css">
 </head>
 <body>
+  <?php require __DIR__ . '/../config/header-cabinet.inc.php'; ?>
   <div class="container admin-wrap">
     <section>
       <div class="login-box" style="width:100%;align-items:stretch;">
