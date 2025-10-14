@@ -64,6 +64,7 @@ $active = $active ?? '';
   <div class="tabs">
     <a class="tab <?= $active==='schedule'?'active':'' ?>" href="user-dashboard.php">График</a>
     <a class="tab <?= $active==='contacts'?'active':'' ?>" href="contacts.php">Контакты</a>
+    <a href="courses.php" class="tab <?= $active === 'courses' ? 'active' : '' ?>">Курсы</a>
     <a class="tab <?= $active==='game'?'active':'' ?>" href="game.php">Игра</a>
 
     <?php if ($currentLevel >= $roleLevelMap['manager']) : ?>
