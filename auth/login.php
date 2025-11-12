@@ -64,7 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <div class="container">
     <section>
       <div class="login-box">
-        <div class="box-head"><h2>DODO IS</h2></div>
+        <div class="box-head"><h2>DADA PIZZA</h2></div>
 
         <?php if ($error): ?>
           <div style="width:100%;margin-bottom:14px;color:#b00020;background:#fde7e9;border:1px solid #f5c2c7;border-radius:8px;padding:10px 12px;font-size:14px;">
