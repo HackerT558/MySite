@@ -47,7 +47,7 @@ $active = $active ?? '';
 <header class="cab-header">
   <div class="wrap">
     <div class="cab-brand">
-      <span>Dodo IS</span>
+      <span>Dada Pizza</span>
       <span class="crumbs">→ Кабинет сотрудника</span>
     </div>
     <div class="cab-user" onclick="toggleUserDropdown()">
@@ -66,10 +66,6 @@ $active = $active ?? '';
     <a class="tab <?= $active==='contacts'?'active':'' ?>" href="contacts.php">Контакты</a>
     <a href="courses.php" class="tab <?= $active === 'courses' ? 'active' : '' ?>">Курсы</a>
     <a class="tab <?= $active==='game'?'active':'' ?>" href="game.php">Игра</a>
-
-    <?php if ($currentLevel >= $roleLevelMap['manager']) : ?>
-      <a class="tab <?= $active==='shift'?'active':'' ?>" href="shift-manager.php">Менеджер смены</a>
-    <?php endif; ?>
 
     <?php if ($currentLevel >= $roleLevelMap['manager-top']) : ?>
       <a class="tab <?= $active==='manage'?'active':'' ?>" href="users.php">Управление</a>
