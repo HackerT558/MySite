@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $lvl = role_level($urole);
         if ($lvl >= role_level('manager-top')) {
-          header('Location: ../dashboard/admin-dashboard.php');
+          header('Location: ../dashboard/users.php');
         } else {
           header('Location: ../dashboard/user-dashboard.php');
         }
