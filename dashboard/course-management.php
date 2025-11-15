@@ -76,7 +76,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         passing_score = ?, duration_minutes = ?, is_active = ?
                     WHERE id = ?
                 ");
-                $stmt->bind_param('ssssiiiii', $title, $description, $position, $difficulty, $passingScore, $duration, $isActive, $courseId);
+                $stmt->bind_param('ssssiiii', $title, $description, $position, $difficulty, $passingScore, $duration, $isActive, $courseId);
                 
                 if ($stmt->execute()) {
                     $message = "Курс успешно обновлен";
