@@ -209,26 +209,3 @@
     padding-top: 16px;
     border-top: 1px solid #eee;
 }
-
-@media (max-width: 768px) {
-    .assignments-header {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    
-    .form-row {
-        grid-template-columns: 1fr;
-    }
-    
-    .assignments-filters {
-        flex-direction: column;
-    }
-    
-    .form-actions {
-        justify-content: stretch;
-    }
-    
-    .form-actions .btn {
-        flex: 1;
-    }
-}

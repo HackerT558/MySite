@@ -191,7 +191,7 @@ $completedLessons = array_filter($lessons, function($lesson) {
                 <?php else: ?>
                     <div class="test-available">
                         <div class="test-status">
-                            <span class="test-icon">🎯</span>
+                            <span class="test-icon">📝</span>
                             <div class="test-info">
                                 <h3>Тест доступен</h3>
                                 <p>Все уроки пройдены. Теперь вы можете пройти итоговый тест.</p>

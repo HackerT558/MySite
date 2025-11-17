@@ -312,33 +312,3 @@
 .text-success {
     color: #28a745;
 }
-
-/* Адаптивность */
-@media (max-width: 768px) {
-    .management-header,
-    .course-edit-header {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    
-    .form-row {
-        grid-template-columns: 1fr;
-    }
-    
-    .form-actions {
-        justify-content: stretch;
-    }
-    
-    .form-actions .btn {
-        flex: 1;
-    }
-    
-    .question-options {
-        grid-template-columns: 1fr;
-    }
-    
-    .lesson-header {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-}
