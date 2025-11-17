@@ -4,7 +4,7 @@ require __DIR__ . '/../config/config.php';
 require __DIR__ . '/../config/courses-functions.php';
 
 if (empty($_SESSION['uid'])) {
-    header('Location: ../auth/login.php');
+    header('Location: ../index.php');
     exit;
 }
 

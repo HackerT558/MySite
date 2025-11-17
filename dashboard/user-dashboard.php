@@ -1,6 +1,6 @@
 <?php
 require __DIR__ . '/../config/config.php';
-if (empty($_SESSION['uid'])) { header('Location: ../auth/login.php'); exit; }
+if (empty($_SESSION['uid'])) { header('Location: ../index.php'); exit; }
 $active = 'schedule';
 // Личный кабинет доступен всем авторизованным; без редиректов по ролям
 ?>

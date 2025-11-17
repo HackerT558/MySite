@@ -1,13 +1,13 @@
 <?php
-require __DIR__ . '/../config/config.php';
+require __DIR__ . '/config/config.php';
 
 // Уже авторизован — направим по уровню
 if (!empty($_SESSION['uid'])) {
   $lvl = role_level($_SESSION['role'] ?? 'user');
   if ($lvl >= role_level('manager-top')) {
-    header('Location: ../dashboard/admin-dashboard.php');
+    header('Location: dashboard/admin-dashboard.php');
   } else {
-    header('Location: ../dashboard/user-dashboard.php');
+    header('Location: dashboard/user-dashboard.php');
   }
   exit;
 }
@@ -37,9 +37,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $lvl = role_level($urole);
         if ($lvl >= role_level('manager-top')) {
-          header('Location: ../dashboard/users.php');
+          header('Location: dashboard/admin-dashboard.php');
         } else {
-          header('Location: ../dashboard/user-dashboard.php');
+          header('Location: dashboard/user-dashboard.php');
         }
         exit;
       } else {
@@ -57,7 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../css/style-login.css">
+  <link rel="stylesheet" href="css/style-login.css">
   <title>Login</title>
 </head>
 <body class="page-center">

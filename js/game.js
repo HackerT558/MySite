@@ -1,5 +1,4 @@
-// js/game.js - ФИНАЛЬНАЯ ВЕРСИЯ: пиццы поверх коробки, таблица лидеров, без таймера
-
+// js/game.js - ОБНОВЛЕННАЯ ВЕРСИЯ: сердечки для жизни, черные сердца для потери
 class PizzaGame {
     constructor() {
         const canvas = document.getElementById('gameCanvas');
@@ -12,15 +11,14 @@ class PizzaGame {
         this.gameState = 'start';
         this.score = 0;
         this.lives = 3;
-        this.timer = 60;
+        this.survivalLevel = 0;
         this.lastTime = 0;
         this.endReason = null;
         this.floatingTexts = [];
-        this.gameDuration = 60000; // 60 секунд в миллисекундах
         this.gameStartTime = 0;
         this.leaderboard = [];
+        this.lostLives = []; // Массив потерянных жизней с анимацией
         
-        // Хитбокс платформы - нормальный размер для коллизий
         this.platform = {
             x: this.canvas.width / 2 - 75,
             y: this.canvas.height - 80,
@@ -33,38 +31,36 @@ class PizzaGame {
         
         this.loadPlatformImage();
         this.loadLeaderboard();
+        
         this.fallingObjects = [];
-        this.objectTypes = ['pizza', 'bomb'];
+        this.objectTypes = ['pizza', 'bomb', 'heart'];
         this.spawnTimer = 0;
         this.spawnInterval = 1000;
+        this.baseDifficulty = 1000;
+        
         this.keys = {};
         this.mouseX = this.canvas.width / 2;
         this.useMouseControl = false;
         this.soundEnabled = true;
-        this.pizzaEmoji = '🍕';
-        this.bombEmoji = '💣';
+        
         this.init();
     }
     
     loadPlatformImage() {
         console.log('📦 Загрузка изображения коробки...');
         this.platform.image = new Image();
-        
         this.platform.image.onload = () => {
             this.platform.imageLoaded = true;
             console.log('✅ Изображение коробки успешно загружено!');
         };
-        
         this.platform.image.onerror = (error) => {
             this.platform.imageLoaded = false;
             console.error('❌ ОШИБКА загрузки изображения коробки!');
         };
-        
         this.platform.image.src = '../uploads/pizza-box.png';
     }
     
     loadLeaderboard() {
-        // Загружаем таблицу лидеров из localStorage
         const saved = localStorage.getItem('pizzaGameLeaderboard');
         if (saved) {
             try {
@@ -81,8 +77,11 @@ class PizzaGame {
     }
     
     addToLeaderboard(username, score) {
-        this.leaderboard.push({ username, score, date: new Date().toLocaleString() });
-        // Сортируем по убыванию и берем топ 10
+        this.leaderboard.push({
+            username,
+            score,
+            date: new Date().toLocaleString()
+        });
         this.leaderboard.sort((a, b) => b.score - a.score);
         this.leaderboard = this.leaderboard.slice(0, 10);
         this.saveLeaderboard();
@@ -93,13 +92,11 @@ class PizzaGame {
         this.restartBtn = document.getElementById('restartButton');
         this.pauseBtn = document.getElementById('pauseButton');
         this.resumeBtn = document.getElementById('resumeButton');
-        this.muteBtn = document.getElementById('muteButton');
         
         if (this.startBtn) this.startBtn.addEventListener('click', () => this.startGame());
         if (this.restartBtn) this.restartBtn.addEventListener('click', () => this.restartGame());
         if (this.pauseBtn) this.pauseBtn.addEventListener('click', () => this.togglePause());
         if (this.resumeBtn) this.resumeBtn.addEventListener('click', () => this.togglePause());
-        if (this.muteBtn) this.muteBtn.addEventListener('click', () => this.toggleSound());
         
         document.addEventListener('keydown', (e) => {
             this.keys[e.key] = true;
@@ -136,13 +133,15 @@ class PizzaGame {
         this.gameState = 'playing';
         this.score = 0;
         this.lives = 3;
+        this.survivalLevel = 0;
         this.gameStartTime = performance.now();
         this.fallingObjects = [];
         this.floatingTexts = [];
+        this.lostLives = [];
         this.endReason = null;
         
         const startScreen = document.getElementById('startScreen');
-        if (startScreen) startScreen.style.display = 'none';
+        if (startScreen) startScreen.classList.add('hidden');
         
         this.updateUI();
         this.lastTime = performance.now();
@@ -151,7 +150,7 @@ class PizzaGame {
     
     restartGame() {
         const gameOverScreen = document.getElementById('gameOverScreen');
-        if (gameOverScreen) gameOverScreen.style.display = 'none';
+        if (gameOverScreen) gameOverScreen.classList.add('hidden');
         this.startGame();
     }
     
@@ -159,19 +158,14 @@ class PizzaGame {
         if (this.gameState === 'playing') {
             this.gameState = 'paused';
             const pauseScreen = document.getElementById('pauseScreen');
-            if (pauseScreen) pauseScreen.style.display = 'flex';
+            if (pauseScreen) pauseScreen.classList.remove('hidden');
         } else if (this.gameState === 'paused') {
             this.gameState = 'playing';
             const pauseScreen = document.getElementById('pauseScreen');
-            if (pauseScreen) pauseScreen.style.display = 'none';
+            if (pauseScreen) pauseScreen.classList.add('hidden');
             this.lastTime = performance.now();
             this.gameLoop(this.lastTime);
         }
-    }
-    
-    toggleSound() {
-        this.soundEnabled = !this.soundEnabled;
-        if (this.muteBtn) this.muteBtn.textContent = this.soundEnabled ? '🔊 Звук' : '🔇 Без звука';
     }
     
     gameLoop(currentTime) {
@@ -189,14 +183,7 @@ class PizzaGame {
     
     updateTimer(currentTime) {
         const elapsedTime = currentTime - this.gameStartTime;
-        
-        // Проверяем, закончилось ли время (60 секунд)
-        if (elapsedTime >= this.gameDuration) {
-            this.gameState = 'gameover';
-            this.endReason = 'timeout';
-            this.gameOver();
-        }
-        
+        this.survivalLevel = Math.floor(elapsedTime / 60000) + 1;
         this.updateUI();
     }
     
@@ -211,31 +198,50 @@ class PizzaGame {
         if (this.useMouseControl) {
             this.platform.x = this.mouseX - this.platform.width / 2;
         } else {
-            if (this.keys['ArrowLeft'] || this.keys['a']) this.platform.x -= this.platform.speed;
-            if (this.keys['ArrowRight'] || this.keys['d']) this.platform.x += this.platform.speed;
+            if (this.keys['ArrowLeft'] || this.keys['a']) {
+                this.platform.x -= this.platform.speed;
+            }
+            if (this.keys['ArrowRight'] || this.keys['d']) {
+                this.platform.x += this.platform.speed;
+            }
         }
         
         if (this.platform.x < 0) this.platform.x = 0;
-        if (this.platform.x + this.platform.width > this.canvas.width)
+        if (this.platform.x + this.platform.width > this.canvas.width) {
             this.platform.x = this.canvas.width - this.platform.width;
+        }
     }
     
     spawnObjects(deltaTime) {
-        this.spawnTimer += deltaTime;
+        const currentSpawnInterval = Math.max(400, this.baseDifficulty - (this.survivalLevel - 1) * 50);
         
-        if (this.spawnTimer >= this.spawnInterval) {
+        this.spawnTimer += deltaTime;
+        if (this.spawnTimer >= currentSpawnInterval) {
             this.spawnTimer = 0;
             
-            const type = Math.random() < 0.8 ? 'pizza' : 'bomb';
+            // Вероятности:
+            // 70% пиццы
+            // 25% бомбы
+            // 5% сердечки
+            const rand = Math.random();
+            let type = 'pizza';
+            
+            if (rand < 0.05) {
+                type = 'heart';
+            } else if (rand < 0.3) {
+                type = 'bomb';
+            } else {
+                type = 'pizza';
+            }
+            
             const minX = 0;
             const maxX = this.canvas.width - 40;
-            
             const obj = {
                 x: Math.random() * (maxX - minX) + minX,
                 y: -40,
                 width: 40,
                 height: 40,
-                speed: 2 + Math.random() * 2,
+                speed: 2 + Math.random() * 2 + (this.survivalLevel - 1) * 0.3,
                 type: type,
                 rotation: Math.random() * Math.PI * 2
             };
@@ -250,13 +256,11 @@ class PizzaGame {
     updateFallingObjects(deltaTime) {
         for (let i = this.fallingObjects.length - 1; i >= 0; i--) {
             const obj = this.fallingObjects[i];
-            
             obj.y += obj.speed;
             obj.rotation += 0.05;
             
             if (obj.y > this.canvas.height) {
                 this.fallingObjects.splice(i, 1);
-                
                 if (obj.type === 'pizza') {
                     this.loseLife();
                 }
@@ -279,6 +283,10 @@ class PizzaGame {
                     this.loseLife();
                     this.showFloatingText('-1 ❤️', obj.x, obj.y, '#ff5459');
                     this.playSound('hit');
+                } else if (obj.type === 'heart') {
+                    this.gainLife();
+                    this.showFloatingText('+1 ❤️', obj.x, obj.y, '#ff5459');
+                    this.playSound('catch');
                 }
                 
                 this.updateUI();
@@ -288,64 +296,80 @@ class PizzaGame {
     
     isColliding(obj1, obj2) {
         return obj1.x < obj2.x + obj2.width &&
-            obj1.x + obj1.width > obj2.x &&
-            obj1.y < obj2.y + obj2.height &&
-            obj1.y + obj1.height > obj2.y;
+               obj1.x + obj1.width > obj2.x &&
+               obj1.y < obj2.y + obj2.height &&
+               obj1.y + obj1.height > obj2.y;
     }
     
     loseLife() {
-        this.lives--;
+        // Добавляем черное сердце в массив потерянных жизней
+        this.lostLives.push({
+            startTime: Date.now(),
+            duration: 500 // Длительность анимации в мс
+        });
         
+        this.lives--;
         if (this.lives <= 0) {
             this.lives = 0;
             this.gameState = 'gameover';
             this.endReason = 'life';
             this.gameOver();
         }
-        
         this.updateUI();
+    }
+    
+    gainLife() {
+        if (this.lives < 3) { // Максимум 3 жизни
+            this.lives++;
+            this.updateUI();
+        }
     }
     
     gameOver() {
         this.gameState = 'gameover';
-        
         const gameOverScreen = document.getElementById('gameOverScreen');
         const gameOverTitle = document.getElementById('gameOverTitle');
         const finalScore = document.getElementById('finalScore');
         const leaderboardTable = document.getElementById('leaderboardTable');
         
         if (gameOverScreen && gameOverTitle && finalScore) {
-            if (this.endReason === 'timeout') {
-                gameOverTitle.textContent = 'Время вышло!';
-            } else if (this.endReason === 'life') {
-                gameOverTitle.textContent = 'Игра окончена!';
-            }
-            
+            gameOverTitle.textContent = 'Игра окончена!';
             finalScore.textContent = `Ваш счет: ${this.score}`;
             
-            // Добавляем счет в таблицу лидеров
             const username = sessionStorage.getItem('username') || 'Игрок';
             this.addToLeaderboard(username, this.score);
             
-            // Отрисовываем таблицу лидеров
             if (leaderboardTable) {
                 leaderboardTable.innerHTML = this.renderLeaderboard();
             }
             
-            gameOverScreen.style.display = 'flex';
+            gameOverScreen.classList.remove('hidden');
         }
     }
     
     renderLeaderboard() {
-        let html = '<h3>🏆 Таблица лидеров</h3><table class="leaderboard"><thead><tr><th>#</th><th>Игрок</th><th>Счет</th><th>Дата</th></tr></thead><tbody>';
+        let html = '<table class="leaderboard-table">';
+        html += '<thead><tr><th>#</th><th>Игрок</th><th>Счет</th><th>Дата</th></tr></thead>';
+        html += '<tbody>';
         
         this.leaderboard.forEach((entry, index) => {
-            const medal = index === 0 ? '🥇' : index === 1 ? '🥈' : index === 2 ? '🥉' : (index + 1);
-            html += `<tr><td>${medal}</td><td>${entry.username}</td><td><strong>${entry.score}</strong></td><td>${entry.date}</td></tr>`;
+            const medal = index === 0 ? '🥇' : index === 1 ? '🥈' : index === 2 ? '🥉' : `${index + 1}`;
+            html += `<tr>
+                <td>${medal}</td>
+                <td class="leaderboard-name">${this.escapeHtml(entry.username)}</td>
+                <td>${entry.score}</td>
+                <td class="leaderboard-date">${entry.date}</td>
+            </tr>`;
         });
         
         html += '</tbody></table>';
         return html;
+    }
+    
+    escapeHtml(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
     }
     
     showFloatingText(text, x, y, color) {
@@ -354,145 +378,137 @@ class PizzaGame {
             x: x,
             y: y,
             color: color,
-            alpha: 1,
-            life: 60
+            life: 1000,
+            startTime: Date.now()
         });
     }
     
     playSound(type) {
         if (!this.soundEnabled) return;
+        
+        const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        const now = audioContext.currentTime;
+        
+        if (type === 'catch') {
+            const osc = audioContext.createOscillator();
+            const gain = audioContext.createGain();
+            
+            osc.connect(gain);
+            gain.connect(audioContext.destination);
+            
+            osc.frequency.setValueAtTime(800, now);
+            osc.frequency.exponentialRampToValueAtTime(1200, now + 0.1);
+            
+            gain.gain.setValueAtTime(0.1, now);
+            gain.gain.exponentialRampToValueAtTime(0.01, now + 0.1);
+            
+            osc.start(now);
+            osc.stop(now + 0.1);
+        } else if (type === 'hit') {
+            const osc = audioContext.createOscillator();
+            const gain = audioContext.createGain();
+            
+            osc.connect(gain);
+            gain.connect(audioContext.destination);
+            
+            osc.frequency.setValueAtTime(200, now);
+            osc.frequency.exponentialRampToValueAtTime(100, now + 0.2);
+            
+            gain.gain.setValueAtTime(0.15, now);
+            gain.gain.exponentialRampToValueAtTime(0.01, now + 0.2);
+            
+            osc.start(now);
+            osc.stop(now + 0.2);
+        }
     }
     
     updateUI() {
-        const scoreEl = document.getElementById('score');
-        const timerEl = document.getElementById('timer');
-        const livesEl = document.getElementById('lives');
+        const scoreDisplay = document.getElementById('scoreDisplay');
+        const timerDisplay = document.getElementById('timerDisplay');
+        const livesDisplay = document.getElementById('livesDisplay');
         
-        if (scoreEl) scoreEl.textContent = this.score;
-        
-        // Убираем отсчет времени, показываем только "60с"
-        if (timerEl) timerEl.textContent = '60с';
-        
-        if (livesEl) {
-            const hearts = '❤️'.repeat(this.lives);
-            const emptyHearts = '🖤'.repeat(3 - this.lives);
-            livesEl.textContent = hearts + emptyHearts;
+        if (scoreDisplay) {
+            scoreDisplay.innerHTML = `Счет: <span>${this.score}</span>`;
+        }
+        if (timerDisplay) {
+            timerDisplay.innerHTML = `Выживание <span>${this.survivalLevel}</span>`;
+        }
+        if (livesDisplay) {
+            // Показываем красные сердечки (живые жизни) и черные (потерянные)
+            let heartsDisplay = '❤️'.repeat(this.lives);
+            const lostCount = 3 - this.lives;
+            if (lostCount > 0) {
+                heartsDisplay += '🖤'.repeat(lostCount);
+            }
+            livesDisplay.innerHTML = `Жизни: <span>${heartsDisplay}</span>`;
         }
     }
     
     render() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-        this.drawBackground();
-        this.drawPlatform();          // СНАЧАЛА рисуем коробку
-        this.drawFallingObjects();    // ПОТОМ рисуем пиццы ПОВЕРХ коробки
-        this.drawFloatingTexts();
-    }
-    
-    drawBackground() {
+        
+        // Фон
+        this.ctx.fillStyle = 'rgba(255, 255, 255, 1)';
+        this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+        
+        // Градиент фона
         const gradient = this.ctx.createLinearGradient(0, 0, 0, this.canvas.height);
-        gradient.addColorStop(0, '#fcfcf9');
-        gradient.addColorStop(1, '#e8f5f7');
+        gradient.addColorStop(0, 'rgba(255, 255, 255, 0.5)');
+        gradient.addColorStop(1, 'rgba(33, 128, 141, 0.05)');
         this.ctx.fillStyle = gradient;
         this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
         
-        this.ctx.strokeStyle = 'rgba(33, 128, 141, 0.1)';
-        this.ctx.lineWidth = 1;
-        for (let i = 0; i < this.canvas.height; i += 50) {
-            this.ctx.beginPath();
-            this.ctx.moveTo(0, i);
-            this.ctx.lineTo(this.canvas.width, i);
-            this.ctx.stroke();
-        }
-    }
-    
-    drawPlatform() {
-        this.ctx.save();
-        
-        if (this.platform.imageLoaded && this.platform.image) {
-            const displayWidth = this.platform.width * 1.4;
-            const displayHeight = this.platform.height * 4;
-            
-            const displayX = this.platform.x + (this.platform.width - displayWidth) / 2;
-            const displayY = this.platform.y - (displayHeight - this.platform.height) / 2;
-            
-            this.ctx.imageSmoothingEnabled = true;
-            this.ctx.imageSmoothingQuality = 'high';
-            
-            this.ctx.drawImage(
-                this.platform.image,
-                displayX,
-                displayY,
-                displayWidth,
-                displayHeight
-            );
-        } else {
-            this.ctx.fillStyle = '#e67961';
-            this.ctx.fillRect(
-                this.platform.x,
-                this.platform.y,
-                this.platform.width,
-                this.platform.height
-            );
-            
-            this.ctx.fillStyle = '#fff';
-            this.ctx.font = '14px Arial';
-            this.ctx.textAlign = 'center';
-            this.ctx.fillText('📦', this.platform.x + this.platform.width / 2, this.platform.y + 20);
-        }
-        
-        this.ctx.restore();
-    }
-    
-    drawFallingObjects() {
-        // КЛЮЧЕВОЕ ИЗМЕНЕНИЕ: ПИЦЦЫ РИСУЮТСЯ ПОВЕРХ КОРОБКИ
+        // Рисуем падающие объекты
         this.fallingObjects.forEach(obj => {
             this.ctx.save();
-            
             this.ctx.translate(obj.x + obj.width / 2, obj.y + obj.height / 2);
             this.ctx.rotate(obj.rotation);
             
-            this.ctx.font = '36px Arial';
+            this.ctx.font = '30px Arial';
             this.ctx.textAlign = 'center';
             this.ctx.textBaseline = 'middle';
             
             if (obj.type === 'pizza') {
-                this.ctx.fillText(this.pizzaEmoji, 0, 0);
+                this.ctx.fillText('🍕', 0, 0);
             } else if (obj.type === 'bomb') {
-                this.ctx.fillText(this.bombEmoji, 0, 0);
+                this.ctx.fillText('💣', 0, 0);
+            } else if (obj.type === 'heart') {
+                this.ctx.fillText('❤️', 0, 0);
             }
             
             this.ctx.restore();
         });
-    }
-    
-    drawFloatingTexts() {
-        if (!this.floatingTexts || this.floatingTexts.length === 0) return;
         
-        for (let i = this.floatingTexts.length - 1; i >= 0; i--) {
-            const text = this.floatingTexts[i];
+        // Рисуем платформу (коробку)
+        if (this.platform.imageLoaded) {
+            this.ctx.drawImage(this.platform.image, this.platform.x, this.platform.y, this.platform.width, this.platform.height);
+        } else {
+            this.ctx.fillStyle = '#D2691E';
+            this.ctx.fillRect(this.platform.x, this.platform.y, this.platform.width, this.platform.height);
+            this.ctx.strokeStyle = '#8B4513';
+            this.ctx.lineWidth = 2;
+            this.ctx.strokeRect(this.platform.x, this.platform.y, this.platform.width, this.platform.height);
+        }
+        
+        // Плавающий текст
+        this.floatingTexts = this.floatingTexts.filter(text => {
+            const elapsed = Date.now() - text.startTime;
+            if (elapsed > text.life) return false;
             
-            this.ctx.save();
-            this.ctx.globalAlpha = text.alpha;
+            const alpha = 1 - (elapsed / text.life);
             this.ctx.fillStyle = text.color;
+            this.ctx.globalAlpha = alpha;
             this.ctx.font = 'bold 20px Arial';
             this.ctx.textAlign = 'center';
-            this.ctx.fillText(text.text, text.x, text.y);
-            this.ctx.restore();
+            this.ctx.fillText(text.text, text.x, text.y - (elapsed / 100));
+            this.ctx.globalAlpha = 1;
             
-            text.y -= 1;
-            text.alpha -= 0.02;
-            text.life--;
-            
-            if (text.life <= 0) {
-                this.floatingTexts.splice(i, 1);
-            }
-        }
+            return true;
+        });
     }
 }
 
-// Инициализация игры
+// Инициализация при загрузке страницы
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('🎮 Игра инициализируется...');
-    new PizzaGame();
-    console.log('✅ Игра инициализирована');
+    const game = new PizzaGame();
 });

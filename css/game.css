@@ -1,595 +1,448 @@
-/* game.css - Фиксированная светлая тема без переменных, без медиа-запросов */
+/* game.css - Обновленная версия с оптимизированным лидербордом */
 
 /* Base styles */
 html {
-  font-size: 14px;
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  line-height: 1.5;
-  color: #1F2121;
-  background-color: #FFFFFF;
-  -webkit-font-smoothing: antialiased;
-  box-sizing: border-box;
+    font-size: 14px;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.5;
+    color: #1F2121;
+    background-color: #FFFFFF;
+    -webkit-font-smoothing: antialiased;
+    box-sizing: border-box;
 }
 
 body {
-  margin: 0;
-  padding: 0;
-  background-color: #FFFFFF;
-  color: #1F2121;
+    margin: 0;
+    padding: 0;
+    background-color: #FFFFFF;
+    color: #1F2121;
 }
 
 *,
 *::before,
 *::after {
-  box-sizing: inherit;
+    box-sizing: inherit;
 }
 
 /* Typography */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  margin: 0;
-  font-weight: 550;
-  line-height: 1.2;
-  color: #1F2121;
-  letter-spacing: -0.01em;
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    font-weight: 550;
+    line-height: 1.2;
+    color: #1F2121;
+    letter-spacing: -0.01em;
 }
 
-h1 {
-  font-size: 30px;
-}
+h1 { font-size: 30px; }
+h2 { font-size: 24px; }
+h3 { font-size: 20px; }
+h4 { font-size: 18px; }
+h5 { font-size: 16px; }
+h6 { font-size: 14px; }
 
-h2 {
-  font-size: 24px;
-}
-
-h3 {
-  font-size: 20px;
-}
-
-h4 {
-  font-size: 18px;
-}
-
-h5 {
-  font-size: 16px;
-}
-
-h6 {
-  font-size: 14px;
-}
-
-p {
-  margin: 0 0 16px 0;
-}
-
-a {
-  color: #21808D;
-  text-decoration: none;
-  transition: color 150ms cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-a:hover {
-  color: #1D7480;
-}
-
-code,
-pre {
-  font-family: "Berkeley Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  font-size: 13.3px;
-  background-color: rgba(94, 82, 64, 0.12);
-  border-radius: 6px;
-}
-
-code {
-  padding: 1px 4px;
-}
-
-pre {
-  padding: 16px;
-  margin: 16px 0;
-  overflow: auto;
-  border: 1px solid rgba(0, 0, 0, 0.12);
-}
-
-pre code {
-  background: none;
-  padding: 0;
-}
+p { margin: 0 0 16px 0; }
 
 /* Buttons */
 .btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 8px 16px;
-  border-radius: 8px;
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 1.5;
-  cursor: pointer;
-  transition: all 250ms cubic-bezier(0.16, 1, 0.3, 1);
-  border: none;
-  text-decoration: none;
-  position: relative;
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.5;
+    cursor: pointer;
+    transition: all 250ms cubic-bezier(0.16, 1, 0.3, 1);
+    border: none;
+    text-decoration: none;
+    position: relative;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
 .btn:focus-visible {
-  outline: none;
-  box-shadow: 0 0 0 3px rgba(33, 128, 141, 0.4);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(33, 128, 141, 0.4);
 }
 
 .btn--primary {
-  background: #21808D;
-  color: #FCFCF9;
+    background: #21808D;
+    color: #FCFCF9;
 }
 
 .btn--primary:hover {
-  background: #1D7480;
+    background: #1D7480;
 }
 
 .btn--primary:active {
-  background: #1A6873;
+    background: #1A6873;
 }
 
 .btn--secondary {
-  background: rgba(94, 82, 64, 0.12);
-  color: #1F2121;
+    background: rgba(94, 82, 64, 0.12);
+    color: #1F2121;
 }
 
 .btn--secondary:hover {
-  background: rgba(94, 82, 64, 0.2);
-}
-
-.btn--secondary:active {
-  background: rgba(94, 82, 64, 0.25);
+    background: rgba(94, 82, 64, 0.2);
 }
 
 .btn--outline {
-  background: transparent;
-  border: 1px solid rgba(0, 0, 0, 0.12);
-  color: #1F2121;
+    background: transparent;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    color: #1F2121;
 }
 
 .btn--outline:hover {
-  background: rgba(94, 82, 64, 0.12);
+    background: rgba(94, 82, 64, 0.12);
 }
 
-.btn--sm {
-  padding: 4px 12px;
-  font-size: 12px;
-  border-radius: 6px;
-}
-
-.btn--lg {
-  padding: 10px 20px;
-  font-size: 16px;
-  border-radius: 10px;
-}
-
-.btn--full-width {
-  width: 100%;
-}
-
-.btn:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-/* Form elements */
-.form-control {
-  display: block;
-  width: 100%;
-  padding: 8px 12px;
-  font-size: 14px;
-  line-height: 1.5;
-  color: #1F2121;
-  background-color: #FFFFFD;
-  border: 1px solid rgba(0, 0, 0, 0.12);
-  border-radius: 8px;
-  transition: border-color 150ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 150ms cubic-bezier(0.16, 1, 0.3, 1);
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-}
-
-textarea.form-control {
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  font-size: 14px;
-}
-
-select.form-control {
-  padding: 8px 12px;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23134252' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 12px center;
-  background-size: 16px;
-  padding-right: 32px;
-}
-
-.form-control:focus {
-  border-color: #21808D;
-  outline: 2px solid #21808D;
-}
-
-.form-label {
-  display: block;
-  margin-bottom: 8px;
-  font-weight: 500;
-  font-size: 12px;
-}
-
-.form-group {
-  margin-bottom: 16px;
-}
-
-/* Card component */
-.card {
-  background-color: #FFFFFD;
-  border-radius: 12px;
-  border: 1px solid rgba(0, 0, 0, 0.12);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
-  overflow: hidden;
-  transition: box-shadow 250ms cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.card:hover {
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.04), 0 2px 4px -1px rgba(0, 0, 0, 0.02);
-}
-
-.card__body {
-  padding: 16px;
-}
-
-.card__header,
-.card__footer {
-  padding: 16px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
-}
-
-/* Status indicators */
-.status {
-  display: inline-flex;
-  align-items: center;
-  padding: 6px 12px;
-  border-radius: 9999px;
-  font-weight: 500;
-  font-size: 12px;
-}
-
-.status--success {
-  background-color: rgba(33, 128, 141, 0.15);
-  color: #21808D;
-  border: 1px solid rgba(33, 128, 141, 0.25);
-}
-
-.status--error {
-  background-color: rgba(192, 21, 47, 0.15);
-  color: #C0152F;
-  border: 1px solid rgba(192, 21, 47, 0.25);
-}
-
-.status--warning {
-  background-color: rgba(168, 75, 47, 0.15);
-  color: #A84B2F;
-  border: 1px solid rgba(168, 75, 47, 0.25);
-}
-
-.status--info {
-  background-color: rgba(98, 108, 113, 0.15);
-  color: #626C71;
-  border: 1px solid rgba(98, 108, 113, 0.25);
-}
-
-/* Container layout */
-.container {
-  width: 100%;
-  margin-right: auto;
-  margin-left: auto;
-  padding-right: 16px;
-  padding-left: 16px;
-  max-width: 1024px;
-}
-
-/* Utility classes */
-.flex {
-  display: flex;
-}
-
-.flex-col {
-  flex-direction: column;
-}
-
-.items-center {
-  align-items: center;
-}
-
-.justify-center {
-  justify-content: center;
-}
-
-.justify-between {
-  justify-content: space-between;
-}
-
-.gap-4 {
-  gap: 4px;
-}
-
-.gap-8 {
-  gap: 8px;
-}
-
-.gap-16 {
-  gap: 16px;
-}
-
-.m-0 {
-  margin: 0;
-}
-
-.mt-8 {
-  margin-top: 8px;
-}
-
-.mb-8 {
-  margin-bottom: 8px;
-}
-
-.mx-8 {
-  margin-left: 8px;
-  margin-right: 8px;
-}
-
-.my-8 {
-  margin-top: 8px;
-  margin-bottom: 8px;
-}
-
-.p-0 {
-  padding: 0;
-}
-
-.py-8 {
-  padding-top: 8px;
-  padding-bottom: 8px;
-}
-
-.px-8 {
-  padding-left: 8px;
-  padding-right: 8px;
-}
-
-.py-16 {
-  padding-top: 16px;
-  padding-bottom: 16px;
-}
-
-.px-16 {
-  padding-left: 16px;
-  padding-right: 16px;
-}
-
-.block {
-  display: block;
+.btn-large {
+    padding: 12px 32px;
+    font-size: 16px;
+    font-weight: 550;
+    border-radius: 10px;
+    min-width: 160px;
 }
 
 .hidden {
-  display: none;
+    display: none !important;
 }
 
-/* Accessibility */
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border-width: 0;
-}
-
-:focus-visible {
-  outline: 2px solid #21808D;
-  outline-offset: 2px;
-}
-
-/* Font face */
-@font-face {
-  font-family: 'FKGroteskNeue';
-  src: url('https://r2cdn.perplexity.ai/fonts/FKGroteskNeue.woff2') format('woff2');
-}
-
-/* ============================================
-   GAME.CSS - Стили для игры
-   ============================================ */
-
+/* Game Styles */
 .game-wrap {
-  max-width: 1024px;
-  margin: 0 auto;
-  padding: 20px 16px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 16px;
 }
 
 .game-header {
-  text-align: center;
-  margin-bottom: 24px;
+    text-align: center;
+    margin-bottom: 24px;
 }
 
 .game-header h1 {
-  margin: 0 0 16px 0;
-  color: #1F2121;
-  font-size: 30px;
-  font-weight: 600;
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  letter-spacing: -0.01em;
-  line-height: 1.2;
+    margin: 0 0 16px 0;
+    color: #1F2121;
+    font-size: 30px;
+    font-weight: 600;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
 }
 
+/* Информационная панель */
 .game-info {
-  display: flex;
-  justify-content: center;
-  gap: 24px;
-  flex-wrap: wrap;
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    flex-wrap: wrap;
+    margin-bottom: 24px;
 }
 
 .score-display,
 .timer-display,
 .lives-display {
-  background: #FFFFFD;
-  padding: 8px 16px;
-  border-radius: 8px;
-  font-size: 16px;
-  font-weight: 550;
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  color: #1F2121;
-  border: 1px solid rgba(0, 0, 0, 0.12);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
-  transition: box-shadow 250ms cubic-bezier(0.16, 1, 0.3, 1);
+    background: #FFFFFD;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 550;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    color: #1F2121;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+    transition: box-shadow 250ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .score-display:hover,
 .timer-display:hover,
 .lives-display:hover {
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.04), 0 2px 4px -1px rgba(0, 0, 0, 0.02);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.04), 0 2px 4px -1px rgba(0, 0, 0, 0.02);
 }
 
 .score-display span,
 .timer-display span {
-  color: #21808D;
-  font-size: 20px;
-  font-weight: 600;
+    color: #21808D;
+    font-size: 20px;
+    font-weight: 600;
 }
 
 .lives-display span {
-  color: #C0152F;
-  font-size: 20px;
-  font-weight: 600;
+    color: #C0152F;
+    font-size: 20px;
+    font-weight: 600;
 }
 
 /* Canvas контейнер */
 .game-canvas-container {
-  position: relative;
-  width: 800px;
-  max-width: 100%;
-  margin: 0 auto 24px auto;
-  background: #FFFFFD;
-  border-radius: 12px;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.04), 0 4px 6px -2px rgba(0, 0, 0, 0.02);
-  border: 1px solid rgba(0, 0, 0, 0.12);
-  overflow: hidden;
+    position: relative;
+    width: 800px;
+    max-width: 100%;
+    margin: 0 auto 24px auto;
+    background: #FFFFFD;
+    border-radius: 12px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.04), 0 4px 6px -2px rgba(0, 0, 0, 0.02);
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    overflow: hidden;
 }
 
 #gameCanvas {
-  display: block;
-  width: 100%;
-  height: auto;
-  background: linear-gradient(180deg, #FFFFFF 0%, rgba(33, 128, 141, 0.05) 100%);
+    display: block;
+    width: 100%;
+    height: auto;
+    background: linear-gradient(180deg, #FFFFFF 0%, rgba(33, 128, 141, 0.05) 100%);
 }
 
 /* Оверлеи игры */
 .game-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(19, 52, 59, 0.95);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 32px;
-  text-align: center;
-  z-index: 100;
-  backdrop-filter: blur(4px);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(19, 52, 59, 0.95);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 32px;
+    text-align: center;
+    z-index: 100;
+    backdrop-filter: blur(4px);
+}
+
+.game-overlay.hidden {
+    display: none !important;
 }
 
 .game-overlay h2 {
-  margin: 0 0 16px 0;
-  color: #FFFFFD;
-  font-size: 24px;
-  font-weight: 600;
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  letter-spacing: -0.01em;
-  line-height: 1.2;
+    margin: 0 0 16px 0;
+    color: #FFFFFD;
+    font-size: 24px;
+    font-weight: 600;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
 }
 
 .game-overlay p {
-  margin: 0 0 12px 0;
-  color: #626C71;
-  font-size: 14px;
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  line-height: 1.5;
+    margin: 0 0 12px 0;
+    color: #626C71;
+    font-size: 14px;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.5;
 }
 
 .game-overlay .btn {
-  margin: 8px;
-}
-
-.btn-large {
-  padding: 12px 32px;
-  font-size: 16px;
-  font-weight: 550;
-  border-radius: 10px;
-  min-width: 160px;
+    margin: 8px;
 }
 
 /* Управление */
 .game-controls {
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  margin-bottom: 24px;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
 }
 
 /* Инструкции */
 .game-instructions {
-  max-width: 800px;
-  margin: 0 auto;
-  background: #FFFFFD;
-  padding: 24px;
-  border-radius: 12px;
-  border: 1px solid rgba(0, 0, 0, 0.12);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+    max-width: 800px;
+    margin: 0 auto;
+    background: #FFFFFD;
+    padding: 24px;
+    border-radius: 12px;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
 }
 
 .game-instructions h3 {
-  margin: 0 0 16px 0;
-  color: #1F2121;
-  font-size: 18px;
-  font-weight: 550;
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  letter-spacing: -0.01em;
-  line-height: 1.2;
+    margin: 0 0 16px 0;
+    color: #1F2121;
+    font-size: 18px;
+    font-weight: 550;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
 }
 
 .game-instructions ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
 .game-instructions li {
-  padding: 8px 0;
-  font-size: 14px;
-  color: #1F2121;
-  line-height: 1.5;
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+    padding: 8px 0;
+    font-size: 14px;
+    color: #1F2121;
+    line-height: 1.5;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
 }
 
 .game-instructions li:last-child {
-  border-bottom: none;
+    border-bottom: none;
 }
 
 .game-instructions li strong {
-  color: #21808D;
-  font-weight: 550;
+    color: #21808D;
+    font-weight: 550;
+}
+
+/* ============================================
+   ЛИДЕРБОРД - Оптимизированный компактный стиль
+   ============================================ */
+
+.leaderboard-container {
+    background: #FFFFFD;
+    border-radius: 12px;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+    padding: 16px;
+    max-height: 400px;
+    overflow-y: auto;
+    margin: 16px 0;
+}
+
+.leaderboard-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #1F2121;
+    margin: 0 0 12px 0;
+    text-align: center;
+}
+
+.leaderboard-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.leaderboard-table thead {
+    background: rgb(215, 251, 255);
+    position: sticky;
+    top: 0;
+}
+
+.leaderboard-table th {
+    padding: 8px 6px;
+    text-align: left;
+    font-weight: 550;
+    color: #21808D;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.leaderboard-table td {
+    padding: 8px 6px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    color: #1F2121;
+}
+
+.leaderboard-table tbody tr:hover {
+    background: rgba(33, 128, 141, 0.04);
+}
+
+.leaderboard-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.leaderboard-name {
+    font-weight: 500;
+    max-width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.leaderboard-date {
+    font-size: 12px;
+    color: #626C71;
+}
+
+.leaderboard-table th:nth-child(1),
+.leaderboard-table th:nth-child(3),
+.leaderboard-table th:nth-child(4),
+.leaderboard-table td:nth-child(1),
+.leaderboard-table td:nth-child(3),
+.leaderboard-table td:nth-child(4) {
+    text-align: center;
+}
+
+/* Скролл для лидерборда */
+.leaderboard-container::-webkit-scrollbar {
+    width: 6px;
+}
+
+.leaderboard-container::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+}
+
+.leaderboard-container::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+}
+
+.leaderboard-container::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.3);
+}
+
+/* Мобильная оптимизация */
+@media (max-width: 768px) {
+    .game-wrap {
+        padding: 12px 8px;
+    }
+
+    .game-info {
+        gap: 12px;
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .score-display,
+    .timer-display,
+    .lives-display {
+        padding: 6px 12px;
+        font-size: 14px;
+        text-align: center;
+    }
+
+    .game-canvas-container {
+        margin-bottom: 16px;
+    }
+
+    .leaderboard-container {
+        max-height: 300px;
+    }
+
+    .leaderboard-table {
+        font-size: 12px;
+    }
+
+    .leaderboard-table th,
+    .leaderboard-table td {
+        padding: 6px 4px;
+    }
+
+    .leaderboard-name {
+        max-width: 100px;
+    }
+
+    .leaderboard-date {
+        font-size: 11px;
+    }
+
+    .game-overlay {
+        padding: 16px;
+    }
+
+    .btn-large {
+        min-width: 140px;
+        padding: 10px 24px;
+        font-size: 14px;
+    }
 }

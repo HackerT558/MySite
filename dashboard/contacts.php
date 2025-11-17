@@ -1,6 +1,6 @@
 <?php
 require __DIR__ . '/../config/config.php';
-if (empty($_SESSION['uid'])) { header('Location: ../auth/login.php'); exit; }
+if (empty($_SESSION['uid'])) { header('Location: ../index.php'); exit; }
 
 function avatar_url(?string $path): string {
     if ($path && is_file(__DIR__ . '/../' . $path)) {

@@ -68,7 +68,7 @@ $active = $active ?? '';
     <a class="tab <?= $active==='game'?'active':'' ?>" href="game.php">Игра</a>
 
     <?php if ($currentLevel >= $roleLevelMap['manager-top']) : ?>
-      <a class="tab <?= $active==='manage'?'active':'' ?>" href="users.php">Управление</a>
+      <a class="tab <?= $active==='manage'?'active':'' ?>" href="admin-dashboard.php">Управление</a>
     <?php endif; ?>
 
     <span class="spacer"></span>
