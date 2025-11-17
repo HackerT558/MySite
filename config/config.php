@@ -19,10 +19,6 @@ if (!function_exists('role_level')) {
   }
 }
 
-/**
- * Обновляет роль и имя пользователя в сессии на основе текущих данных БД.
- * Возвращает актуальную роль (или 'user', если пользователь не найден).
- */
 if (!function_exists('refresh_session_role')) {
   function refresh_session_role(mysqli $db): string {
     if (empty($_SESSION['uid'])) return 'user';
@@ -45,15 +41,11 @@ if (!function_exists('refresh_session_role')) {
   }
 }
 
-/**
- * Требует минимальную роль для доступа, перепроверяя её из БД на каждом запросе.
- * При недостатке прав — редирект на login.php.
- */
 if (!function_exists('require_role_min_db')) {
     function require_role_min_db(mysqli $db, string $minRole): void {
         $role = refresh_session_role($db);
         if (empty($_SESSION['uid']) || role_level($role) < role_level($minRole)) {
-            header('Location: ../auth/login.php');
+            header('Location: ../index.php');
             exit;
         }
     }

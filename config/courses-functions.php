@@ -2,9 +2,6 @@
 // config/courses-functions.php
 require_once __DIR__ . '/config.php';
 
-/**
- * Получить курсы для определенной позиции
- */
 function getCoursesByPosition(mysqli $db, string $position): array {
     $stmt = $db->prepare("
         SELECT id, title, description, difficulty_level, duration_minutes, passing_score 
@@ -24,9 +21,6 @@ function getCoursesByPosition(mysqli $db, string $position): array {
     return $courses;
 }
 
-/**
- * Получить назначенные пользователю курсы
- */
 function getUserAssignedCourses(mysqli $db, int $userId): array {
     $stmt = $db->prepare("
         SELECT c.id, c.title, c.description, c.duration_minutes, c.passing_score, c.position,
@@ -67,9 +61,6 @@ function getUserAssignedCourses(mysqli $db, int $userId): array {
     return $courses;
 }
 
-/**
- * Получить детали курса
- */
 function getCourseDetails(mysqli $db, int $courseId): ?array {
     $stmt = $db->prepare("
         SELECT id, title, description, position, difficulty_level, 
@@ -89,9 +80,6 @@ function getCourseDetails(mysqli $db, int $courseId): ?array {
     return null;
 }
 
-/**
- * Получить уроки курса
- */
 function getCourseLessons(mysqli $db, int $courseId, int $userId = null): array {
     $sql = "
         SELECT cl.id, cl.title, cl.lesson_order, cl.duration_minutes, cl.video_url,
@@ -124,9 +112,6 @@ function getCourseLessons(mysqli $db, int $courseId, int $userId = null): array 
     return $lessons;
 }
 
-/**
- * Получить содержимое урока
- */
 function getLessonContent(mysqli $db, int $lessonId): ?array {
     $stmt = $db->prepare("
         SELECT cl.id, cl.title, cl.content, cl.lesson_order, cl.video_url, 
@@ -147,9 +132,6 @@ function getLessonContent(mysqli $db, int $lessonId): ?array {
     return null;
 }
 
-/**
- * Отметить урок как пройденный
- */
 function completeLesson(mysqli $db, int $userId, int $courseId, int $lessonId, int $timeSpent = 0): bool {
     $stmt = $db->prepare("
         INSERT INTO user_lesson_progress (user_id, course_id, lesson_id, time_spent_minutes)
@@ -170,9 +152,6 @@ function completeLesson(mysqli $db, int $userId, int $courseId, int $lessonId, i
     return $success;
 }
 
-/**
- * Получить вопросы для теста
- */
 function getCourseTestQuestions(mysqli $db, int $courseId): array {
     $stmt = $db->prepare("
         SELECT id, question, option_a, option_b, option_c, option_d, points
@@ -192,9 +171,6 @@ function getCourseTestQuestions(mysqli $db, int $courseId): array {
     return $questions;
 }
 
-/**
- * Получить правильные ответы для теста
- */
 function getCourseTestAnswers(mysqli $db, int $courseId): array {
     $stmt = $db->prepare("
         SELECT id, correct_answer, points
@@ -216,9 +192,6 @@ function getCourseTestAnswers(mysqli $db, int $courseId): array {
     return $answers;
 }
 
-/**
- * Сохранить результаты теста
- */
 function saveTestResults(mysqli $db, int $userId, int $courseId, array $answers, int $score, int $maxScore): bool {
     $percentage = $maxScore > 0 ? ($score / $maxScore) * 100 : 0;
     
@@ -251,9 +224,6 @@ function saveTestResults(mysqli $db, int $userId, int $courseId, array $answers,
     return $success;
 }
 
-/**
- * Обновить статус назначения курса
- */
 function updateCourseAssignmentStatus(mysqli $db, int $userId, int $courseId, string $status): bool {
     $stmt = $db->prepare("
         UPDATE user_course_assignments 
@@ -266,9 +236,6 @@ function updateCourseAssignmentStatus(mysqli $db, int $userId, int $courseId, st
     return $success;
 }
 
-/**
- * Назначить курс пользователю
- */
 function assignCourseToUser(mysqli $db, int $userId, int $courseId, int $assignedBy, ?string $deadline = null): bool {
     $stmt = $db->prepare("
         INSERT INTO user_course_assignments (user_id, course_id, assigned_by, deadline)
@@ -281,9 +248,6 @@ function assignCourseToUser(mysqli $db, int $userId, int $courseId, int $assigne
     return $success;
 }
 
-/**
- * Проверить, доступен ли тест для пользователя
- */
 function isTestAvailableForUser(mysqli $db, int $userId, int $courseId): bool {
     // Проверяем, что все уроки пройдены
     $stmt = $db->prepare("
@@ -303,9 +267,6 @@ function isTestAvailableForUser(mysqli $db, int $userId, int $courseId): bool {
     return $totalLessons > 0 && $totalLessons == $completedLessons;
 }
 
-/**
- * Получить статистику курсов для менеджеров
- */
 function getCoursesStatistics(mysqli $db): array {
     $stmt = $db->prepare("
         SELECT 
@@ -335,9 +296,6 @@ function getCoursesStatistics(mysqli $db): array {
     return $statistics;
 }
 
-/**
- * Получить всех пользователей с их ролями для назначения курсов
- */
 function getUsersForAssignment(mysqli $db): array {
     $stmt = $db->prepare("
         SELECT id, username, role, position,
@@ -356,9 +314,6 @@ function getUsersForAssignment(mysqli $db): array {
     return $users;
 }
 
-/**
- * Проверить, назначен ли курс пользователю
- */
 function isUserAssignedToCourse(mysqli $db, int $userId, int $courseId): bool {
     $stmt = $db->prepare("
         SELECT id FROM user_course_assignments 
@@ -372,9 +327,6 @@ function isUserAssignedToCourse(mysqli $db, int $userId, int $courseId): bool {
     return $assigned;
 }
 
-/**
- * Получить все курсы (для менеджеров)
- */
 function getAllCourses(mysqli $db): array {
     $stmt = $db->prepare("
         SELECT id, title, description, position, difficulty_level, 
