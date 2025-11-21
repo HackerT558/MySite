@@ -60,6 +60,7 @@ $completedLessons = array_filter($lessons, function($lesson) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= htmlspecialchars($course['title']) ?> - Курс</title>
+    <link rel="stylesheet" href="../css/test-history.css">
     <link rel="stylesheet" href="../css/app-base.css">
     <link rel="stylesheet" href="../css/cabinet-header.css">
     <link rel="stylesheet" href="../css/courses.css">
@@ -209,29 +210,132 @@ $completedLessons = array_filter($lessons, function($lesson) {
 
                 <!-- История тестов -->
                 <?php if (!empty($testHistory)): ?>
-                    <div class="test-history">
-                        <h3>История попыток</h3>
-                        <div class="history-list">
-                            <?php foreach ($testHistory as $attempt): ?>
-                                <div class="history-item <?= $attempt['passed'] ? 'passed' : 'failed' ?>">
-                                    <div class="attempt-info">
-                                        <div class="attempt-score">
-                                            <?= number_format($attempt['percentage'], 1) ?>%
-                                        </div>
-                                        <div class="attempt-details">
-                                            <div class="attempt-result">
-                                                <?= $attempt['passed'] ? '✓ Пройден' : '✗ Не пройден' ?>
-                                            </div>
-                                            <div class="attempt-date">
-                                                <?= date('d.m.Y H:i', strtotime($attempt['completed_at'])) ?>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            <?php endforeach; ?>
+                <div class="test-history">
+                    
+                    <!-- Заголовок -->
+                    <div class="test-history-header">
+                        <span class="test-history-icon">📊</span>
+                        <h3>История попыток теста</h3>
+                    </div>
+
+                    <!-- Статистика -->
+                    <div class="test-history-stats">
+                        <div class="stat-box">
+                            <div class="stat-value"><?= count($testHistory) ?></div>
+                            <div class="stat-label">Всего попыток</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-value" style="color: #21808D;">
+                                <?= count(array_filter($testHistory, fn($t) => $t['passed'])) ?>
+                            </div>
+                            <div class="stat-label">Успешных</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-value" style="color: #C0152F;">
+                                <?= count(array_filter($testHistory, fn($t) => !$t['passed'])) ?>
+                            </div>
+                            <div class="stat-label">Не пройдено</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-value" style="color: #21808D;">
+                                <?= max(array_map(fn($t) => $t['percentage'], $testHistory)) ?? 0 ?>%
+                            </div>
+                            <div class="stat-label">Лучший результат</div>
                         </div>
                     </div>
-                <?php endif; ?>
+
+                    <!-- Легенда -->
+                    <div class="test-history-legend">
+                        <div class="legend-item">
+                            <span class="legend-dot passed"></span>
+                            <span>Пройдено</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-dot failed"></span>
+                            <span>Не пройдено</span>
+                        </div>
+                    </div>
+
+                    <!-- Список попыток -->
+                    <div class="test-history-attempts">
+                        <?php foreach ($testHistory as $index => $attempt): 
+                            $isPassed = $attempt['passed'];
+                            $percentage = (int)$attempt['percentage'];
+                            $isBest = ($index === 0 && $isPassed) || 
+                                    ($percentage === max(array_map(fn($t) => $t['percentage'], $testHistory)));
+                            $isLatest = $index === 0;
+                            $attemptDate = new DateTime($attempt['completed_at']);
+                            $now = new DateTime();
+                            $interval = $now->diff($attemptDate);
+                            $timeAgo = $interval->format('%d дн. %h ч. назад');
+                        ?>
+                        <div class="test-attempt <?= $isLatest ? 'latest' : '' ?> <?= $isBest ? 'best' : '' ?>">
+                            
+                            <!-- Индикатор -->
+                            <div class="attempt-indicator <?= $isPassed ? 'passed' : 'failed' ?>">
+                                <?= $isPassed ? '✓' : '✗' ?>
+                            </div>
+
+                            <!-- Информация -->
+                            <div class="attempt-info">
+                                <div class="attempt-score">
+                                    <span class="attempt-percentage <?= $isPassed ? 'passed' : 'failed' ?>">
+                                        <?= $percentage ?>%
+                                    </span>
+                                    <span class="attempt-status-badge <?= $isPassed ? 'passed' : 'failed' ?>">
+                                        <?= $isPassed ? '✓ Пройдено' : '✗ Не пройдено' ?>
+                                    </span>
+                                </div>
+                                <div class="attempt-progress-bar">
+                                    <div class="attempt-progress-fill <?= $isPassed ? 'passed' : 'failed' ?>" 
+                                        style="width: <?= $percentage ?>%"></div>
+                                </div>
+                                <div class="attempt-date">
+                                    📅 <?= $attemptDate->format('d.m.Y в H:i') ?> 
+                                    <span style="color: #A0A9B0;">(<?= $timeAgo ?>)</span>
+                                </div>
+                            </div>
+
+                            <!-- Детали -->
+                            <div class="attempt-details">
+                                <?php if ($isBest): ?>
+                                <div class="attempt-rank">🏆 Лучший результат</div>
+                                <?php else: ?>
+                                <div class="attempt-rank">Попытка #<?= count($testHistory) - $index ?></div>
+                                <?php endif; ?>
+                                <?php if ($isLatest): ?>
+                                <div class="attempt-rank" style="background: rgba(33, 128, 141, 0.15); color: #21808D;">
+                                    Последняя
+                                </div>
+                                <?php endif; ?>
+                            </div>
+
+                        </div>
+                        <?php endforeach; ?>
+                    </div>
+
+                    <!-- Примечание -->
+                    <div style="margin-top: 20px; padding: 12px 16px; background: rgba(33, 128, 141, 0.08); border-left: 4px solid #21808D; border-radius: 4px;">
+                        <p style="margin: 0; color: #626C71; font-size: 13px;">
+                            <strong>ℹ️ Примечание:</strong> Для успешного завершения курса необходимо набрать минимум <strong><?= $course['passing_score'] ?>%</strong> на тесте.
+                        </p>
+                    </div>
+
+                </div>
+                <?php else: ?>
+
+                <div class="test-history">
+                <div class="test-history-header">
+                    <span class="test-history-icon">📊</span>
+                    <h3>История попыток теста</h3>
+                </div>
+                <div class="test-history-empty">
+                    <div class="test-history-empty-icon">📝</div>
+                    <p class="test-history-empty-text">Попыток пока нет</p>
+                    <p class="test-history-empty-hint">Здесь будут отображаться все ваши попытки прохождения теста</p>
+                </div>
+            </div>
+            <?php endif; ?>
             </div>
         </div>
     </div>

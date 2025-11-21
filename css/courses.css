@@ -1,705 +1,932 @@
 /* Base styles */
 html {
-  font-size: 14px;
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  line-height: 1.5;
-  color: #1F2121;
-  background-color: #FFFFFF;
-  -webkit-font-smoothing: antialiased;
-  box-sizing: border-box;
+font-size: 14px;
+font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+line-height: 1.5;
+color: #1F2121;
+background-color: #FFFFFF;
+-webkit-font-smoothing: antialiased;
+box-sizing: border-box;
 }
-
 body {
-  margin: 0;
-  padding: 0;
-  background-color: #FFFFFF;
-  color: #1F2121;
+margin: 0;
+padding: 0;
+background-color: #FFFFFF;
+color: #1F2121;
 }
-
 *,
 *::before,
 *::after {
-  box-sizing: inherit;
+box-sizing: inherit;
 }
-
 /* Typography */
 h1, h2, h3, h4, h5, h6 {
-  margin: 0;
-  font-weight: 550;
-  line-height: 1.2;
-  color: #1F2121;
-  letter-spacing: -0.01em;
+margin: 0;
+font-weight: 550;
+line-height: 1.2;
+color: #1F2121;
+letter-spacing: -0.01em;
 }
-
 h1 { font-size: 30px; }
 h2 { font-size: 24px; }
 h3 { font-size: 20px; }
 h4 { font-size: 18px; }
 h5 { font-size: 16px; }
 h6 { font-size: 14px; }
-
 p { margin: 0 0 16px 0; }
-
 a {
-  color: #21808D;
-  text-decoration: none;
-  transition: color 150ms cubic-bezier(0.16, 1, 0.3, 1);
+color: #21808D;
+text-decoration: none;
+transition: color 150ms cubic-bezier(0.16, 1, 0.3, 1);
 }
-
-a:hover { color: #1D7480; }
-
+a:hover { color: #ffffff; }
 code, pre {
-  font-family: "Berkeley Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  font-size: 13.3px;
-  background-color: rgba(94, 82, 64, 0.12);
-  border-radius: 6px;
+font-family: "Berkeley Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+font-size: 13.3px;
+background-color: rgba(94, 82, 64, 0.12);
+border-radius: 6px;
 }
-
 code { padding: 1px 4px; }
-
 pre {
-  padding: 16px;
-  margin: 16px 0;
-  overflow: auto;
-  border: 1px solid rgba(0, 0, 0, 0.12);
+padding: 16px;
+margin: 16px 0;
+overflow: auto;
+border: 1px solid rgba(0, 0, 0, 0.12);
 }
-
 /* Контейнер */
 .courses-wrap {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 20px 16px;
+max-width: 1100px;
+margin: 0 auto;
+padding: 20px 16px;
 }
-
 .courses-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 32px;
-  flex-wrap: wrap;
-  gap: 16px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+margin-bottom: 32px;
+flex-wrap: wrap;
+gap: 16px;
 }
-
 .courses-header h1 {
-  margin: 0;
-  color: #1F2121;
-  font-size: 30px;
-  font-weight: 600;
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+margin: 0;
+color: #1F2121;
+font-size: 30px;
+font-weight: 600;
+font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
-
 .courses-actions {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
+display: flex;
+gap: 10px;
+flex-wrap: wrap;
 }
-
 /* Секционные карточки */
 .section-card {
-  background: #FFFFFD;
-  border-radius: 12px;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.04), 0 4px 6px -2px rgba(0, 0, 0, 0.02);
-  padding: 24px;
-  margin-bottom: 24px;
-  border: 1px solid rgba(0, 0, 0, 0.12);
+background: #FFFFFD;
+border-radius: 12px;
+box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.04), 0 4px 6px -2px rgba(0, 0, 0, 0.02);
+padding: 24px;
+margin-bottom: 24px;
+border: 1px solid rgba(0, 0, 0, 0.12);
 }
-
 .section-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
-  border-bottom: 2px solid rgba(0, 0, 0, 0.12);
-  padding-bottom: 16px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+margin-bottom: 20px;
+border-bottom: 2px solid rgba(0, 0, 0, 0.12);
+padding-bottom: 16px;
 }
-
 .section-header h2 {
-  margin: 0;
-  color: #1F2121;
-  font-size: 20px;
-  font-weight: 550;
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+margin: 0;
+color: #1F2121;
+font-size: 20px;
+font-weight: 550;
+font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
-
 .section-info {
-  display: flex;
-  align-items: center;
-  gap: 16px;
+display: flex;
+align-items: center;
+gap: 16px;
 }
-
 .courses-count {
-  color: #626C71;
-  font-size: 14px;
-  padding: 4px 8px;
-  background: rgba(94, 82, 64, 0.12);
-  border-radius: 6px;
+color: #626C71;
+font-size: 14px;
+padding: 4px 8px;
+background: rgba(94, 82, 64, 0.12);
+border-radius: 6px;
 }
-
 /* Сетка курсов */
 .courses-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 20px;
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+gap: 20px;
 }
-
 /* Карточка курса */
 .course-card {
-  background: #FFFFFD;
-  border: 2px solid rgba(0, 0, 0, 0.12);
-  border-radius: 12px;
-  padding: 20px;
-  transition: all 250ms cubic-bezier(0.16, 1, 0.3, 1);
-  position: relative;
-  cursor: pointer;
+background: #FFFFFD;
+border: 2px solid rgba(0, 0, 0, 0.12);
+border-radius: 12px;
+padding: 20px;
+transition: all 250ms cubic-bezier(0.16, 1, 0.3, 1);
+position: relative;
+cursor: pointer;
 }
-
 .course-card:hover {
-  border-color: #21808D;
-  transform: translateY(-2px);
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.04), 0 4px 6px -2px rgba(0, 0, 0, 0.02);
+border-color: #21808D;
+transform: translateY(-2px);
+box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.04), 0 4px 6px -2px rgba(0, 0, 0, 0.02);
 }
-
 .course-card.completed {
-  border-color: #21808D;
-  background: linear-gradient(135deg, #FFFFFD 0%, rgba(33, 128, 141, 0.05) 100%);
+border-color: #21808D;
+background: linear-gradient(135deg, #FFFFFD 0%, rgba(33, 128, 141, 0.05) 100%);
 }
-
 .course-card.failed {
-  border-color: #C0152F;
-  background: linear-gradient(135deg, #FFFFFD 0%, rgba(192, 21, 47, 0.05) 100%);
+border-color: #C0152F;
+background: linear-gradient(135deg, #FFFFFD 0%, rgba(192, 21, 47, 0.05) 100%);
 }
-
 .course-card.in_progress {
-  border-color: #A84B2F;
-  background: linear-gradient(135deg, #FFFFFD 0%, rgba(168, 75, 47, 0.05) 100%);
+border-color: #A84B2F;
+background: linear-gradient(135deg, #FFFFFD 0%, rgba(168, 75, 47, 0.05) 100%);
 }
-
 .course-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 12px;
+display: flex;
+justify-content: space-between;
+align-items: flex-start;
+margin-bottom: 12px;
 }
-
 .course-header h3 {
-  margin: 0;
-  color: #1F2121;
-  font-size: 18px;
-  font-weight: 550;
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  flex: 1;
-  line-height: 1.2;
+margin: 0;
+color: #1F2121;
+font-size: 18px;
+font-weight: 550;
+font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+flex: 1;
+line-height: 1.2;
 }
-
 .course-status {
-  padding: 4px 8px;
-  border-radius: 6px;
-  font-size: 11px;
-  font-weight: 550;
-  text-transform: uppercase;
-  letter-spacing: -0.01em;
-  margin-left: 12px;
-  flex-shrink: 0;
+padding: 4px 8px;
+border-radius: 6px;
+font-size: 11px;
+font-weight: 550;
+text-transform: uppercase;
+letter-spacing: -0.01em;
+margin-left: 12px;
+flex-shrink: 0;
 }
-
 .status-assigned {
-  background: rgba(98, 108, 113, 0.15);
-  color: #626C71;
+background: rgba(98, 108, 113, 0.15);
+color: #626C71;
 }
-
 .status-in_progress {
-  background: rgba(168, 75, 47, 0.15);
-  color: #A84B2F;
+background: rgba(168, 75, 47, 0.15);
+color: #A84B2F;
 }
-
 .status-completed {
-  background: rgba(33, 128, 141, 0.15);
-  color: #21808D;
+background: rgba(33, 128, 141, 0.15);
+color: #21808D;
 }
-
 .status-failed {
-  background: rgba(192, 21, 47, 0.15);
-  color: #C0152F;
+background: rgba(192, 21, 47, 0.15);
+color: #C0152F;
 }
-
 .course-info { margin-bottom: 16px; }
-
 .course-description {
-  margin: 0 0 12px 0;
-  color: #626C71;
-  line-height: 1.5;
-  font-size: 14px;
+margin: 0 0 12px 0;
+color: #626C71;
+line-height: 1.5;
+font-size: 14px;
 }
-
 .course-meta {
-  display: flex;
-  gap: 16px;
-  font-size: 14px;
-  color: #626C71;
-  flex-wrap: wrap;
+display: flex;
+gap: 16px;
+font-size: 14px;
+color: #626C71;
+flex-wrap: wrap;
 }
-
 .course-meta span {
-  display: flex;
-  align-items: center;
-  gap: 4px;
+display: flex;
+align-items: center;
+gap: 4px;
 }
-
 .course-progress { margin-bottom: 16px; }
-
 .progress-info {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 8px;
-  font-size: 14px;
-  color: #626C71;
-  flex-wrap: wrap;
-  gap: 8px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+margin-bottom: 8px;
+font-size: 14px;
+color: #626C71;
+flex-wrap: wrap;
+gap: 8px;
 }
-
 .test-score {
-  font-weight: 550;
+font-weight: 550;
 }
-
 .test-score.passed { color: #21808D; }
 .test-score.failed { color: #C0152F; }
-
 .progress-bar {
-  height: 8px;
-  background: rgba(94, 82, 64, 0.12);
-  border-radius: 6px;
-  overflow: hidden;
+height: 8px;
+background: rgba(94, 82, 64, 0.12);
+border-radius: 6px;
+overflow: hidden;
 }
-
 .progress-fill {
-  height: 100%;
-  background: #21808D;
-  border-radius: 6px;
-  transition: width 250ms cubic-bezier(0.16, 1, 0.3, 1);
+height: 100%;
+background: #21808D;
+border-radius: 6px;
+transition: width 250ms cubic-bezier(0.16, 1, 0.3, 1);
 }
-
 .course-actions {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+display: flex;
+justify-content: space-between;
+align-items: center;
 }
-
 .certificate-icon {
-  font-size: 24px;
-  margin-left: 10px;
-  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+font-size: 24px;
+margin-left: 10px;
+filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
 }
-
 /* Пустое состояние */
 .empty-state {
-  text-align: center;
-  padding: 40px 20px;
-  color: #626C71;
+text-align: center;
+padding: 40px 20px;
+color: #626C71;
 }
-
 .empty-icon {
-  font-size: 48px;
-  margin-bottom: 16px;
-  opacity: 0.5;
+font-size: 48px;
+margin-bottom: 16px;
+opacity: 0.5;
 }
-
 .empty-state p {
-  font-size: 16px;
-  margin: 8px 0;
+font-size: 16px;
+margin: 8px 0;
 }
-
 .empty-subtitle {
-  font-size: 14px;
-  opacity: 0.8;
+font-size: 14px;
+opacity: 0.8;
 }
-
 /* Статистические карточки */
 .stats-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 16px;
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+gap: 16px;
 }
-
 .stat-card {
-  background: rgba(94, 82, 64, 0.12);
-  border: 1px solid rgba(0, 0, 0, 0.12);
-  border-radius: 8px;
-  padding: 16px;
-  transition: all 250ms cubic-bezier(0.16, 1, 0.3, 1);
+background: rgba(94, 82, 64, 0.12);
+border: 1px solid rgba(0, 0, 0, 0.12);
+border-radius: 8px;
+padding: 16px;
+transition: all 250ms cubic-bezier(0.16, 1, 0.3, 1);
 }
-
 .stat-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.04), 0 2px 4px -1px rgba(0, 0, 0, 0.02);
+transform: translateY(-2px);
+box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.04), 0 2px 4px -1px rgba(0, 0, 0, 0.02);
 }
-
 .stat-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 12px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+margin-bottom: 12px;
 }
-
 .stat-header h4 {
-  margin: 0;
-  color: #1F2121;
-  font-size: 16px;
-  font-weight: 550;
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+margin: 0;
+color: #1F2121;
+font-size: 16px;
+font-weight: 550;
+font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
-
 .stat-position {
-  background: rgba(0, 0, 0, 0.12);
-  color: #626C71;
-  padding: 2px 6px;
-  border-radius: 6px;
-  font-size: 12px;
-  font-weight: 500;
+background: rgba(0, 0, 0, 0.12);
+color: #626C71;
+padding: 2px 6px;
+border-radius: 6px;
+font-size: 12px;
+font-weight: 500;
 }
-
 .stat-numbers {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
-  gap: 12px;
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+gap: 12px;
 }
-
 .stat-item { text-align: center; }
-
 .stat-value {
-  display: block;
-  font-size: 20px;
-  font-weight: 600;
-  color: #21808D;
+display: block;
+font-size: 20px;
+font-weight: 600;
+color: #21808D;
 }
-
 .stat-value.stat-success { color: #21808D; }
 .stat-value.stat-warning { color: #A84B2F; }
-
 .stat-label {
-  font-size: 12px;
-  color: #626C71;
-  text-transform: uppercase;
-  letter-spacing: -0.01em;
+font-size: 12px;
+color: #626C71;
+text-transform: uppercase;
+letter-spacing: -0.01em;
 }
-
 /* Детальный просмотр */
 .course-view-wrap,
 .lesson-view-wrap,
 .test-view-wrap {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px 16px;
+max-width: 800px;
+margin: 0 auto;
+padding: 20px 16px;
 }
-
 .breadcrumb {
-  margin-bottom: 20px;
-  font-size: 14px;
-  color: #626C71;
+margin-bottom: 20px;
+font-size: 14px;
+color: #626C71;
 }
-
 .breadcrumb a {
-  color: #21808D;
-  text-decoration: none;
+color: #21808D;
+text-decoration: none;
 }
-
 .breadcrumb a:hover { text-decoration: underline; }
-
 .course-detail-card {
-  background: #FFFFFD;
-  border-radius: 12px;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.04), 0 4px 6px -2px rgba(0, 0, 0, 0.02);
-  padding: 24px;
-  margin-bottom: 24px;
-  border: 1px solid rgba(0, 0, 0, 0.12);
+background: #FFFFFD;
+border-radius: 12px;
+box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.04), 0 4px 6px -2px rgba(0, 0, 0, 0.02);
+padding: 24px;
+margin-bottom: 24px;
+border: 1px solid rgba(0, 0, 0, 0.12);
 }
-
 .course-detail-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 16px;
-  flex-wrap: wrap;
-  gap: 16px;
+display: flex;
+justify-content: space-between;
+align-items: flex-start;
+margin-bottom: 16px;
+flex-wrap: wrap;
+gap: 16px;
 }
-
 .course-detail-header h1 {
-  margin: 0;
-  color: #1F2121;
-  font-size: 24px;
-  font-weight: 600;
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  flex: 1;
+margin: 0;
+color: #1F2121;
+font-size: 24px;
+font-weight: 600;
+font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+flex: 1;
 }
-
 .course-badges {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
+display: flex;
+gap: 8px;
+flex-wrap: wrap;
 }
-
 .badge {
-  padding: 4px 8px;
-  border-radius: 6px;
-  font-size: 12px;
-  font-weight: 550;
-  text-transform: uppercase;
-  letter-spacing: -0.01em;
+padding: 4px 8px;
+border-radius: 6px;
+font-size: 12px;
+font-weight: 550;
+text-transform: uppercase;
+letter-spacing: -0.01em;
 }
-
 .badge-beginner {
-  background: rgba(33, 128, 141, 0.15);
-  color: #21808D;
+background: rgba(33, 128, 141, 0.15);
+color: #21808D;
 }
-
 .badge-intermediate {
-  background: rgba(168, 75, 47, 0.15);
-  color: #A84B2F;
+background: rgba(168, 75, 47, 0.15);
+color: #A84B2F;
 }
-
 .badge-advanced {
-  background: rgba(192, 21, 47, 0.15);
-  color: #C0152F;
+background: rgba(192, 21, 47, 0.15);
+color: #C0152F;
 }
-
 .badge-position {
-  background: rgba(98, 108, 113, 0.15);
-  color: #626C71;
+background: rgba(98, 108, 113, 0.15);
+color: #626C71;
 }
-
 .course-description {
-  margin-bottom: 20px;
-  line-height: 1.5;
-  color: #626C71;
+margin-bottom: 20px;
+line-height: 1.5;
+color: #626C71;
 }
-
 .course-meta {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 12px;
-  padding: 16px;
-  background: rgba(94, 82, 64, 0.12);
-  border-radius: 8px;
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+gap: 12px;
+padding: 16px;
+background: rgba(94, 82, 64, 0.12);
+border-radius: 8px;
 }
-
 .meta-item {
-  font-size: 14px;
-  color: #626C71;
+font-size: 14px;
+color: #626C71;
 }
-
 .meta-item strong { color: #1F2121; }
-
 /* Уроки */
 .lessons-card {
-  background: #FFFFFD;
-  border-radius: 12px;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.04), 0 4px 6px -2px rgba(0, 0, 0, 0.02);
-  padding: 24px;
-  margin-bottom: 24px;
-  border: 1px solid rgba(0, 0, 0, 0.12);
+background: #FFFFFD;
+border-radius: 12px;
+box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.04), 0 4px 6px -2px rgba(0, 0, 0, 0.02);
+padding: 24px;
+margin-bottom: 24px;
+border: 1px solid rgba(0, 0, 0, 0.12);
 }
-
 .lessons-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+margin-bottom: 20px;
 }
-
 .lessons-header h2 {
-  margin: 0;
-  color: #1F2121;
-  font-size: 20px;
-  font-weight: 550;
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+margin: 0;
+color: #1F2121;
+font-size: 20px;
+font-weight: 550;
+font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
-
 .lessons-progress {
-  color: #626C71;
-  font-size: 14px;
+color: #626C71;
+font-size: 14px;
 }
-
 .lessons-list {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+display: flex;
+flex-direction: column;
+gap: 12px;
 }
-
 .lesson-item {
-  display: flex;
-  align-items: center;
-  padding: 16px;
-  background: rgba(94, 82, 64, 0.12);
-  border: 2px solid rgba(0, 0, 0, 0.12);
-  border-radius: 8px;
-  transition: all 250ms cubic-bezier(0.16, 1, 0.3, 1);
+display: flex;
+align-items: center;
+padding: 16px;
+background: rgba(94, 82, 64, 0.12);
+border: 2px solid rgba(0, 0, 0, 0.12);
+border-radius: 8px;
+transition: all 250ms cubic-bezier(0.16, 1, 0.3, 1);
 }
-
 .lesson-item:hover {
-  background: #FFFFFD;
-  border-color: #21808D;
+background: #FFFFFD;
+border-color: #21808D;
 }
-
 .lesson-item.completed {
-  background: rgba(33, 128, 141, 0.08);
-  border-color: #21808D;
+background: rgba(33, 128, 141, 0.08);
+border-color: #21808D;
 }
-
 .lesson-number {
-  width: 32px;
-  height: 32px;
-  border-radius: 9999px;
-  background: rgba(0, 0, 0, 0.12);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 550;
-  color: #626C71;
-  margin-right: 16px;
-  flex-shrink: 0;
+width: auto;
+height: auto;
+padding: 10px 15px;
+border-radius: 8px;
+background: rgba(0, 0, 0, 0.12);
+display: flex;
+align-items: center;
+justify-content: center;
+font-weight: 550;
+color: #626C71;
+margin-right: 16px;
+flex-shrink: 0;
 }
-
+.lesson-duration{
+display: flex;
+align-items: center;
+justify-content: center;
+}
+.lesson-status{
+display: flex;
+align-items: center;
+justify-content: center;
+}
 .lesson-item.completed .lesson-number {
-  background: #21808D;
-  color: #FFFFFD;
+background: #21808D;
+color: #FFFFFD;
 }
-
 .check-icon { font-size: 14px; }
-
-.lesson-content { flex: 1; }
-
+.lesson-content {
+margin-top: 24px;
+flex: 1;
+}
 .lesson-content h3 {
-  margin: 0 0 4px 0;
-  color: #1F2121;
-  font-size: 16px;
-  font-weight: 550;
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+margin: 0 0 4px 0;
+color: #1F2121;
+font-size: 16px;
+font-weight: 550;
+font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
-
 .lesson-meta {
-  display: flex;
-  gap: 16px;
-  font-size: 14px;
-  color: #626C71;
-  margin-bottom: 4px;
+display: flex;
+gap: 16px;
+font-size: 14px;
+color: #626C71;
+margin-top: 8px;
+margin-bottom: 4px;
 }
-
 .completion-info {
-  font-size: 12px;
-  color: #21808D;
+font-size: 12px;
+color: #21808D;
 }
-
 .lesson-actions { margin-left: 16px; }
-
 .btn-sm {
-  padding: 6px 12px;
-  font-size: 12px;
+padding: 6px 12px;
+font-size: 12px;
 }
-
+.btn-sm:hover{
+    color: white;
+}
+/* ===== НОВЫЕ СТИЛИ ДЛЯ .lesson-content КОНТЕЙНЕРА ===== */
+.lesson-view-wrap .lesson-content {
+background: #FFFFFD;
+border-radius: 12px;
+box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.04), 0 4px 6px -2px rgba(0, 0, 0, 0.02);
+padding: 32px;
+margin-bottom: 24px;
+border: 1px solid rgba(0, 0, 0, 0.12);
+line-height: 1.8;
+}
+.lesson-view-wrap .lesson-content h1,
+.lesson-view-wrap .lesson-content h2 {
+color: #1F2121;
+margin-top: 0;
+margin-bottom: 16px;
+font-weight: 600;
+border-bottom: 2px solid rgba(33, 128, 141, 0.2);
+padding-bottom: 12px;
+}
+.lesson-view-wrap .lesson-content h3,
+.lesson-view-wrap .lesson-content h4 {
+color: #1F2121;
+margin-top: 24px;
+margin-bottom: 12px;
+font-weight: 550;
+}
+.lesson-view-wrap .lesson-content p {
+color: #626C71;
+margin-bottom: 16px;
+line-height: 1.8;
+font-size: 15px;
+}
+.lesson-view-wrap .lesson-content ul,
+.lesson-view-wrap .lesson-content ol {
+color: #626C71;
+margin-bottom: 16px;
+padding-left: 24px;
+}
+.lesson-view-wrap .lesson-content li {
+margin-bottom: 8px;
+line-height: 1.7;
+}
+.lesson-view-wrap .lesson-content blockquote {
+border-left: 4px solid #21808D;
+background: rgba(33, 128, 141, 0.05);
+padding: 16px 20px;
+margin: 20px 0;
+border-radius: 4px;
+color: #626C71;
+font-style: italic;
+line-height: 1.7;
+}
+.lesson-view-wrap .lesson-content code {
+background: rgba(94, 82, 64, 0.12);
+color: #5E5240;
+padding: 2px 6px;
+border-radius: 4px;
+font-size: 13px;
+}
+.lesson-view-wrap .lesson-content pre {
+background: #F5F5F5;
+border: 1px solid rgba(0, 0, 0, 0.12);
+border-radius: 8px;
+padding: 16px;
+margin: 20px 0;
+overflow-x: auto;
+color: #1F2121;
+}
+.lesson-view-wrap .lesson-content pre code {
+background: none;
+padding: 0;
+color: inherit;
+}
+.lesson-view-wrap .lesson-content table {
+width: 100%;
+border-collapse: collapse;
+margin: 20px 0;
+border: 1px solid rgba(0, 0, 0, 0.12);
+border-radius: 8px;
+overflow: hidden;
+}
+.lesson-view-wrap .lesson-content table th {
+background: rgba(33, 128, 141, 0.1);
+color: #1F2121;
+font-weight: 600;
+padding: 12px 16px;
+text-align: left;
+border-bottom: 2px solid rgba(0, 0, 0, 0.12);
+}
+.lesson-view-wrap .lesson-content table td {
+padding: 12px 16px;
+border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+color: #626C71;
+}
+.lesson-view-wrap .lesson-content table tr:last-child td {
+border-bottom: none;
+}
+.lesson-view-wrap .lesson-content table tr:hover {
+background: rgba(33, 128, 141, 0.03);
+}
+.lesson-view-wrap .lesson-content img {
+max-width: 100%;
+height: auto;
+border-radius: 8px;
+margin: 20px 0;
+border: 1px solid rgba(0, 0, 0, 0.12);
+display: block;
+}
+.lesson-view-wrap .lesson-content a {
+color: #21808D;
+text-decoration: underline;
+transition: color 150ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.lesson-view-wrap .lesson-content a:hover {
+color: #ffffff;
+text-decoration: none;
+}
+.lesson-view-wrap .lesson-content .note,
+.lesson-view-wrap .lesson-content .info {
+background: rgba(33, 128, 141, 0.08);
+border-left: 4px solid #21808D;
+padding: 16px;
+margin: 20px 0;
+border-radius: 4px;
+color: #1F2121;
+font-size: 14px;
+}
+.lesson-view-wrap .lesson-content .warning {
+background: rgba(168, 75, 47, 0.08);
+border-left: 4px solid #A84B2F;
+padding: 16px;
+margin: 20px 0;
+border-radius: 4px;
+color: #1F2121;
+font-size: 14px;
+}
+.lesson-view-wrap .lesson-content .important {
+background: rgba(192, 21, 47, 0.08);
+border-left: 4px solid #C0152F;
+padding: 16px;
+margin: 20px 0;
+border-radius: 4px;
+color: #1F2121;
+font-size: 14px;
+font-weight: 550;
+}
+.lesson-view-wrap .lesson-content hr {
+border: none;
+height: 1px;
+background: rgba(0, 0, 0, 0.12);
+margin: 32px 0;
+}
+.lesson-view-wrap .lesson-content > *:first-child {
+margin-top: 0;
+}
+.lesson-view-wrap .lesson-content > *:last-child {
+margin-bottom: 0;
+}
+.action-buttons{
+margin-bottom: 16px;
+}
+/* ===== СТИЛИ ДЛЯ ВИДЕО-ПЛЕЕРА ===== */
+.lesson-view-wrap .lesson-content video,
+.lesson-view-wrap .lesson-content iframe {
+max-width: 100%;
+height: auto;
+display: block;
+margin: 24px 0;
+}
+.video-container {
+position: relative;
+width: 100%;
+padding-bottom: 56.25%;
+height: 0;
+overflow: hidden;
+background: #000;
+border-radius: 12px;
+margin: 24px 0;
+box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+border: 1px solid rgba(0, 0, 0, 0.12);
+}
+.video-container iframe,
+.video-container video {
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+border: none;
+border-radius: 12px;
+}
+.video-wrapper {
+background: #000;
+border-radius: 12px;
+overflow: hidden;
+margin: 24px 0;
+box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+border: 1px solid rgba(0, 0, 0, 0.12);
+}
+.video-wrapper video {
+width: 100%;
+height: auto;
+display: block;
+border-radius: 12px;
+}
+video {
+max-width: 100%;
+height: auto;
+background: #000;
+border-radius: 12px;
+margin: 24px 0;
+display: block;
+box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+border: 1px solid rgba(0, 0, 0, 0.12);
+}
+.lesson-view-wrap .lesson-content video {
+max-width: 100%;
+height: auto;
+background: #000;
+border-radius: 12px;
+margin: 24px 0;
+display: block;
+box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+border: 1px solid rgba(0, 0, 0, 0.12);
+}
+.lesson-view-wrap .lesson-content iframe {
+border-radius: 12px;
+margin: 24px 0;
+box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+border: 1px solid rgba(0, 0, 0, 0.12);
+width: 100%;
+aspect-ratio: 16 / 9;
+}
+/* ===== КОНЕЦ СТИЛЕЙ ВИДЕО-ПЛЕЕРА ===== */
+/* ===== СТИЛИ НАВИГАЦИИ УРОКОВ ===== */
+.lesson-navigation {
+display: flex;
+justify-content: space-between;
+align-items: center;
+gap: 24px;
+margin-top: 32px;
+padding-top: 24px;
+border-top: 1px solid rgba(0, 0, 0, 0.12);
+}
+.lesson-nav-btn {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+padding: 14px 24px;
+border-radius: 10px;
+font-size: 15px;
+font-weight: 600;
+line-height: 1.5;
+cursor: pointer;
+transition: all 250ms cubic-bezier(0.16, 1, 0.3, 1);
+border: none;
+text-decoration: none;
+position: relative;
+font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+min-width: 180px;
+}
+.lesson-nav-btn:focus-visible {
+outline: none;
+box-shadow: 0 0 0 3px rgba(33, 128, 141, 0.4);
+}
+.lesson-nav-btn--prev {
+background: rgba(94, 82, 64, 0.12);
+color: #1F2121;
+border: 2px solid rgba(94, 82, 64, 0.2);
+}
+.lesson-nav-btn--prev:hover {
+background: rgba(94, 82, 64, 0.2);
+border-color: rgba(94, 82, 64, 0.3);
+transform: translateX(-4px);
+}
+.lesson-nav-btn--prev:active {
+background: rgba(94, 82, 64, 0.25);
+}
+.lesson-nav-btn--next {
+background: #21808D;
+color: #FCFCF9;
+border: 2px solid #21808D;
+}
+.lesson-nav-btn--next:hover {
+background: #1D7480;
+border-color: #1D7480;
+transform: translateX(4px);
+box-shadow: 0 10px 15px -3px rgba(33, 128, 141, 0.2);
+}
+.lesson-nav-btn--next:active {
+background: #1A6873;
+border-color: #1A6873;
+}
+.lesson-nav-btn:disabled {
+opacity: 0.5;
+cursor: not-allowed;
+}
+.lesson-nav-btn:disabled:hover {
+transform: none;
+}
+.lesson-nav-arrow {
+margin: 0 8px;
+font-size: 18px;
+display: inline-flex;
+align-items: center;
+}
+.lesson-nav-title {
+font-size: 13px;
+opacity: 0.8;
+text-transform: uppercase;
+letter-spacing: 0.5px;
+display: block;
+margin-bottom: 4px;
+}
+.lesson-nav-name {
+font-size: 15px;
+font-weight: 600;
+display: block;
+}
+/* ===== КОНЕЦ СТИЛЕЙ НАВИГАЦИИ УРОКОВ ===== */
 /* Тестирование */
 .test-card {
-  background: #FFFFFD;
-  border-radius: 12px;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.04), 0 4px 6px -2px rgba(0, 0, 0, 0.02);
-  padding: 24px;
-  margin-bottom: 24px;
-  border: 1px solid rgba(0, 0, 0, 0.12);
+background: #FFFFFD;
+border-radius: 12px;
+box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.04), 0 4px 6px -2px rgba(0, 0, 0, 0.02);
+padding: 24px;
+margin-bottom: 24px;
+border: 1px solid rgba(0, 0, 0, 0.12);
 }
-
 .test-header { margin-bottom: 20px; }
-
 .test-header h2 {
-  margin: 0 0 16px 0;
-  color: #1F2121;
-  font-size: 20px;
-  font-weight: 550;
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+margin: 0 0 16px 0;
+color: #1F2121;
+font-size: 20px;
+font-weight: 550;
+font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
-
 .test-unavailable,
 .test-available {
-  padding: 20px;
-  border-radius: 8px;
+padding: 20px;
+border-radius: 8px;
 }
-
 .test-unavailable {
-  background: rgba(94, 82, 64, 0.12);
-  border: 2px solid rgba(0, 0, 0, 0.12);
+background: rgba(94, 82, 64, 0.12);
+border: 2px solid rgba(0, 0, 0, 0.12);
 }
-
 .test-available {
-  background: rgba(33, 128, 141, 0.08);
-  border: 2px solid #21808D;
+background: rgba(33, 128, 141, 0.08);
+border: 2px solid #21808D;
 }
-
 .test-status {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  margin-bottom: 16px;
+display: flex;
+align-items: center;
+gap: 16px;
+margin-bottom: 16px;
 }
-
 .test-icon { font-size: 30px; }
-
 .test-info h3 {
-  margin: 0 0 8px 0;
-  color: #1F2121;
-  font-size: 18px;
-  font-weight: 550;
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+margin: 0 0 8px 0;
+color: #1F2121;
+font-size: 18px;
+font-weight: 550;
+font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
-
 .test-info p {
-  margin: 4px 0;
-  color: #626C71;
-  line-height: 1.4;
+margin: 4px 0;
+color: #626C71;
+line-height: 1.4;
 }
-
 .test-actions { text-align: center; }
-
 .btn-large {
-  padding: 12px 24px;
-  font-size: 16px;
-  font-weight: 550;
+padding: 12px 24px;
+font-size: 16px;
+font-weight: 550;
 }
-
 .test-history { margin-top: 24px; }
-
 /* Buttons */
 .btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 8px 16px;
-  border-radius: 8px;
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 1.5;
-  cursor: pointer;
-  transition: all 250ms cubic-bezier(0.16, 1, 0.3, 1);
-  border: none;
-  text-decoration: none;
-  position: relative;
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+display: inline-flex;
+align-items: center;
+justify-content: center;
+padding: 8px 16px;
+border-radius: 8px;
+font-size: 14px;
+font-weight: 500;
+line-height: 1.5;
+cursor: pointer;
+transition: all 250ms cubic-bezier(0.16, 1, 0.3, 1);
+border: none;
+text-decoration: none;
+position: relative;
+font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
-
 .btn:focus-visible {
-  outline: none;
-  box-shadow: 0 0 0 3px rgba(33, 128, 141, 0.4);
+outline: none;
+box-shadow: 0 0 0 3px rgba(33, 128, 141, 0.4);
 }
-
 .btn--primary {
-  background: #21808D;
-  color: #FCFCF9;
+background: #21808D;
+color: #FCFCF9;
 }
-
-.btn--primary:hover { background: #1D7480; }
+.btn--primary:hover { background: #1D7480; 
+color: white;}
 .btn--primary:active { background: #1A6873; }
-
 .btn--secondary {
-  background: rgba(94, 82, 64, 0.12);
-  color: #1F2121;
+background: rgba(94, 82, 64, 0.12);
+color: #1F2121;
 }
-
 .btn--secondary:hover { background: rgba(94, 82, 64, 0.2); }
 .btn--secondary:active { background: rgba(94, 82, 64, 0.25); }

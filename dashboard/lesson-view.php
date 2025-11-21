@@ -143,6 +143,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['complete_lesson'])) {
                     <iframe 
                         src="<?= htmlspecialchars($lesson['video_url']) ?>" 
                         frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowfullscreen
                         title="<?= htmlspecialchars($lesson['title']) ?>"
                     ></iframe>
@@ -168,9 +169,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['complete_lesson'])) {
                 <?php if ($isCompleted): ?>
                     <div class="completion-info">
                         <div class="completion-status">
-                            <span class="completion-icon">✓</span>
                             <div class="completion-details">
-                                <strong>Урок завершен</strong>
+                                <span class="completion-icon">✓ </span><strong>Урок завершен</strong>
                                 <p>Завершено: <?= date('d.m.Y в H:i', strtotime($progress['completed_at'])) ?></p>
                                 <?php if ($progress['time_spent_minutes'] > 0): ?>
                                     <p>Затрачено времени: <?= $progress['time_spent_minutes'] ?> мин</p>

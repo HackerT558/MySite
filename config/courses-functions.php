@@ -1,18 +1,17 @@
 <?php
-// config/courses-functions.php
-require_once __DIR__ . '/config.php';
+// dashboard/courses-functions.php
 
 function getCoursesByPosition(mysqli $db, string $position): array {
     $stmt = $db->prepare("
-        SELECT id, title, description, difficulty_level, duration_minutes, passing_score 
-        FROM courses 
-        WHERE position = ? AND is_active = 1 
+        SELECT id, title, description, difficulty_level, duration_minutes, passing_score
+        FROM courses
+        WHERE position = ? AND is_active = 1
         ORDER BY difficulty_level, title
     ");
+    
     $stmt->bind_param('s', $position);
     $stmt->execute();
     $result = $stmt->get_result();
-    
     $courses = [];
     while ($row = $result->fetch_assoc()) {
         $courses[] = $row;
@@ -24,15 +23,15 @@ function getCoursesByPosition(mysqli $db, string $position): array {
 function getUserAssignedCourses(mysqli $db, int $userId): array {
     $stmt = $db->prepare("
         SELECT c.id, c.title, c.description, c.duration_minutes, c.passing_score, c.position,
-               ua.status, ua.assigned_at, ua.deadline,
-               COALESCE(lesson_stats.lessons_completed, 0) as lessons_completed,
-               COALESCE(lesson_stats.total_lessons, 0) as total_lessons,
-               COALESCE(test_stats.best_score, 0) as best_test_score,
-               COALESCE(test_stats.passed, 0) as test_passed
+        ua.status, ua.assigned_at, ua.deadline,
+        COALESCE(lesson_stats.lessons_completed, 0) as lessons_completed,
+        COALESCE(lesson_stats.total_lessons, 0) as total_lessons,
+        COALESCE(test_stats.best_score, 0) as best_test_score,
+        COALESCE(test_stats.passed, 0) as test_passed
         FROM user_course_assignments ua
         JOIN courses c ON ua.course_id = c.id
         LEFT JOIN (
-            SELECT 
+            SELECT
                 cl.course_id,
                 COUNT(cl.id) as total_lessons,
                 COUNT(ulp.lesson_id) as lessons_completed
@@ -49,10 +48,10 @@ function getUserAssignedCourses(mysqli $db, int $userId): array {
         WHERE ua.user_id = ? AND c.is_active = 1
         ORDER BY ua.assigned_at DESC
     ");
+    
     $stmt->bind_param('iii', $userId, $userId, $userId);
     $stmt->execute();
     $result = $stmt->get_result();
-    
     $courses = [];
     while ($row = $result->fetch_assoc()) {
         $courses[] = $row;
@@ -63,15 +62,15 @@ function getUserAssignedCourses(mysqli $db, int $userId): array {
 
 function getCourseDetails(mysqli $db, int $courseId): ?array {
     $stmt = $db->prepare("
-        SELECT id, title, description, position, difficulty_level, 
-               duration_minutes, passing_score, is_active
-        FROM courses 
+        SELECT id, title, description, position, difficulty_level,
+        duration_minutes, passing_score, is_active
+        FROM courses
         WHERE id = ?
     ");
+    
     $stmt->bind_param('i', $courseId);
     $stmt->execute();
     $result = $stmt->get_result();
-    
     if ($row = $result->fetch_assoc()) {
         $stmt->close();
         return $row;
@@ -83,7 +82,7 @@ function getCourseDetails(mysqli $db, int $courseId): ?array {
 function getCourseLessons(mysqli $db, int $courseId, int $userId = null): array {
     $sql = "
         SELECT cl.id, cl.title, cl.lesson_order, cl.duration_minutes, cl.video_url,
-               " . ($userId ? "ulp.completed_at" : "NULL as completed_at") . "
+        " . ($userId ? "ulp.completed_at" : "NULL as completed_at") . "
         FROM course_lessons cl
     ";
     
@@ -102,7 +101,6 @@ function getCourseLessons(mysqli $db, int $courseId, int $userId = null): array 
     
     $stmt->execute();
     $result = $stmt->get_result();
-    
     $lessons = [];
     while ($row = $result->fetch_assoc()) {
         $row['completed'] = !is_null($row['completed_at']);
@@ -114,16 +112,16 @@ function getCourseLessons(mysqli $db, int $courseId, int $userId = null): array 
 
 function getLessonContent(mysqli $db, int $lessonId): ?array {
     $stmt = $db->prepare("
-        SELECT cl.id, cl.title, cl.content, cl.lesson_order, cl.video_url, 
-               cl.duration_minutes, c.title as course_title, c.id as course_id
+        SELECT cl.id, cl.title, cl.content, cl.lesson_order, cl.video_url,
+        cl.duration_minutes, c.title as course_title, c.id as course_id
         FROM course_lessons cl
         JOIN courses c ON cl.course_id = c.id
         WHERE cl.id = ?
     ");
+    
     $stmt->bind_param('i', $lessonId);
     $stmt->execute();
     $result = $stmt->get_result();
-    
     if ($row = $result->fetch_assoc()) {
         $stmt->close();
         return $row;
@@ -136,10 +134,11 @@ function completeLesson(mysqli $db, int $userId, int $courseId, int $lessonId, i
     $stmt = $db->prepare("
         INSERT INTO user_lesson_progress (user_id, course_id, lesson_id, time_spent_minutes)
         VALUES (?, ?, ?, ?)
-        ON DUPLICATE KEY UPDATE 
-            time_spent_minutes = time_spent_minutes + VALUES(time_spent_minutes),
-            completed_at = CURRENT_TIMESTAMP
+        ON DUPLICATE KEY UPDATE
+        time_spent_minutes = time_spent_minutes + VALUES(time_spent_minutes),
+        completed_at = CURRENT_TIMESTAMP
     ");
+    
     $stmt->bind_param('iiii', $userId, $courseId, $lessonId, $timeSpent);
     $success = $stmt->execute();
     $stmt->close();
@@ -159,10 +158,10 @@ function getCourseTestQuestions(mysqli $db, int $courseId): array {
         WHERE course_id = ?
         ORDER BY RAND()
     ");
+    
     $stmt->bind_param('i', $courseId);
     $stmt->execute();
     $result = $stmt->get_result();
-    
     $questions = [];
     while ($row = $result->fetch_assoc()) {
         $questions[] = $row;
@@ -177,10 +176,10 @@ function getCourseTestAnswers(mysqli $db, int $courseId): array {
         FROM course_questions
         WHERE course_id = ?
     ");
+    
     $stmt->bind_param('i', $courseId);
     $stmt->execute();
     $result = $stmt->get_result();
-    
     $answers = [];
     while ($row = $result->fetch_assoc()) {
         $answers[$row['id']] = [
@@ -207,10 +206,11 @@ function saveTestResults(mysqli $db, int $userId, int $courseId, array $answers,
     $answersJson = json_encode($answers);
     
     $stmt = $db->prepare("
-        INSERT INTO course_test_results 
+        INSERT INTO course_test_results
         (user_id, course_id, score, max_score, percentage, passed, answers)
         VALUES (?, ?, ?, ?, ?, ?, ?)
     ");
+    
     $stmt->bind_param('iiiddis', $userId, $courseId, $score, $maxScore, $percentage, $passed, $answersJson);
     $success = $stmt->execute();
     $stmt->close();
@@ -226,13 +226,15 @@ function saveTestResults(mysqli $db, int $userId, int $courseId, array $answers,
 
 function updateCourseAssignmentStatus(mysqli $db, int $userId, int $courseId, string $status): bool {
     $stmt = $db->prepare("
-        UPDATE user_course_assignments 
-        SET status = ? 
+        UPDATE user_course_assignments
+        SET status = ?
         WHERE user_id = ? AND course_id = ?
     ");
+    
     $stmt->bind_param('sii', $status, $userId, $courseId);
     $success = $stmt->execute();
     $stmt->close();
+    
     return $success;
 }
 
@@ -242,22 +244,25 @@ function assignCourseToUser(mysqli $db, int $userId, int $courseId, int $assigne
         VALUES (?, ?, ?, ?)
         ON DUPLICATE KEY UPDATE assigned_by = VALUES(assigned_by), deadline = VALUES(deadline)
     ");
+    
     $stmt->bind_param('iiis', $userId, $courseId, $assignedBy, $deadline);
     $success = $stmt->execute();
     $stmt->close();
+    
     return $success;
 }
 
 function isTestAvailableForUser(mysqli $db, int $userId, int $courseId): bool {
     // Проверяем, что все уроки пройдены
     $stmt = $db->prepare("
-        SELECT 
-            COUNT(cl.id) as total_lessons,
-            COUNT(ulp.lesson_id) as completed_lessons
+        SELECT
+        COUNT(cl.id) as total_lessons,
+        COUNT(ulp.lesson_id) as completed_lessons
         FROM course_lessons cl
         LEFT JOIN user_lesson_progress ulp ON cl.id = ulp.lesson_id AND ulp.user_id = ?
         WHERE cl.course_id = ?
     ");
+    
     $stmt->bind_param('ii', $userId, $courseId);
     $stmt->execute();
     $stmt->bind_result($totalLessons, $completedLessons);
@@ -267,81 +272,105 @@ function isTestAvailableForUser(mysqli $db, int $userId, int $courseId): bool {
     return $totalLessons > 0 && $totalLessons == $completedLessons;
 }
 
+/**
+ * ИСПРАВЛЕННАЯ ФУНКЦИЯ: getCoursesStatistics
+ * 
+ * ОШИБКА была: LEFT JOIN с course_test_results без DISTINCT на ua.user_id
+ * привёл к дублированию строк и неправильному подсчёту completed_users
+ * 
+ * РЕШЕНИЕ: Используем подзапрос для подсчёта уникальных пользователей
+ * по каждому статусу, чтобы избежать дублирования при JOIN с test_results
+ */
 function getCoursesStatistics(mysqli $db): array {
     $stmt = $db->prepare("
-        SELECT 
+        SELECT
             c.id,
             c.title,
             c.position,
-            COUNT(DISTINCT ua.user_id) as assigned_users,
-            COUNT(CASE WHEN ua.status = 'completed' THEN 1 END) as completed_users,
-            COUNT(CASE WHEN ua.status = 'in_progress' THEN 1 END) as in_progress_users,
-            COUNT(CASE WHEN ua.status = 'failed' THEN 1 END) as failed_users,
+            COALESCE(ua_stats.assigned_users, 0) as assigned_users,
+            COALESCE(ua_stats.completed_users, 0) as completed_users,
+            COALESCE(ua_stats.in_progress_users, 0) as in_progress_users,
+            COALESCE(ua_stats.failed_users, 0) as failed_users,
             COALESCE(AVG(ctr.percentage), 0) as avg_test_score
         FROM courses c
-        LEFT JOIN user_course_assignments ua ON c.id = ua.course_id
+        LEFT JOIN (
+            SELECT
+                course_id,
+                COUNT(DISTINCT user_id) as assigned_users,
+                COUNT(DISTINCT CASE WHEN status = 'completed' THEN user_id END) as completed_users,
+                COUNT(DISTINCT CASE WHEN status = 'in_progress' THEN user_id END) as in_progress_users,
+                COUNT(DISTINCT CASE WHEN status = 'failed' THEN user_id END) as failed_users
+            FROM user_course_assignments
+            GROUP BY course_id
+        ) ua_stats ON c.id = ua_stats.course_id
         LEFT JOIN course_test_results ctr ON c.id = ctr.course_id
         WHERE c.is_active = 1
         GROUP BY c.id, c.title, c.position
         ORDER BY c.title
     ");
+    
     $stmt->execute();
     $result = $stmt->get_result();
-    
     $statistics = [];
     while ($row = $result->fetch_assoc()) {
         $statistics[] = $row;
     }
     $stmt->close();
+    
     return $statistics;
 }
 
 function getUsersForAssignment(mysqli $db): array {
     $stmt = $db->prepare("
         SELECT id, username, role, position,
-               CONCAT_WS(' ', last_name, first_name, middle_name) as full_name
+        CONCAT_WS(' ', last_name, first_name, middle_name) as full_name
         FROM users
         ORDER BY role, username
     ");
+    
     $stmt->execute();
     $result = $stmt->get_result();
-    
     $users = [];
     while ($row = $result->fetch_assoc()) {
         $users[] = $row;
     }
     $stmt->close();
+    
     return $users;
 }
 
 function isUserAssignedToCourse(mysqli $db, int $userId, int $courseId): bool {
     $stmt = $db->prepare("
-        SELECT id FROM user_course_assignments 
+        SELECT id FROM user_course_assignments
         WHERE user_id = ? AND course_id = ?
     ");
+    
     $stmt->bind_param('ii', $userId, $courseId);
     $stmt->execute();
     $result = $stmt->get_result();
     $assigned = $result->num_rows > 0;
     $stmt->close();
+    
     return $assigned;
 }
 
 function getAllCourses(mysqli $db): array {
     $stmt = $db->prepare("
-        SELECT id, title, description, position, difficulty_level, 
-               passing_score, duration_minutes, is_active, created_at
+        SELECT id, title, description, position, difficulty_level,
+        passing_score, duration_minutes, is_active, created_at
         FROM courses
         ORDER BY title
     ");
+    
     $stmt->execute();
     $result = $stmt->get_result();
-    
     $courses = [];
     while ($row = $result->fetch_assoc()) {
         $courses[] = $row;
     }
     $stmt->close();
+    
     return $courses;
 }
+
 ?>

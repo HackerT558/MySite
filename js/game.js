@@ -1,4 +1,4 @@
-// js/game.js - ОБНОВЛЕННАЯ ВЕРСИЯ: сердечки для жизни, черные сердца для потери
+// js/game.js - ОБНОВЛЕННАЯ ВЕРСИЯ: время выживания вместо уровня
 class PizzaGame {
     constructor() {
         const canvas = document.getElementById('gameCanvas');
@@ -11,13 +11,13 @@ class PizzaGame {
         this.gameState = 'start';
         this.score = 0;
         this.lives = 3;
-        this.survivalLevel = 0;
+        this.survivalTime = 0; // Время в секундах
         this.lastTime = 0;
         this.endReason = null;
         this.floatingTexts = [];
         this.gameStartTime = 0;
         this.leaderboard = [];
-        this.lostLives = []; // Массив потерянных жизней с анимацией
+        this.lostLives = [];
         
         this.platform = {
             x: this.canvas.width / 2 - 75,
@@ -60,31 +60,107 @@ class PizzaGame {
         this.platform.image.src = '../uploads/pizza-box.png';
     }
     
-    loadLeaderboard() {
-        const saved = localStorage.getItem('pizzaGameLeaderboard');
-        if (saved) {
-            try {
-                this.leaderboard = JSON.parse(saved);
-                console.log('📊 Таблица лидеров загружена:', this.leaderboard);
-            } catch (e) {
+    async loadLeaderboard() {
+        try {
+            const response = await fetch('../api/get_leaderboard.php?limit=10');
+            const result = await response.json();
+            
+            if (result.success) {
+                this.leaderboard = result.data;
+                console.log('📊 Таблица лидеров загружена из БД:', this.leaderboard);
+            } else {
+                console.error('❌ Ошибка загрузки лидерборда:', result.error);
                 this.leaderboard = [];
             }
+        } catch (error) {
+            console.error('❌ Ошибка загрузки лидерборда:', error);
+            this.leaderboard = [];
         }
     }
     
-    saveLeaderboard() {
-        localStorage.setItem('pizzaGameLeaderboard', JSON.stringify(this.leaderboard));
+    async saveScoreToDB(score, survivalTime) {
+        try {
+            const response = await fetch('../api/save_score.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    score: score,
+                    survival_time: survivalTime
+                })
+            });
+            
+            const result = await response.json();
+            
+            if (result.success) {
+                console.log('✅ Результат сохранен в БД');
+                await this.loadLeaderboard();
+                return true;
+            } else {
+                console.error('❌ Ошибка сохранения в БД:', result.error);
+                return false;
+            }
+        } catch (error) {
+            console.error('❌ Ошибка сохранения в БД:', error);
+            return false;
+        }
     }
     
-    addToLeaderboard(username, score) {
-        this.leaderboard.push({
-            username,
-            score,
-            date: new Date().toLocaleString()
-        });
-        this.leaderboard.sort((a, b) => b.score - a.score);
-        this.leaderboard = this.leaderboard.slice(0, 10);
-        this.saveLeaderboard();
+    async addToLeaderboard(score, survivalTime) {
+        const saved = await this.saveScoreToDB(score, survivalTime);
+        
+        if (!saved) {
+            console.warn('⚠️ Используем локальное хранилище как запасной вариант');
+            this.addToLocalLeaderboard(score, survivalTime);
+        }
+    }
+    
+    addToLocalLeaderboard(score, survivalTime) {
+        const saved = localStorage.getItem('pizzaGameLeaderboard');
+        let leaderboard = saved ? JSON.parse(saved) : [];
+        
+        const username = sessionStorage.getItem('username') || 'Игрок';
+        
+        // Форматируем время для локального хранения
+        const minutes = Math.floor(survivalTime / 60);
+        const seconds = survivalTime % 60;
+        const formattedTime = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        
+        // Проверяем существующий рекорд пользователя
+        const existingIndex = leaderboard.findIndex(entry => entry.username === username);
+        
+        if (existingIndex !== -1) {
+            if (score > leaderboard[existingIndex].score) {
+                leaderboard[existingIndex].score = score;
+                leaderboard[existingIndex].survival_time = formattedTime;
+                leaderboard[existingIndex].date = new Date().toLocaleString();
+            }
+        } else {
+            leaderboard.push({
+                username,
+                score,
+                survival_time: formattedTime,
+                date: new Date().toLocaleString()
+            });
+        }
+        
+        leaderboard.sort((a, b) => b.score - a.score);
+        
+        // Убираем дубликаты по username
+        const uniqueLeaderboard = [];
+        const usernamesSeen = new Set();
+        
+        for (const entry of leaderboard) {
+            if (!usernamesSeen.has(entry.username)) {
+                usernamesSeen.add(entry.username);
+                uniqueLeaderboard.push(entry);
+            }
+            if (uniqueLeaderboard.length >= 10) break;
+        }
+        
+        localStorage.setItem('pizzaGameLeaderboard', JSON.stringify(uniqueLeaderboard));
+        this.leaderboard = uniqueLeaderboard;
     }
     
     init() {
@@ -133,7 +209,7 @@ class PizzaGame {
         this.gameState = 'playing';
         this.score = 0;
         this.lives = 3;
-        this.survivalLevel = 0;
+        this.survivalTime = 0;
         this.gameStartTime = performance.now();
         this.fallingObjects = [];
         this.floatingTexts = [];
@@ -183,7 +259,7 @@ class PizzaGame {
     
     updateTimer(currentTime) {
         const elapsedTime = currentTime - this.gameStartTime;
-        this.survivalLevel = Math.floor(elapsedTime / 60000) + 1;
+        this.survivalTime = Math.floor(elapsedTime / 1000); // Конвертируем в секунды
         this.updateUI();
     }
     
@@ -213,16 +289,14 @@ class PizzaGame {
     }
     
     spawnObjects(deltaTime) {
-        const currentSpawnInterval = Math.max(400, this.baseDifficulty - (this.survivalLevel - 1) * 50);
+        // Используем время для увеличения сложности
+        const difficultyLevel = Math.floor(this.survivalTime / 60) + 1;
+        const currentSpawnInterval = Math.max(400, this.baseDifficulty - (difficultyLevel - 1) * 50);
         
         this.spawnTimer += deltaTime;
         if (this.spawnTimer >= currentSpawnInterval) {
             this.spawnTimer = 0;
             
-            // Вероятности:
-            // 70% пиццы
-            // 25% бомбы
-            // 5% сердечки
             const rand = Math.random();
             let type = 'pizza';
             
@@ -241,7 +315,7 @@ class PizzaGame {
                 y: -40,
                 width: 40,
                 height: 40,
-                speed: 2 + Math.random() * 2 + (this.survivalLevel - 1) * 0.3,
+                speed: 2 + Math.random() * 2 + (difficultyLevel - 1) * 0.3,
                 type: type,
                 rotation: Math.random() * Math.PI * 2
             };
@@ -302,10 +376,9 @@ class PizzaGame {
     }
     
     loseLife() {
-        // Добавляем черное сердце в массив потерянных жизней
         this.lostLives.push({
             startTime: Date.now(),
-            duration: 500 // Длительность анимации в мс
+            duration: 500
         });
         
         this.lives--;
@@ -319,7 +392,7 @@ class PizzaGame {
     }
     
     gainLife() {
-        if (this.lives < 3) { // Максимум 3 жизни
+        if (this.lives < 3) {
             this.lives++;
             this.updateUI();
         }
@@ -336,12 +409,11 @@ class PizzaGame {
             gameOverTitle.textContent = 'Игра окончена!';
             finalScore.textContent = `Ваш счет: ${this.score}`;
             
-            const username = sessionStorage.getItem('username') || 'Игрок';
-            this.addToLeaderboard(username, this.score);
-            
-            if (leaderboardTable) {
-                leaderboardTable.innerHTML = this.renderLeaderboard();
-            }
+            this.addToLeaderboard(this.score, this.survivalTime).then(() => {
+                if (leaderboardTable) {
+                    leaderboardTable.innerHTML = this.renderLeaderboard();
+                }
+            });
             
             gameOverScreen.classList.remove('hidden');
         }
@@ -349,18 +421,23 @@ class PizzaGame {
     
     renderLeaderboard() {
         let html = '<table class="leaderboard-table">';
-        html += '<thead><tr><th>#</th><th>Игрок</th><th>Счет</th><th>Дата</th></tr></thead>';
+        html += '<thead><tr><th>#</th><th>Игрок</th><th>Счет</th><th>Время</th><th>Дата</th></tr></thead>';
         html += '<tbody>';
         
-        this.leaderboard.forEach((entry, index) => {
-            const medal = index === 0 ? '🥇' : index === 1 ? '🥈' : index === 2 ? '🥉' : `${index + 1}`;
-            html += `<tr>
-                <td>${medal}</td>
-                <td class="leaderboard-name">${this.escapeHtml(entry.username)}</td>
-                <td>${entry.score}</td>
-                <td class="leaderboard-date">${entry.date}</td>
-            </tr>`;
-        });
+        if (this.leaderboard.length === 0) {
+            html += '<tr><td colspan="5" style="text-align: center; padding: 20px;">Пока нет результатов</td></tr>';
+        } else {
+            this.leaderboard.forEach((entry, index) => {
+                const medal = index === 0 ? '🥇' : index === 1 ? '🥈' : index === 2 ? '🥉' : `${index + 1}`;
+                html += `<tr>
+                    <td>${medal}</td>
+                    <td class="leaderboard-name">${this.escapeHtml(entry.username)}</td>
+                    <td>${entry.score}</td>
+                    <td>${entry.survival_time}</td>
+                    <td class="leaderboard-date">${entry.date}</td>
+                </tr>`;
+            });
+        }
         
         html += '</tbody></table>';
         return html;
@@ -431,10 +508,13 @@ class PizzaGame {
             scoreDisplay.innerHTML = `Счет: <span>${this.score}</span>`;
         }
         if (timerDisplay) {
-            timerDisplay.innerHTML = `Выживание <span>${this.survivalLevel}</span>`;
+            // Форматируем время в минуты:секунды
+            const minutes = Math.floor(this.survivalTime / 60);
+            const seconds = this.survivalTime % 60;
+            const formattedTime = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            timerDisplay.innerHTML = `Время: <span>${formattedTime}</span>`;
         }
         if (livesDisplay) {
-            // Показываем красные сердечки (живые жизни) и черные (потерянные)
             let heartsDisplay = '❤️'.repeat(this.lives);
             const lostCount = 3 - this.lives;
             if (lostCount > 0) {
@@ -446,17 +526,6 @@ class PizzaGame {
     
     render() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-        
-        // Фон
-        this.ctx.fillStyle = 'rgba(255, 255, 255, 1)';
-        this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
-        
-        // Градиент фона
-        const gradient = this.ctx.createLinearGradient(0, 0, 0, this.canvas.height);
-        gradient.addColorStop(0, 'rgba(255, 255, 255, 0.5)');
-        gradient.addColorStop(1, 'rgba(33, 128, 141, 0.05)');
-        this.ctx.fillStyle = gradient;
-        this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
         
         // Рисуем падающие объекты
         this.fallingObjects.forEach(obj => {

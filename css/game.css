@@ -191,7 +191,9 @@ p { margin: 0 0 16px 0; }
     display: block;
     width: 100%;
     height: auto;
-    background: linear-gradient(180deg, #FFFFFF 0%, rgba(33, 128, 141, 0.05) 100%);
+    background-image: url(../uploads/game-bg-processed.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 /* Оверлеи игры */
@@ -368,6 +370,7 @@ p { margin: 0 0 16px 0; }
 .leaderboard-table th:nth-child(4),
 .leaderboard-table td:nth-child(1),
 .leaderboard-table td:nth-child(3),
+.leaderboard-table th:nth-child(4),
 .leaderboard-table td:nth-child(4) {
     text-align: center;
 }
