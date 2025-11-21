@@ -1,4 +1,4 @@
-// js/game.js - ОБНОВЛЕННАЯ ВЕРСИЯ: время выживания вместо уровня
+// js/game.js - ОБНОВЛЕННАЯ ВЕРСИЯ: падающие объекты поверх коробки
 class PizzaGame {
     constructor() {
         const canvas = document.getElementById('gameCanvas');
@@ -20,13 +20,15 @@ class PizzaGame {
         this.lostLives = [];
         
         this.platform = {
-            x: this.canvas.width / 2 - 75,
+            x: this.canvas.width / 2 - 60, // Уже хит-бокс (120 вместо 150)
             y: this.canvas.height - 80,
-            width: 150,
-            height: 30,
+            width: 120, // Уменьшили ширину хит-бокса
+            height: 25, // Немного уменьшили высоту
             speed: 8,
             image: null,
-            imageLoaded: false
+            imageLoaded: false,
+            imageAspectRatio: 1,
+            imageScale: 1.3 // Увеличиваем изображение на 30%
         };
         
         this.loadPlatformImage();
@@ -43,6 +45,9 @@ class PizzaGame {
         this.useMouseControl = false;
         this.soundEnabled = true;
         
+        // Для отладки - показывать хит-бокс
+        this.debugMode = true;
+        
         this.init();
     }
     
@@ -51,7 +56,9 @@ class PizzaGame {
         this.platform.image = new Image();
         this.platform.image.onload = () => {
             this.platform.imageLoaded = true;
-            console.log('✅ Изображение коробки успешно загружено!');
+            // Сохраняем оригинальное соотношение сторон
+            this.platform.imageAspectRatio = this.platform.image.width / this.platform.image.height;
+            console.log('✅ Изображение коробки успешно загружено! Размер:', this.platform.image.width, 'x', this.platform.image.height, 'Соотношение:', this.platform.imageAspectRatio);
         };
         this.platform.image.onerror = (error) => {
             this.platform.imageLoaded = false;
@@ -527,7 +534,61 @@ class PizzaGame {
     render() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
         
-        // Рисуем падающие объекты
+        // Сначала рисуем платформу (коробку)
+        this.renderPlatform();
+        
+        // Затем рисуем падающие объекты ПОВЕРХ коробки
+        this.renderFallingObjects();
+        
+        // Затем рисуем плавающий текст поверх всего
+        this.renderFloatingTexts();
+    }
+    
+    renderPlatform() {
+        // Рисуем платформу (коробку) с сохранением пропорций
+        if (this.platform.imageLoaded) {
+            // Сохраняем пропорции изображения
+            const aspectRatio = this.platform.imageAspectRatio;
+            
+            // Увеличиваем изображение на 30%
+            let drawWidth = this.platform.width * this.platform.imageScale;
+            let drawHeight = drawWidth / aspectRatio;
+            
+            // Центрируем изображение относительно хит-бокса
+            const drawX = this.platform.x - (drawWidth - this.platform.width) / 2;
+            
+            // Позиционируем изображение так, чтобы его верхний край был на уровне низа хит-бокса
+            const drawY = this.platform.y - drawHeight/1.4;
+            
+            this.ctx.drawImage(this.platform.image, drawX, drawY, drawWidth, drawHeight);
+            
+            // Для отладки: рисуем прозрачный хит-бокс
+            if (this.debugMode) {
+                this.ctx.fillStyle = 'rgba(255, 0, 0, 0.3)';
+                this.ctx.fillRect(this.platform.x, this.platform.y, this.platform.width, this.platform.height);
+                
+                // Контур хит-бокса для лучшей видимости
+                this.ctx.strokeStyle = 'rgba(255, 0, 0, 0.7)';
+                this.ctx.lineWidth = 2;
+                this.ctx.strokeRect(this.platform.x, this.platform.y, this.platform.width, this.platform.height);
+                
+                // Текст для отладки
+                this.ctx.fillStyle = 'rgba(255, 0, 0, 0.9)';
+                this.ctx.font = '12px Arial';
+                this.ctx.fillText(`Hitbox: ${this.platform.width}x${this.platform.height}`, this.platform.x, this.platform.y - 5);
+            }
+        } else {
+            // Fallback: рисуем простую коробку если изображение не загружено
+            this.ctx.fillStyle = '#D2691E';
+            this.ctx.fillRect(this.platform.x, this.platform.y, this.platform.width, this.platform.height);
+            this.ctx.strokeStyle = '#8B4513';
+            this.ctx.lineWidth = 2;
+            this.ctx.strokeRect(this.platform.x, this.platform.y, this.platform.width, this.platform.height);
+        }
+    }
+    
+    renderFallingObjects() {
+        // Рисуем падающие объекты ПОВЕРХ коробки
         this.fallingObjects.forEach(obj => {
             this.ctx.save();
             this.ctx.translate(obj.x + obj.width / 2, obj.y + obj.height / 2);
@@ -547,19 +608,10 @@ class PizzaGame {
             
             this.ctx.restore();
         });
-        
-        // Рисуем платформу (коробку)
-        if (this.platform.imageLoaded) {
-            this.ctx.drawImage(this.platform.image, this.platform.x, this.platform.y, this.platform.width, this.platform.height);
-        } else {
-            this.ctx.fillStyle = '#D2691E';
-            this.ctx.fillRect(this.platform.x, this.platform.y, this.platform.width, this.platform.height);
-            this.ctx.strokeStyle = '#8B4513';
-            this.ctx.lineWidth = 2;
-            this.ctx.strokeRect(this.platform.x, this.platform.y, this.platform.width, this.platform.height);
-        }
-        
-        // Плавающий текст
+    }
+    
+    renderFloatingTexts() {
+        // Плавающий текст поверх всего
         this.floatingTexts = this.floatingTexts.filter(text => {
             const elapsed = Date.now() - text.startTime;
             if (elapsed > text.life) return false;

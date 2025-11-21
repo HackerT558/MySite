@@ -326,7 +326,7 @@ p { margin: 0 0 16px 0; }
 
 .leaderboard-table thead {
     background: rgb(215, 251, 255);
-    position: sticky;
+    /*position: sticky;*/
     top: 0;
 }
 
