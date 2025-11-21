@@ -46,7 +46,7 @@ class PizzaGame {
         this.soundEnabled = true;
         
         // Для отладки - показывать хит-бокс
-        this.debugMode = true;
+        this.debugMode = false;
         
         this.init();
     }
@@ -358,7 +358,7 @@ class PizzaGame {
                 
                 if (obj.type === 'pizza') {
                     this.score += 10;
-                    this.showFloatingText('+10', obj.x, obj.y, '#32b8c6');
+                    this.showFloatingText('+10', obj.x, obj.y, '#f26822');
                     this.playSound('catch');
                 } else if (obj.type === 'bomb') {
                     this.loseLife();

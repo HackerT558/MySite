@@ -1,4 +1,4 @@
-/* game.css - Обновленная версия с оптимизированным лидербордом */
+/* game.css - Обновленная версия с оранжевой цветовой схемой */
 
 /* Base styles */
 html {
@@ -6,7 +6,7 @@ html {
     font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     line-height: 1.5;
     color: #1F2121;
-    background-color: #FFFFFF;
+    background-color: #f1f3f6;
     -webkit-font-smoothing: antialiased;
     box-sizing: border-box;
 }
@@ -14,7 +14,7 @@ html {
 body {
     margin: 0;
     padding: 0;
-    background-color: #FFFFFF;
+    background-color: #f1f3f6;
     color: #1F2121;
 }
 
@@ -62,20 +62,20 @@ p { margin: 0 0 16px 0; }
 
 .btn:focus-visible {
     outline: none;
-    box-shadow: 0 0 0 3px rgba(33, 128, 141, 0.4);
+    box-shadow: 0 0 0 3px rgba(242, 104, 34, 0.4);
 }
 
 .btn--primary {
-    background: #21808D;
-    color: #FCFCF9;
+    background: #f26822;
+    color: #FFFFFF;
 }
 
 .btn--primary:hover {
-    background: #1D7480;
+    background: #d45915;
 }
 
 .btn--primary:active {
-    background: #1A6873;
+    background: #c14f12;
 }
 
 .btn--secondary {
@@ -143,33 +143,34 @@ p { margin: 0 0 16px 0; }
 .score-display,
 .timer-display,
 .lives-display {
-    background: #FFFFFD;
-    padding: 8px 16px;
-    border-radius: 8px;
+    background: #FFFFFF;
+    padding: 12px 20px;
+    border-radius: 12px;
     font-size: 16px;
     font-weight: 550;
     font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     color: #1F2121;
     border: 1px solid rgba(0, 0, 0, 0.12);
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
-    transition: box-shadow 250ms cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: all 250ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .score-display:hover,
 .timer-display:hover,
 .lives-display:hover {
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.04), 0 2px 4px -1px rgba(0, 0, 0, 0.02);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
 }
 
 .score-display span,
 .timer-display span {
-    color: #21808D;
+    color: #f26822;
     font-size: 20px;
     font-weight: 600;
 }
 
 .lives-display span {
-    color: #C0152F;
+    color: #e74c3c;
     font-size: 20px;
     font-weight: 600;
 }
@@ -180,9 +181,9 @@ p { margin: 0 0 16px 0; }
     width: 800px;
     max-width: 100%;
     margin: 0 auto 24px auto;
-    background: #FFFFFD;
-    border-radius: 12px;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.04), 0 4px 6px -2px rgba(0, 0, 0, 0.02);
+    background: #FFFFFF;
+    border-radius: 18px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
     border: 1px solid rgba(0, 0, 0, 0.12);
     overflow: hidden;
 }
@@ -203,7 +204,7 @@ p { margin: 0 0 16px 0; }
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(19, 52, 59, 0.95);
+    background: rgba(33, 33, 33, 0.92);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -220,7 +221,7 @@ p { margin: 0 0 16px 0; }
 
 .game-overlay h2 {
     margin: 0 0 16px 0;
-    color: #FFFFFD;
+    color: #FFFFFF;
     font-size: 24px;
     font-weight: 600;
     font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -230,7 +231,7 @@ p { margin: 0 0 16px 0; }
 
 .game-overlay p {
     margin: 0 0 12px 0;
-    color: #626C71;
+    color: #e0e0e0;
     font-size: 14px;
     font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     line-height: 1.5;
@@ -253,11 +254,11 @@ p { margin: 0 0 16px 0; }
 .game-instructions {
     max-width: 800px;
     margin: 0 auto;
-    background: #FFFFFD;
+    background: #FFFFFF;
     padding: 24px;
-    border-radius: 12px;
+    border-radius: 18px;
     border: 1px solid rgba(0, 0, 0, 0.12);
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
 }
 
 .game-instructions h3 {
@@ -290,7 +291,7 @@ p { margin: 0 0 16px 0; }
 }
 
 .game-instructions li strong {
-    color: #21808D;
+    color: #f26822;
     font-weight: 550;
 }
 
@@ -299,10 +300,10 @@ p { margin: 0 0 16px 0; }
    ============================================ */
 
 .leaderboard-container {
-    background: #FFFFFD;
+    background: #FFFFFF;
     border-radius: 12px;
     border: 1px solid rgba(0, 0, 0, 0.12);
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     padding: 16px;
     max-height: 400px;
     overflow-y: auto;
@@ -325,8 +326,8 @@ p { margin: 0 0 16px 0; }
 }
 
 .leaderboard-table thead {
-    background: rgb(215, 251, 255);
-    /*position: sticky;*/
+    background: rgba(242, 104, 34, 0.1);
+    position: sticky;
     top: 0;
 }
 
@@ -334,7 +335,7 @@ p { margin: 0 0 16px 0; }
     padding: 8px 6px;
     text-align: left;
     font-weight: 550;
-    color: #21808D;
+    color: #f26822;
     border-bottom: 1px solid rgba(0, 0, 0, 0.12);
 }
 
@@ -345,7 +346,7 @@ p { margin: 0 0 16px 0; }
 }
 
 .leaderboard-table tbody tr:hover {
-    background: rgba(33, 128, 141, 0.04);
+    background: rgba(242, 104, 34, 0.04);
 }
 
 .leaderboard-table tbody tr:last-child td {
@@ -386,10 +387,32 @@ p { margin: 0 0 16px 0; }
 }
 
 .leaderboard-container::-webkit-scrollbar-thumb {
-    background: rgba(0, 0, 0, 0.2);
+    background: rgba(242, 104, 34, 0.3);
     border-radius: 10px;
 }
 
 .leaderboard-container::-webkit-scrollbar-thumb:hover {
-    background: rgba(0, 0, 0, 0.3);
+    background: rgba(242, 104, 34, 0.5);
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .game-info {
+        gap: 12px;
+    }
+    
+    .score-display,
+    .timer-display,
+    .lives-display {
+        padding: 8px 12px;
+        font-size: 14px;
+    }
+    
+    .game-header h1 {
+        font-size: 24px;
+    }
+    
+    .game-instructions {
+        padding: 16px;
+    }
 }
