@@ -297,7 +297,7 @@ class PizzaGame {
     
     spawnObjects(deltaTime) {
         // Используем время для увеличения сложности
-        const difficultyLevel = Math.floor(this.survivalTime / 60) + 1;
+        const difficultyLevel = Math.floor(this.survivalTime / 60) + 10;
         const currentSpawnInterval = Math.max(400, this.baseDifficulty - (difficultyLevel - 1) * 50);
         
         this.spawnTimer += deltaTime;
