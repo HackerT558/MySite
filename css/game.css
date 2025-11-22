@@ -394,25 +394,3 @@ p { margin: 0 0 16px 0; }
 .leaderboard-container::-webkit-scrollbar-thumb:hover {
     background: rgba(242, 104, 34, 0.5);
 }
-
-/* Адаптивность */
-@media (max-width: 768px) {
-    .game-info {
-        gap: 12px;
-    }
-    
-    .score-display,
-    .timer-display,
-    .lives-display {
-        padding: 8px 12px;
-        font-size: 14px;
-    }
-    
-    .game-header h1 {
-        font-size: 24px;
-    }
-    
-    .game-instructions {
-        padding: 16px;
-    }
-}

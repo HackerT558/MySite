@@ -141,17 +141,6 @@
     margin: 32px 0;
 }
 
-@media (max-width: 768px) {
-    .content-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .main-info-content {
-        grid-template-columns: 1fr;
-        text-align: center;
-    }
-}
-
 .dashboard-card {
     background: #fff;
     border-radius: 18px;

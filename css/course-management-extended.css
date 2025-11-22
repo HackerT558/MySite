@@ -1,4 +1,5 @@
 /* Base styles */
+
 html {
   font-size: 14px;
   font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -23,6 +24,7 @@ body {
 }
 
 /* Typography */
+
 h1, h2, h3, h4, h5, h6 {
   margin: 0;
   font-weight: 550;
@@ -41,12 +43,12 @@ h6 { font-size: 14px; }
 p { margin: 0 0 16px 0; }
 
 a {
-  color: #21808D;
+  color: #f26822;
   text-decoration: none;
   transition: color 150ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-a:hover { color: #1D7480; }
+a:hover { color: #d45915; }
 
 code, pre {
   font-family: "Berkeley Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
@@ -70,6 +72,7 @@ pre code {
 }
 
 /* Buttons */
+
 .btn {
   display: inline-flex;
   align-items: center;
@@ -89,16 +92,17 @@ pre code {
 
 .btn:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 3px rgba(33, 128, 141, 0.4);
+  box-shadow: 0 0 0 3px rgba(242, 104, 34, 0.4);
 }
 
 .btn--primary {
-  background: #21808D;
+  background: #f26822;
   color: #FCFCF9;
 }
 
-.btn--primary:hover { background: #1D7480; }
-.btn--primary:active { background: #1A6873; }
+.btn--primary:hover { background: #d45915; }
+
+.btn--primary:active { background: #b84a12; }
 
 .btn--secondary {
   background: rgba(94, 82, 64, 0.12);
@@ -106,6 +110,7 @@ pre code {
 }
 
 .btn--secondary:hover { background: rgba(94, 82, 64, 0.2); }
+
 .btn--secondary:active { background: rgba(94, 82, 64, 0.25); }
 
 .btn--outline {
@@ -129,12 +134,14 @@ pre code {
 }
 
 .btn--full-width { width: 100%; }
+
 .btn:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
 
 /* Form elements */
+
 .form-control {
   display: block;
   width: 100%;
@@ -167,8 +174,8 @@ select.form-control {
 }
 
 .form-control:focus {
-  border-color: #21808D;
-  outline: 2px solid #21808D;
+  border-color: #f26822;
+  outline: 2px solid #f26822;
 }
 
 .form-label {
@@ -181,6 +188,7 @@ select.form-control {
 .form-group { margin-bottom: 16px; }
 
 /* Card component */
+
 .card {
   background-color: #FFFFFD;
   border-radius: 12px;
@@ -203,6 +211,7 @@ select.form-control {
 }
 
 /* Status indicators */
+
 .status {
   display: inline-flex;
   align-items: center;
@@ -213,9 +222,9 @@ select.form-control {
 }
 
 .status--success {
-  background-color: rgba(33, 128, 141, 0.15);
-  color: #21808D;
-  border: 1px solid rgba(33, 128, 141, 0.25);
+  background-color: rgba(242, 104, 34, 0.15);
+  color: #f26822;
+  border: 1px solid rgba(242, 104, 34, 0.25);
 }
 
 .status--error {
@@ -237,6 +246,7 @@ select.form-control {
 }
 
 /* Container layout */
+
 .container {
   width: 100%;
   margin-right: auto;
@@ -247,32 +257,49 @@ select.form-control {
 }
 
 /* Utility classes */
+
 .flex { display: flex; }
+
 .flex-col { flex-direction: column; }
+
 .items-center { align-items: center; }
+
 .justify-center { justify-content: center; }
+
 .justify-between { justify-content: space-between; }
 
 .gap-4 { gap: 4px; }
+
 .gap-8 { gap: 8px; }
+
 .gap-16 { gap: 16px; }
 
 .m-0 { margin: 0; }
+
 .mt-8 { margin-top: 8px; }
+
 .mb-8 { margin-bottom: 8px; }
+
 .mx-8 { margin-left: 8px; margin-right: 8px; }
+
 .my-8 { margin-top: 8px; margin-bottom: 8px; }
 
 .p-0 { padding: 0; }
+
 .py-8 { padding-top: 8px; padding-bottom: 8px; }
+
 .px-8 { padding-left: 8px; padding-right: 8px; }
+
 .py-16 { padding-top: 16px; padding-bottom: 16px; }
+
 .px-16 { padding-left: 16px; padding-right: 16px; }
 
 .block { display: block; }
+
 .hidden { display: none; }
 
 /* Accessibility */
+
 .sr-only {
   position: absolute;
   width: 1px;
@@ -286,15 +313,16 @@ select.form-control {
 }
 
 :focus-visible {
-  outline: 2px solid #21808D;
+  outline: 2px solid #f26822;
   outline-offset: 2px;
 }
 
 /* ============================================
-   COURSE MANAGEMENT EXTENDED STYLES
-   ============================================ */
+COURSE MANAGEMENT EXTENDED STYLES
+============================================ */
 
 /* Уведомления */
+
 .notice, .error {
   padding: 12px 16px;
   border-radius: 8px;
@@ -311,10 +339,10 @@ select.form-control {
 }
 
 .notice {
-  background: rgba(33, 128, 141, 0.15);
-  border-left: 4px solid #21808D;
-  color: #21808D;
-  border: 1px solid rgba(33, 128, 141, 0.25);
+  background: rgba(242, 104, 34, 0.15);
+  border-left: 4px solid #f26822;
+  color: #f26822;
+  border: 1px solid rgba(242, 104, 34, 0.25);
 }
 
 .error {
@@ -337,19 +365,20 @@ select.form-control {
 }
 
 /* Кнопки */
+
 .btn-orange {
-  background: #21808D;
+  background: #f26822;
   color: #FCFCF9;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
 }
 
 .btn-orange:hover {
-  background: #1D7480;
+  background: #d45915;
   transform: translateY(-1px);
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.04), 0 2px 4px -1px rgba(0, 0, 0, 0.02);
 }
 
-.btn-orange:active { background: #1A6873; }
+.btn-orange:active { background: #b84a12; }
 
 .btn-gray {
   background: rgba(94, 82, 64, 0.12);
@@ -383,6 +412,7 @@ select.form-control {
 }
 
 /* Карточки */
+
 .card {
   background: #FFFFFD;
   border-radius: 12px;
@@ -409,6 +439,7 @@ select.form-control {
 }
 
 /* Формы */
+
 .form-group {
   margin-bottom: 16px;
 }
@@ -441,8 +472,8 @@ select.form-control {
 .form-group select:focus,
 .form-group textarea:focus {
   outline: none;
-  border-color: #21808D;
-  box-shadow: 0 0 0 3px rgba(33, 128, 141, 0.4);
+  border-color: #f26822;
+  box-shadow: 0 0 0 3px rgba(242, 104, 34, 0.4);
 }
 
 .form-group textarea {
@@ -462,6 +493,7 @@ select.form-control {
 }
 
 /* Вкладки */
+
 .tabs-nav {
   background: #FFFFFD;
   border-radius: 8px 8px 0 0;
@@ -488,17 +520,17 @@ select.form-control {
 
 .tab-btn:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 3px rgba(33, 128, 141, 0.4);
+  box-shadow: 0 0 0 3px rgba(242, 104, 34, 0.4);
 }
 
 .tab-btn:hover {
   background: rgba(94, 82, 64, 0.12);
-  color: #21808D;
+  color: #f26822;
   transform: translateY(-1px);
 }
 
 .tab-btn.active {
-  background: #21808D;
+  background: #f26822;
   color: #FCFCF9;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
 }
@@ -527,6 +559,7 @@ select.form-control {
 }
 
 /* Управление уроками */
+
 .lessons-management .lesson-management-item {
   border: 2px solid rgba(0, 0, 0, 0.12);
   border-radius: 8px;
@@ -536,7 +569,7 @@ select.form-control {
 }
 
 .lessons-management .lesson-management-item:hover {
-  border-color: #21808D;
+  border-color: #f26822;
   transform: translateY(-2px);
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.04), 0 2px 4px -1px rgba(0, 0, 0, 0.02);
 }
@@ -557,7 +590,7 @@ select.form-control {
   left: 0;
   width: 4px;
   height: 100%;
-  background: #21808D;
+  background: #f26822;
   border-radius: 8px 0 0 8px;
 }
 
@@ -568,7 +601,7 @@ select.form-control {
 }
 
 .lesson-order {
-  background: #21808D;
+  background: #f26822;
   color: #FCFCF9;
   padding: 4px 8px;
   border-radius: 9999px;
@@ -592,6 +625,7 @@ select.form-control {
 }
 
 /* Управление вопросами */
+
 .questions-management .question-management-item {
   border: 2px solid rgba(0, 0, 0, 0.12);
   border-radius: 8px;
@@ -677,9 +711,9 @@ select.form-control {
 }
 
 .option.correct {
-  background: rgba(33, 128, 141, 0.15);
-  border-color: #21808D;
-  color: #21808D;
+  background: rgba(242, 104, 34, 0.15);
+  border-color: #f26822;
+  color: #f26822;
   font-weight: 550;
   position: relative;
 }
@@ -689,11 +723,12 @@ select.form-control {
   position: absolute;
   top: 8px;
   right: 8px;
-  color: #21808D;
+  color: #f26822;
   font-weight: 600;
 }
 
 /* Статистика */
+
 .stats-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -720,7 +755,7 @@ select.form-control {
   left: 0;
   right: 0;
   height: 4px;
-  background: #21808D;
+  background: #f26822;
 }
 
 .stat-card:hover {
@@ -738,8 +773,10 @@ select.form-control {
   line-height: 1.2;
 }
 
-.stat-value.stat-success { color: #21808D; }
+.stat-value.stat-success { color: #f26822; }
+
 .stat-value.stat-warning { color: #A84B2F; }
+
 .stat-value.stat-error { color: #C0152F; }
 
 .stat-label {
@@ -752,9 +789,10 @@ select.form-control {
 }
 
 /* Информация о тесте */
+
 .test-info {
   background: rgba(94, 82, 64, 0.12);
-  border: 2px solid rgba(33, 128, 141, 0.2);
+  border: 2px solid rgba(242, 104, 34, 0.2);
   border-radius: 8px;
   padding: 16px;
   position: relative;
@@ -780,6 +818,7 @@ select.form-control {
 }
 
 /* Таблицы */
+
 .table-container {
   overflow-x: auto;
   border-radius: 8px;
@@ -818,10 +857,11 @@ select.form-control {
 }
 
 .table-compact tbody tr:hover {
-  background: rgba(33, 128, 141, 0.05);
+  background: rgba(242, 104, 34, 0.05);
 }
 
 /* Значки (badges) */
+
 .badge {
   padding: 4px 8px;
   border-radius: 9999px;
@@ -834,9 +874,9 @@ select.form-control {
 }
 
 .badge-beginner {
-  background: rgba(33, 128, 141, 0.15);
-  color: #21808D;
-  border: 1px solid rgba(33, 128, 141, 0.25);
+  background: rgba(242, 104, 34, 0.15);
+  color: #f26822;
+  border: 1px solid rgba(242, 104, 34, 0.25);
 }
 
 .badge-intermediate {
@@ -852,7 +892,7 @@ select.form-control {
 }
 
 .badge-success {
-  background: #21808D;
+  background: #f26822;
   color: #FCFCF9;
 }
 
@@ -862,6 +902,7 @@ select.form-control {
 }
 
 /* Действия с элементами */
+
 .row-actions {
   white-space: nowrap;
 }
@@ -876,6 +917,7 @@ select.form-control {
 }
 
 /* Анимации */
+
 @keyframes slideInUp {
   from {
     opacity: 0;
@@ -902,16 +944,25 @@ select.form-control {
 }
 
 /* Утилиты */
+
 .text-muted { color: #626C71 !important; }
-.text-success { color: #21808D !important; }
+
+.text-success { color: #f26822 !important; }
+
 .text-center { text-align: center !important; }
 
 .mb-0 { margin-bottom: 0 !important; }
+
 .mb-1 { margin-bottom: 8px !important; }
+
 .mb-2 { margin-bottom: 16px !important; }
+
 .mb-3 { margin-bottom: 24px !important; }
 
 .mt-0 { margin-top: 0 !important; }
+
 .mt-1 { margin-top: 8px !important; }
+
 .mt-2 { margin-top: 16px !important; }
+
 .mt-3 { margin-top: 24px !important; }

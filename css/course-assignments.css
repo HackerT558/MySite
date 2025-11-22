@@ -1,211 +1,211 @@
 .assignments-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 24px;
-    flex-wrap: wrap;
-    gap: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  gap: 16px;
 }
 
 .header-actions {
-    display: flex;
-    gap: 10px;
+  display: flex;
+  gap: 10px;
 }
 
 .form-row {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 16px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 16px;
 }
 
 .form-group {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .form-group label {
-    margin-bottom: 4px;
-    font-weight: 600;
-    color: #333;
+  margin-bottom: 4px;
+  font-weight: 600;
+  color: #333;
 }
 
 .form-group input,
 .form-group select {
-    padding: 10px 12px;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    font-size: 14px;
+  padding: 10px 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
 }
 
 .course-info {
-    background: #f8f9fa;
-    border: 2px solid #e9ecef;
-    border-radius: 8px;
-    padding: 16px;
-    margin: 16px 0;
+  background: #f8f9fa;
+  border: 2px solid #e9ecef;
+  border-radius: 8px;
+  padding: 16px;
+  margin: 16px 0;
 }
 
 .users-selection {
-    max-height: 400px;
-    overflow-y: auto;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    padding: 12px;
+  max-height: 400px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 12px;
 }
 
 .position-group {
-    margin-bottom: 16px;
-    border: 1px solid #e9ecef;
-    border-radius: 6px;
-    overflow: hidden;
+  margin-bottom: 16px;
+  border: 1px solid #e9ecef;
+  border-radius: 6px;
+  overflow: hidden;
 }
 
 .position-group.recommended {
-    border-color: #f26822;
-    background: #fff8f6;
+  border-color: #f26822;
+  background: #fff8f6;
 }
 
 .position-header {
-    background: #f8f9fa;
-    padding: 12px;
-    border-bottom: 1px solid #e9ecef;
+  background: #f8f9fa;
+  padding: 12px;
+  border-bottom: 1px solid #e9ecef;
 }
 
 .position-title {
-    font-weight: 600;
-    color: #333;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    cursor: pointer;
+  font-weight: 600;
+  color: #333;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
 }
 
 .users-list {
-    padding: 12px;
+  padding: 12px;
 }
 
 .user-checkbox {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 8px;
-    margin-bottom: 4px;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+  margin-bottom: 4px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s;
 }
 
 .user-checkbox:hover {
-    background: #f8f9fa;
+  background: #f8f9fa;
 }
 
 .user-info {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
 }
 
 .user-info small {
-    color: #666;
-    font-size: 12px;
+  color: #666;
+  font-size: 12px;
 }
 
 .assignments-filters {
-    display: flex;
-    gap: 12px;
-    margin-bottom: 16px;
-    flex-wrap: wrap;
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
 }
 
 .assignments-filters input,
 .assignments-filters select {
-    padding: 8px 12px;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    font-size: 14px;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
 }
 
 .table-container {
-    overflow-x: auto;
+  overflow-x: auto;
 }
 
 .user-cell {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
 }
 
 .user-cell small {
-    color: #666;
-    font-size: 12px;
+  color: #666;
+  font-size: 12px;
 }
 
 .status-badge {
-    padding: 4px 8px;
-    border-radius: 6px;
-    font-size: 12px;
-    font-weight: 600;
-    text-transform: uppercase;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
 }
 
 .status-assigned {
-    background: #e3f2fd;
-    color: #1976d2;
+  background: #e3f2fd;
+  color: #1976d2;
 }
 
 .status-in_progress {
-    background: #fff3e0;
-    color: #f57c00;
+  background: #fff3e0;
+  color: #f57c00;
 }
 
 .status-completed {
-    background: #e8f5e8;
-    color: #2e7d32;
+  background: #e8f5e8;
+  color: #2e7d32;
 }
 
 .status-failed {
-    background: #ffebee;
-    color: #c62828;
+  background: #ffebee;
+  color: #c62828;
 }
 
 .progress-cell {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
 
 .lesson-progress {
-    font-size: 14px;
-    color: #666;
+  font-size: 14px;
+  color: #666;
 }
 
 .test-progress {
-    font-size: 12px;
-    font-weight: 600;
+  font-size: 12px;
+  font-weight: 600;
 }
 
 .test-progress.passed {
-    color: #2e7d32;
+  color: #2e7d32;
 }
 
 .test-progress.failed {
-    color: #c62828;
+  color: #c62828;
 }
 
 .deadline.overdue {
-    color: #c62828;
-    font-weight: 600;
+  color: #c62828;
+  font-weight: 600;
 }
 
 .no-deadline {
-    color: #666;
-    font-style: italic;
+  color: #666;
+  font-style: italic;
 }
 
 .form-actions {
-    display: flex;
-    gap: 12px;
-    justify-content: flex-end;
-    padding-top: 16px;
-    border-top: 1px solid #eee;
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  padding-top: 16px;
+  border-top: 1px solid #eee;
 }

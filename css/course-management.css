@@ -1,314 +1,314 @@
 .management-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 24px;
-    flex-wrap: wrap;
-    gap: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  gap: 16px;
 }
 
 .header-actions {
-    display: flex;
-    gap: 10px;
+  display: flex;
+  gap: 10px;
 }
 
 .course-edit-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-    flex-wrap: wrap;
-    gap: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 16px;
 }
 
 /* Вкладки */
 .tabs-container {
-    width: 100%;
+  width: 100%;
 }
 
 .tabs-nav {
-    display: flex;
-    border-bottom: 2px solid #e9ecef;
-    margin-bottom: 20px;
-    flex-wrap: wrap;
+  display: flex;
+  border-bottom: 2px solid #e9ecef;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
 }
 
 .tab-btn {
-    background: none;
-    border: none;
-    padding: 12px 20px;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: 600;
-    color: #666;
-    border-bottom: 3px solid transparent;
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    gap: 6px;
+  background: none;
+  border: none;
+  padding: 12px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  color: #666;
+  border-bottom: 3px solid transparent;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
 .tab-btn:hover {
-    color: #f26822;
-    background: #fff8f6;
+  color: #f26822;
+  background: #fff8f6;
 }
 
 .tab-btn.active {
-    color: #f26822;
-    border-bottom-color: #f26822;
-    background: #fff8f6;
+  color: #f26822;
+  border-bottom-color: #f26822;
+  background: #fff8f6;
 }
 
 .tab-btn .count {
-    background: #e9ecef;
-    color: #666;
-    padding: 2px 6px;
-    border-radius: 4px;
-    font-size: 12px;
-    font-weight: 500;
+  background: #e9ecef;
+  color: #666;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
 }
 
 .tab-btn.active .count {
-    background: #f26822;
-    color: #fff;
+  background: #f26822;
+  color: #fff;
 }
 
 .tab-content {
-    display: none;
+  display: none;
 }
 
 .tab-content.active {
-    display: block;
+  display: block;
 }
 
 /* Подсекции */
 .sub-section {
-    margin-bottom: 32px;
-    padding-bottom: 24px;
-    border-bottom: 1px solid #eee;
+  margin-bottom: 32px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid #eee;
 }
 
 .sub-section:last-child {
-    border-bottom: none;
+  border-bottom: none;
 }
 
 .sub-section h3 {
-    margin: 0 0 16px 0;
-    color: #333;
-    font-size: 18px;
-    font-weight: 600;
+  margin: 0 0 16px 0;
+  color: #333;
+  font-size: 18px;
+  font-weight: 600;
 }
 
 /* Управление уроками */
 .lessons-management {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
 .lesson-management-item {
-    border: 2px solid #e9ecef;
-    border-radius: 8px;
-    overflow: hidden;
+  border: 2px solid #e9ecef;
+  border-radius: 8px;
+  overflow: hidden;
 }
 
 .lesson-display {
-    padding: 16px;
-    background: #f8f9fa;
+  padding: 16px;
+  background: #f8f9fa;
 }
 
 .lesson-header {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 8px;
-    flex-wrap: wrap;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
 }
 
 .lesson-order {
-    background: #e9ecef;
-    color: #666;
-    padding: 4px 8px;
-    border-radius: 4px;
-    font-size: 12px;
-    font-weight: 600;
+  background: #e9ecef;
+  color: #666;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
 }
 
 .lesson-header h4 {
-    margin: 0;
-    color: #333;
-    font-size: 16px;
-    font-weight: 600;
-    flex: 1;
+  margin: 0;
+  color: #333;
+  font-size: 16px;
+  font-weight: 600;
+  flex: 1;
 }
 
 .lesson-meta {
-    color: #666;
-    font-size: 14px;
+  color: #666;
+  font-size: 14px;
 }
 
 .lesson-content-preview {
-    color: #555;
-    line-height: 1.5;
-    margin: 12px 0;
+  color: #555;
+  line-height: 1.5;
+  margin: 12px 0;
 }
 
 .lesson-actions {
-    display: flex;
-    gap: 8px;
-    margin-top: 12px;
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
 }
 
 .lesson-edit {
-    padding: 20px;
-    background: #fff;
-    border-top: 1px solid #e9ecef;
+  padding: 20px;
+  background: #fff;
+  border-top: 1px solid #e9ecef;
 }
 
 /* Управление вопросами */
 .test-info {
-    background: #f8f9fa;
-    border: 2px solid #e9ecef;
-    border-radius: 8px;
-    padding: 16px;
-    margin-bottom: 20px;
+  background: #f8f9fa;
+  border: 2px solid #e9ecef;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 20px;
 }
 
 .test-info p {
-    margin: 4px 0;
-    color: #555;
+  margin: 4px 0;
+  color: #555;
 }
 
 .questions-management {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
 .question-management-item {
-    border: 2px solid #e9ecef;
-    border-radius: 8px;
-    overflow: hidden;
+  border: 2px solid #e9ecef;
+  border-radius: 8px;
+  overflow: hidden;
 }
 
 .question-display {
-    padding: 16px;
-    background: #f8f9fa;
+  padding: 16px;
+  background: #f8f9fa;
 }
 
 .question-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
 }
 
 .question-number {
-    background: #e9ecef;
-    color: #666;
-    padding: 4px 8px;
-    border-radius: 4px;
-    font-size: 12px;
-    font-weight: 600;
+  background: #e9ecef;
+  color: #666;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
 }
 
 .question-points {
-    color: #f26822;
-    font-weight: 600;
-    font-size: 14px;
+  color: #f26822;
+  font-weight: 600;
+  font-size: 14px;
 }
 
 .question-text {
-    margin-bottom: 12px;
-    color: #333;
-    line-height: 1.4;
+  margin-bottom: 12px;
+  color: #333;
+  line-height: 1.4;
 }
 
 .question-options {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 8px;
-    margin-bottom: 12px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 8px;
+  margin-bottom: 12px;
 }
 
 .option {
-    padding: 8px;
-    background: #fff;
-    border: 1px solid #e9ecef;
-    border-radius: 4px;
-    font-size: 14px;
-    line-height: 1.3;
+  padding: 8px;
+  background: #fff;
+  border: 1px solid #e9ecef;
+  border-radius: 4px;
+  font-size: 14px;
+  line-height: 1.3;
 }
 
 .option.correct {
-    background: #d4edda;
-    border-color: #c3e6cb;
-    color: #155724;
+  background: #d4edda;
+  border-color: #c3e6cb;
+  color: #155724;
 }
 
 .question-actions {
-    display: flex;
-    gap: 8px;
+  display: flex;
+  gap: 8px;
 }
 
 .question-edit {
-    padding: 20px;
-    background: #fff;
-    border-top: 1px solid #e9ecef;
+  padding: 20px;
+  background: #fff;
+  border-top: 1px solid #e9ecef;
 }
 
 /* Формы */
 .course-form, .lesson-form, .question-form {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
 .form-row {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 16px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 16px;
 }
 
 .form-group {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .form-group label {
-    margin-bottom: 4px;
-    font-weight: 600;
-    color: #333;
+  margin-bottom: 4px;
+  font-weight: 600;
+  color: #333;
 }
 
 .form-group input,
 .form-group select,
 .form-group textarea {
-    padding: 10px 12px;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    font-size: 14px;
-    font-family: inherit;
+  padding: 10px 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+  font-family: inherit;
 }
 
 .form-group textarea {
-    resize: vertical;
-    font-family: inherit;
+  resize: vertical;
+  font-family: inherit;
 }
 
 .form-actions {
-    display: flex;
-    gap: 12px;
-    justify-content: flex-end;
-    padding-top: 16px;
-    border-top: 1px solid #eee;
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  padding-top: 16px;
+  border-top: 1px solid #eee;
 }
 
 .text-muted {
-    color: #666;
-    font-style: italic;
+  color: #666;
+  font-style: italic;
 }
 
 .text-success {
-    color: #28a745;
+  color: #28a745;
 }

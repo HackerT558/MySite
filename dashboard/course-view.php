@@ -225,19 +225,19 @@ $completedLessons = array_filter($lessons, function($lesson) {
                             <div class="stat-label">Всего попыток</div>
                         </div>
                         <div class="stat-box">
-                            <div class="stat-value" style="color: #21808D;">
+                            <div class="stat-value">
                                 <?= count(array_filter($testHistory, fn($t) => $t['passed'])) ?>
                             </div>
                             <div class="stat-label">Успешных</div>
                         </div>
                         <div class="stat-box">
-                            <div class="stat-value" style="color: #C0152F;">
+                            <div class="stat-value">
                                 <?= count(array_filter($testHistory, fn($t) => !$t['passed'])) ?>
                             </div>
                             <div class="stat-label">Не пройдено</div>
                         </div>
                         <div class="stat-box">
-                            <div class="stat-value" style="color: #21808D;">
+                            <div class="stat-value">
                                 <?= max(array_map(fn($t) => $t['percentage'], $testHistory)) ?? 0 ?>%
                             </div>
                             <div class="stat-label">Лучший результат</div>
@@ -304,7 +304,7 @@ $completedLessons = array_filter($lessons, function($lesson) {
                                 <div class="attempt-rank">Попытка #<?= count($testHistory) - $index ?></div>
                                 <?php endif; ?>
                                 <?php if ($isLatest): ?>
-                                <div class="attempt-rank" style="background: rgba(33, 128, 141, 0.15); color: #21808D;">
+                                <div class="attempt-rank" style="background: rgba(242, 104, 34, 0.12); color: #f26822;">
                                     Последняя
                                 </div>
                                 <?php endif; ?>
@@ -315,7 +315,7 @@ $completedLessons = array_filter($lessons, function($lesson) {
                     </div>
 
                     <!-- Примечание -->
-                    <div style="margin-top: 20px; padding: 12px 16px; background: rgba(33, 128, 141, 0.08); border-left: 4px solid #21808D; border-radius: 4px;">
+                    <div style="margin-top: 20px; padding: 12px 16px; background: rgba(242, 104, 34, 0.12); border-left: 4px solid #f26822; border-radius: 4px;">
                         <p style="margin: 0; color: #626C71; font-size: 13px;">
                             <strong>ℹ️ Примечание:</strong> Для успешного завершения курса необходимо набрать минимум <strong><?= $course['passing_score'] ?>%</strong> на тесте.
                         </p>
