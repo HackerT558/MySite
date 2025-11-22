@@ -58,46 +58,48 @@ $active = 'contacts';
     <?php if (empty($people)): ?>
       <div class="empty">Ничего не найдено</div>
     <?php else: ?>
-      <table class="contacts-list">
-        <thead>
-          <tr>
-            <th>Сотрудник</th>
-            <th>Должность</th>
-            <th>Телефон</th>
-            <th>Email</th>
-          </tr>
-        </thead>
-        <tbody>
-        <?php foreach ($people as $p):
-          $nameParts = array_filter([$p['last_name'], $p['first_name'], $p['middle_name']]);
-          $fullName  = !empty($nameParts) ? implode(' ', $nameParts) : 'Без имени';
-          $avatarUrl = avatar_url($p['avatar'] ?? null);
-          $phone     = $p['phone'] ?: '—';
-          $email     = $p['email'] ?: '—';
-          $position  = $p['position'] ?: '—';
-        ?>
-          <tr>
-            <td>
-              <div class="contact-row">
-                <img class="contact-avatar" src="<?= $avatarUrl ?>" alt="">
-                <div>
-                  <div class="contact-name"><?= htmlspecialchars($fullName, ENT_QUOTES) ?></div>
+      <div class="table-wrapper">
+        <table class="contacts-list">
+          <thead>
+            <tr>
+              <th>Сотрудник</th>
+              <th>Должность</th>
+              <th>Телефон</th>
+              <th>Email</th>
+            </tr>
+          </thead>
+          <tbody>
+          <?php foreach ($people as $p):
+            $nameParts = array_filter([$p['last_name'], $p['first_name'], $p['middle_name']]);
+            $fullName  = !empty($nameParts) ? implode(' ', $nameParts) : 'Без имени';
+            $avatarUrl = avatar_url($p['avatar'] ?? null);
+            $phone     = $p['phone'] ?: '—';
+            $email     = $p['email'] ?: '—';
+            $position  = $p['position'] ?: '—';
+          ?>
+            <tr>
+              <td>
+                <div class="contact-row">
+                  <img class="contact-avatar" src="<?= $avatarUrl ?>" alt="">
+                  <div>
+                    <div class="contact-name"><?= htmlspecialchars($fullName, ENT_QUOTES) ?></div>
+                  </div>
                 </div>
-              </div>
-            </td>
-            <td class="contact-meta"><?= htmlspecialchars($position, ENT_QUOTES) ?></td>
-            <td class="contact-meta"><?= htmlspecialchars($phone, ENT_QUOTES) ?></td>
-            <td class="contact-meta">
-              <?php if ($email !== '—'): ?>
-                <a href="mailto:<?= htmlspecialchars($email, ENT_QUOTES) ?>"><?= htmlspecialchars($email, ENT_QUOTES) ?></a>
-              <?php else: ?>
-                —
-              <?php endif; ?>
-            </td>
-          </tr>
-        <?php endforeach; ?>
-        </tbody>
-      </table>
+              </td>
+              <td class="contact-meta"><?= htmlspecialchars($position, ENT_QUOTES) ?></td>
+              <td class="contact-meta"><?= htmlspecialchars($phone, ENT_QUOTES) ?></td>
+              <td class="contact-meta">
+                <?php if ($email !== '—'): ?>
+                  <a href="mailto:<?= htmlspecialchars($email, ENT_QUOTES) ?>"><?= htmlspecialchars($email, ENT_QUOTES) ?></a>
+                <?php else: ?>
+                  —
+                <?php endif; ?>
+              </td>
+            </tr>
+          <?php endforeach; ?>
+          </tbody>
+        </table>
+      </div>
     <?php endif; ?>
   </div>
 </div>

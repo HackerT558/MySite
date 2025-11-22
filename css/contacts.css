@@ -1,21 +1,552 @@
-.contacts-wrap{max-width:1100px;margin:20px auto;padding:0 16px}
-.contacts-card{background:#fff;border-radius:12px;box-shadow:0 4px 16px rgba(0,0,0,0.08);padding:18px}
-.contacts-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
-.contacts-head h2{margin:0;font-size:22px;color:#222}
-.search-bar{display:flex;gap:10px;margin-bottom:12px}
-.search-bar input[type="text"]{flex:1;padding:10px 12px;border:1px solid #e5e5e5;border-radius:8px;background:#fff;font-size:14px}
-.search-bar button{padding:10px 14px;border:none;border-radius:8px;background:#f26822;color:#fff;font-weight:600;cursor:pointer}
-.search-bar button:hover{background:#d45915}
-.search-bar .btn-gray{background:#e8edf3;color:#333}
-.search-bar .btn-gray:hover{background:#dbe3ec}
+.contacts-wrap {
+  max-width: 1100px;
+  margin: 20px auto;
+  padding: 0 16px;
+}
+
+.contacts-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  padding: 18px;
+}
+
+.contacts-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.contacts-head h2 {
+  margin: 0;
+  font-size: 22px;
+  color: #222;
+}
+
+.search-bar {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.search-bar input[type="text"] {
+  flex: 1;
+  min-width: 150px;
+  padding: 10px 12px;
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
+  background: #fff;
+  font-size: 14px;
+}
+
+.search-bar button {
+  padding: 10px 14px;
+  border: none;
+  border-radius: 8px;
+  background: #f26822;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.search-bar button:hover {
+  background: #d45915;
+}
+
+.search-bar .btn-gray {
+  background: #e8edf3;
+  color: #333;
+}
+
+.search-bar .btn-gray:hover {
+  background: #dbe3ec;
+}
+
+/* Контейнер для таблицы с горизонтальной прокруткой */
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-radius: 12px;
+}
 
 /* Список контактов */
-.contacts-list{width:100%;border-collapse:collapse;background:#fff;border:1px solid #eef1f5;border-radius:12px;overflow:hidden}
-.contacts-list thead th{background:#f7f8fa;color:#555;font-weight:600;text-align:left;padding:12px 14px;border-bottom:1px solid #eef1f5}
-.contacts-list tbody td{padding:12px 14px;border-bottom:1px solid #f1f3f6;color:#333}
-.contacts-list tbody tr:hover{background:#fafafa}
-.contact-row{display:flex;align-items:center;gap:10px}
-.contact-avatar{width:36px;height:36px;border-radius:50%;object-fit:cover;object-position:center;background:#e8edf3;border:1px solid #e1e6ec}
-.contact-name{font-weight:700;color:#222}
-.contact-meta{font-size:14px;color:#555}
-.empty{padding:18px;color:#777;text-align:center}
+
+.contacts-list {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border: 1px solid #eef1f5;
+  border-radius: 12px;
+  overflow: hidden;
+  font-size: 14px;
+  min-width: 600px;
+}
+
+.contacts-list thead th {
+  background: #f7f8fa;
+  color: #555;
+  font-weight: 600;
+  text-align: left;
+  padding: 12px 14px;
+  border-bottom: 1px solid #eef1f5;
+  cursor: pointer;
+  transition: background 0.2s;
+  white-space: nowrap;
+}
+
+.contacts-list thead th:hover {
+  background: #eef1f5;
+}
+
+.contacts-list tbody td {
+  padding: 12px 14px;
+  border-bottom: 1px solid #f1f3f6;
+  color: #333;
+  white-space: nowrap;
+}
+
+.contacts-list tbody tr:hover {
+  background: #fafafa;
+}
+
+.contact-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.contact-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
+  background: #e8edf3;
+  border: 1px solid #e1e6ec;
+  flex-shrink: 0;
+}
+
+.contact-name {
+  font-weight: 700;
+  color: #222;
+}
+
+.contact-meta {
+  font-size: 13px;
+  color: #555;
+}
+
+.empty {
+  padding: 18px;
+  color: #777;
+  text-align: center;
+}
+
+/* ==========================================
+   МЕДИА-ЗАПРОСЫ ДЛЯ АДАПТИВНОСТИ
+   ========================================== */
+
+/* 1024px и ниже (планшеты) */
+@media (max-width: 1024px) {
+  .contacts-wrap {
+    margin: 16px auto;
+    padding: 0 12px;
+  }
+
+  .contacts-card {
+    padding: 16px;
+    border-radius: 10px;
+  }
+
+  .contacts-head {
+    margin-bottom: 12px;
+  }
+
+  .contacts-head h2 {
+    font-size: 20px;
+  }
+
+  .search-bar {
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+
+  .search-bar input[type="text"] {
+    padding: 9px 10px;
+    font-size: 13px;
+  }
+
+  .search-bar button {
+    padding: 9px 12px;
+    font-size: 13px;
+  }
+
+  .table-wrapper {
+    border-radius: 10px;
+  }
+
+  .contacts-list {
+    border-radius: 10px;
+  }
+
+  .contacts-list thead th {
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+
+  .contacts-list tbody td {
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+
+  .contact-avatar {
+    width: 32px;
+    height: 32px;
+  }
+
+  .contact-meta {
+    font-size: 12px;
+  }
+}
+
+/* 768px и ниже (большие смартфоны, средние планшеты) */
+@media (max-width: 768px) {
+  .contacts-wrap {
+    margin: 12px auto;
+    padding: 0 10px;
+  }
+
+  .contacts-card {
+    padding: 14px;
+    border-radius: 10px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+  }
+
+  .contacts-head {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 12px;
+    gap: 10px;
+  }
+
+  .contacts-head h2 {
+    font-size: 18px;
+    margin-bottom: 8px;
+  }
+
+  .search-bar {
+    width: 100%;
+    gap: 6px;
+    margin-bottom: 12px;
+  }
+
+  .search-bar input[type="text"] {
+    padding: 8px 10px;
+    font-size: 12px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .search-bar button {
+    padding: 8px 10px;
+    font-size: 12px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .table-wrapper {
+    border-radius: 10px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .table-wrapper::-webkit-scrollbar {
+    height: 6px;
+  }
+
+  .table-wrapper::-webkit-scrollbar-track {
+    background: #f0f0f0;
+    border-radius: 10px;
+  }
+
+  .table-wrapper::-webkit-scrollbar-thumb {
+    background: #d0d0d0;
+    border-radius: 10px;
+  }
+
+  .table-wrapper::-webkit-scrollbar-thumb:hover {
+    background: #b0b0b0;
+  }
+
+  .contacts-list {
+    font-size: 12px;
+    box-shadow: none;
+    border-radius: 0;
+    min-width: 650px;
+  }
+
+  .contacts-list thead th {
+    padding: 10px 8px;
+    font-size: 12px;
+    background: #f7f8fa;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+
+  .contacts-list tbody td {
+    padding: 10px 8px;
+    font-size: 12px;
+  }
+
+  .contact-avatar {
+    width: 30px;
+    height: 30px;
+  }
+
+  .contact-name {
+    font-size: 13px;
+  }
+
+  .contact-meta {
+    font-size: 11px;
+  }
+
+  .empty {
+    padding: 12px;
+    font-size: 12px;
+  }
+}
+
+/* 425px и ниже (маленькие смартфоны) */
+@media (max-width: 425px) {
+  .contacts-wrap {
+    margin: 10px auto;
+    padding: 0 8px;
+  }
+
+  .contacts-card {
+    padding: 12px;
+    border-radius: 8px;
+  }
+
+  .contacts-head h2 {
+    font-size: 16px;
+  }
+
+  .search-bar {
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 10px;
+  }
+
+  .search-bar input[type="text"] {
+    width: 100%;
+    padding: 7px 8px;
+    font-size: 11px;
+    box-sizing: border-box;
+  }
+
+  .search-bar button {
+    width: 100%;
+    padding: 7px 8px;
+    font-size: 11px;
+  }
+
+  .table-wrapper {
+    border-radius: 8px;
+  }
+
+  .table-wrapper::-webkit-scrollbar {
+    height: 5px;
+  }
+
+  .table-wrapper::-webkit-scrollbar-thumb {
+    background: #c0c0c0;
+    border-radius: 5px;
+  }
+
+  .contacts-list {
+    font-size: 11px;
+    min-width: 600px;
+  }
+
+  .contacts-list thead th {
+    padding: 8px 6px;
+    font-size: 11px;
+  }
+
+  .contacts-list tbody td {
+    padding: 8px 6px;
+    font-size: 11px;
+  }
+
+  .contact-avatar {
+    width: 28px;
+    height: 28px;
+  }
+
+  .contact-row {
+    gap: 6px;
+  }
+
+  .contact-name {
+    font-size: 12px;
+  }
+
+  .contact-meta {
+    font-size: 10px;
+  }
+
+  .empty {
+    padding: 10px;
+    font-size: 11px;
+  }
+}
+
+/* 375px и ниже (iPhone SE, маленькие устройства) */
+@media (max-width: 375px) {
+  .contacts-wrap {
+    margin: 8px auto;
+    padding: 0 6px;
+  }
+
+  .contacts-card {
+    padding: 10px;
+    border-radius: 6px;
+  }
+
+  .contacts-head h2 {
+    font-size: 15px;
+    margin-bottom: 8px;
+  }
+
+  .search-bar {
+    gap: 5px;
+    margin-bottom: 8px;
+  }
+
+  .search-bar input[type="text"] {
+    padding: 6px 6px;
+    font-size: 10px;
+  }
+
+  .search-bar button {
+    padding: 6px 6px;
+    font-size: 10px;
+  }
+
+  .table-wrapper {
+    border-radius: 6px;
+  }
+
+  .table-wrapper::-webkit-scrollbar {
+    height: 4px;
+  }
+
+  .contacts-list {
+    font-size: 10px;
+    min-width: 550px;
+  }
+
+  .contacts-list thead th {
+    padding: 6px 4px;
+    font-size: 10px;
+  }
+
+  .contacts-list tbody td {
+    padding: 6px 4px;
+    font-size: 10px;
+  }
+
+  .contact-avatar {
+    width: 26px;
+    height: 26px;
+  }
+
+  .contact-name {
+    font-size: 11px;
+  }
+
+  .contact-meta {
+    font-size: 9px;
+  }
+
+  .empty {
+    padding: 8px;
+    font-size: 10px;
+  }
+}
+
+/* 320px (очень маленькие устройства) */
+@media (max-width: 320px) {
+  .contacts-wrap {
+    margin: 6px auto;
+    padding: 0 4px;
+  }
+
+  .contacts-card {
+    padding: 8px;
+    border-radius: 6px;
+  }
+
+  .contacts-head h2 {
+    font-size: 14px;
+  }
+
+  .search-bar {
+    gap: 4px;
+    margin-bottom: 6px;
+  }
+
+  .search-bar input[type="text"] {
+    padding: 5px 4px;
+    font-size: 9px;
+  }
+
+  .search-bar button {
+    padding: 5px 4px;
+    font-size: 9px;
+  }
+
+  .table-wrapper {
+    border-radius: 6px;
+  }
+
+  .contacts-list {
+    font-size: 9px;
+    min-width: 500px;
+  }
+
+  .contacts-list thead th {
+    padding: 4px 2px;
+    font-size: 9px;
+  }
+
+  .contacts-list tbody td {
+    padding: 4px 2px;
+    font-size: 9px;
+  }
+
+  .contact-avatar {
+    width: 24px;
+    height: 24px;
+  }
+
+  .contact-name {
+    font-size: 9px;
+  }
+
+  .contact-meta {
+    font-size: 8px;
+  }
+
+  .empty {
+    padding: 6px;
+    font-size: 9px;
+  }
+}
