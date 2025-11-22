@@ -113,9 +113,6 @@ $active = 'schedule';
             <strong>Роль:</strong> 
             <span class="user-role-badge"><?= htmlspecialchars($userRole) ?></span>
           </div>
-          <div class="user-detail">
-            <a href="../auth/logout.php" class="btn btn-gray" style="display:inline-block; margin-top: 8px;">Выйти</a>
-          </div>
         </div>
         <?php if ($progressPercent > 0): ?>
           <div class="progress-section">
