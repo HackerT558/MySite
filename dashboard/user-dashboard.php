@@ -120,7 +120,7 @@ $active = 'schedule';
         <?php if ($progressPercent > 0): ?>
           <div class="progress-section">
             <div class="progress-ring">
-              <svg width="80" height="80" viewBox="0 0 80 80">
+              <svg width="100%" height="100%" viewBox="0 0 80 80">
                 <circle cx="40" cy="40" r="36" stroke="#f1f3f6" stroke-width="8" fill="none"/>
                 <circle cx="40" cy="40" r="36" stroke="#f26822" stroke-width="8" fill="none" 
                         stroke-dasharray="226.2" stroke-dashoffset="<?= 226.2 - (226.2 * $progressPercent / 100) ?>"
