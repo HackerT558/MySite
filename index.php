@@ -86,7 +86,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       </div>
     </section>
     <footer>
-      <a target="_blank" href="https://cdn.dodostatic.net/files/docs/saas_dodopizzaru_ru.pdf" class="agree">Пользовательское соглашение</a>
+      <a target="_blank" href="#" class="agree">Пользовательское соглашение</a>
     </footer>
   </div>
 </body>
