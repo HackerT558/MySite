@@ -229,6 +229,8 @@ class PizzaGame {
         this.render();
     }
     
+
+    
     startGame() {
         this.gameState = 'playing';
         this.score = 0;
