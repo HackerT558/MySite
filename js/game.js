@@ -297,7 +297,7 @@ class PizzaGame {
     
     spawnObjects(deltaTime) {
         // Используем время для увеличения сложности
-        const difficultyLevel = Math.floor(this.survivalTime / 60) + 10;
+        const difficultyLevel = Math.floor(this.survivalTime / 60) + 1;
         const currentSpawnInterval = Math.max(400, this.baseDifficulty - (difficultyLevel - 1) * 50);
         
         this.spawnTimer += deltaTime;
@@ -359,15 +359,12 @@ class PizzaGame {
                 if (obj.type === 'pizza') {
                     this.score += 10;
                     this.showFloatingText('+10', obj.x, obj.y, '#f26822');
-                    this.playSound('catch');
                 } else if (obj.type === 'bomb') {
                     this.loseLife();
                     this.showFloatingText('-1 ❤️', obj.x, obj.y, '#ff5459');
-                    this.playSound('hit');
                 } else if (obj.type === 'heart') {
                     this.gainLife();
                     this.showFloatingText('+1 ❤️', obj.x, obj.y, '#ff5459');
-                    this.playSound('catch');
                 }
                 
                 this.updateUI();
@@ -466,46 +463,6 @@ class PizzaGame {
             startTime: Date.now()
         });
     }
-    
-    playSound(type) {
-        if (!this.soundEnabled) return;
-        
-        const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-        const now = audioContext.currentTime;
-        
-        if (type === 'catch') {
-            const osc = audioContext.createOscillator();
-            const gain = audioContext.createGain();
-            
-            osc.connect(gain);
-            gain.connect(audioContext.destination);
-            
-            osc.frequency.setValueAtTime(800, now);
-            osc.frequency.exponentialRampToValueAtTime(1200, now + 0.1);
-            
-            gain.gain.setValueAtTime(0.1, now);
-            gain.gain.exponentialRampToValueAtTime(0.01, now + 0.1);
-            
-            osc.start(now);
-            osc.stop(now + 0.1);
-        } else if (type === 'hit') {
-            const osc = audioContext.createOscillator();
-            const gain = audioContext.createGain();
-            
-            osc.connect(gain);
-            gain.connect(audioContext.destination);
-            
-            osc.frequency.setValueAtTime(200, now);
-            osc.frequency.exponentialRampToValueAtTime(100, now + 0.2);
-            
-            gain.gain.setValueAtTime(0.15, now);
-            gain.gain.exponentialRampToValueAtTime(0.01, now + 0.2);
-            
-            osc.start(now);
-            osc.stop(now + 0.2);
-        }
-    }
-    
     updateUI() {
         const scoreDisplay = document.getElementById('scoreDisplay');
         const timerDisplay = document.getElementById('timerDisplay');

@@ -48,7 +48,7 @@ a {
   transition: color 150ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-a:hover { color: #d45915; }
+a:hover { color: white; }
 
 code, pre {
   font-family: "Berkeley Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;

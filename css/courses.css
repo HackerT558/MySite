@@ -41,7 +41,7 @@ color: #f26822;
 text-decoration: none;
 transition: color 150ms cubic-bezier(0.16, 1, 0.3, 1);
 }
-a:hover { color: #d45915; }
+a:hover { color: white; }
 code, pre {
 font-family: "Berkeley Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 font-size: 13.3px;
@@ -810,6 +810,10 @@ background: #d45915;
 border-color: #d45915;
 transform: translateX(4px);
 box-shadow: 0 10px 15px -3px rgba(242, 104, 34, 0.2);
+}
+.nav-btn:hover{
+    color: #d45915;
+    text-decoration: underline;
 }
 .lesson-nav-btn--next:active {
 background: #c14f12;
