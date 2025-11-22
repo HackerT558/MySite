@@ -1,21 +1,529 @@
 /* Header (cabinet) */
-.cab-header{background:#22262b;color:#fff;padding:10px 0}
-.cab-header .wrap{max-width:1100px;margin:0 auto;padding:0 16px;display:flex;align-items:center;justify-content:space-between;gap:16px}
-.cab-brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.2px}
-.cab-brand .crumbs{color:#aab2bd;font-weight:500}
-.cab-user{position:relative;display:flex;align-items:center;gap:10px;cursor:pointer;flex-direction:row-reverse}
-.cab-user .avatar{width:36px;height:36px;border-radius:50%;object-fit:cover;object-position:center;background:#3a414a;border:1px solid #2e343b}
-.cab-user .name{font-weight:600}
-.cab-nav{background:#2b3036;border-bottom:1px solid #22262b}
-.cab-nav .tabs{max-width:1100px;margin:0 auto;padding:0 16px;display:flex;gap:10px}
-.cab-nav .tab{display:inline-block;color:#cbd2da;padding:12px 14px;text-decoration:none;border-bottom:3px solid transparent;font-weight:600}
-.cab-nav .tab:hover{color:#fff}
-.cab-nav .tab.active{color:#fff;border-bottom-color:#f26822}
-.cab-nav .spacer{flex:1}
+
+.cab-header {
+  background: #22262b;
+  color: #fff;
+  padding: 10px 0;
+}
+
+.cab-header .wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.cab-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  letter-spacing: .2px;
+}
+
+.cab-brand .crumbs {
+  color: #aab2bd;
+  font-weight: 500;
+}
+
+.cab-user {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  flex-direction: row-reverse;
+}
+
+.cab-user .avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
+  background: #3a414a;
+  border: 1px solid #2e343b;
+  transition: transform 0.2s;
+}
+
+.cab-user:hover .avatar {
+  transform: scale(1.05);
+}
+
+.cab-user .name {
+  font-weight: 600;
+}
+
+.cab-nav {
+  background: #2b3036;
+  border-bottom: 1px solid #22262b;
+}
+
+.cab-nav .tabs {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 16px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.cab-nav .tab {
+  display: inline-block;
+  color: #cbd2da;
+  padding: 12px 14px;
+  text-decoration: none;
+  border-bottom: 3px solid transparent;
+  font-weight: 600;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.cab-nav .tab:hover {
+  color: #fff;
+}
+
+.cab-nav .tab.active {
+  color: #fff;
+  border-bottom-color: #f26822;
+}
+
+.cab-nav .spacer {
+  flex: 1;
+}
+
+.user-dropdown-header {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  padding: 12px 15px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.user-dropdown-header .dropdown-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
+  background: #3a414a;
+  border: 1px solid #2e343b;
+  margin-bottom: 8px;
+}
+
+.user-dropdown-header .dropdown-name {
+  font-weight: 600;
+  color: #333;
+  font-size: 14px;
+  text-align: center;
+}
 
 /* User dropdown */
-.user-dropdown{position:absolute;top:100%;right:0;background:#fff;border:1px solid #e0e0e0;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,0.15);min-width:140px;z-index:1000;display:none}
-.user-dropdown.show{display:block}
-.user-dropdown a{display:block;padding:10px 15px;color:#333;text-decoration:none;font-weight:500;font-size:14px;border-bottom:1px solid #f0f0f0;border-radius:6px;margin:4px}
-.user-dropdown a:last-child{border-bottom:none}
-.user-dropdown a:hover{background:#f5f5f5;color:#f26822}
+
+.user-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  min-width: 140px;
+  z-index: 1000;
+  display: none;
+  margin-top: 4px;
+}
+
+.user-dropdown.show {
+  display: block;
+}
+
+.user-dropdown a {
+  display: block;
+  padding: 10px 15px;
+  color: #333;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 14px;
+  border-bottom: 1px solid #f0f0f0;
+  border-radius: 6px;
+  margin: 4px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.user-dropdown a:last-child {
+  border-bottom: none;
+}
+
+.user-dropdown a:hover {
+  background: #f5f5f5;
+  color: #f26822;
+}
+
+/* Кнопка меню гамбургер */
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 8px;
+  transition: color 0.2s;
+  line-height: 1;
+}
+
+.nav-toggle:hover {
+  color: #f26822;
+}
+
+.nav-toggle.active {
+  color: #f26822;
+}
+
+/* Выпадающее меню навигации - как dropdown */
+.nav-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: #2b3036;
+  border: 1px solid #22262b;
+  display: none;
+  flex-direction: column;
+  z-index: 999;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.nav-dropdown-menu.show {
+  display: flex;
+}
+
+.nav-dropdown-menu a {
+  display: block;
+  padding: 12px 16px;
+  color: #cbd2da;
+  text-decoration: none;
+  font-weight: 600;
+  border-bottom: 1px solid #22262b;
+  transition: background 0.2s, color 0.2s;
+}
+
+.nav-dropdown-menu a:last-child {
+  border-bottom: none;
+}
+
+.nav-dropdown-menu a:hover {
+  background: rgba(242, 104, 34, 0.1);
+  color: #fff;
+}
+
+.nav-dropdown-menu a.active {
+  background: rgba(242, 104, 34, 0.15);
+  color: #f26822;
+}
+
+/* ==========================================
+   МЕДИА-ЗАПРОСЫ ДЛЯ АДАПТИВНОСТИ
+   ========================================== */
+
+/* 1024px и ниже (планшеты) */
+@media (max-width: 1024px) {
+  .cab-header .wrap {
+    max-width: 100%;
+    padding: 0 12px;
+    gap: 12px;
+  }
+
+  .cab-brand {
+    gap: 8px;
+    font-size: 0.95rem;
+  }
+
+  .cab-user {
+    gap: 8px;
+  }
+
+  .cab-user .avatar {
+    width: 32px;
+    height: 32px;
+  }
+
+  .cab-user .name {
+    font-size: 0.95rem;
+  }
+
+  .cab-nav .tabs {
+    max-width: 100%;
+    padding: 0 12px;
+    gap: 8px;
+  }
+
+  .cab-nav .tab {
+    padding: 10px 12px;
+    font-size: 0.95rem;
+  }
+
+  .user-dropdown {
+    min-width: 130px;
+  }
+
+  .user-dropdown a {
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+}
+
+/* 768px и ниже (большие смартфоны) */
+@media (max-width: 768px) {
+  .cab-header {
+    padding: 8px 0;
+  }
+
+  .cab-header .wrap {
+    max-width: 100%;
+    padding: 0 10px;
+    gap: 10px;
+  }
+
+  .cab-brand {
+    gap: 6px;
+    font-size: 0.9rem;
+  }
+
+  .cab-brand .crumbs {
+    font-size: 0.85rem;
+  }
+
+  .cab-user {
+    gap: 6px;
+    margin-left: auto;
+  }
+
+  .cab-user .avatar {
+    width: 30px;
+    height: 30px;
+  }
+
+  .cab-user .name {
+    font-size: 0.9rem;
+  }
+
+  .cab-nav .tabs {
+    max-width: 100%;
+    padding: 0 10px;
+    gap: 6px;
+  }
+
+  .cab-nav .tab {
+    padding: 10px 10px;
+    font-size: 0.9rem;
+  }
+
+  .nav-toggle {
+    display: none;
+  }
+
+  .user-dropdown {
+    min-width: 120px;
+  }
+
+  .user-dropdown a {
+    padding: 8px 10px;
+    font-size: 12px;
+  }
+}
+
+/* 425px и ниже (маленькие смартфоны) - ВЫПАДАЮЩЕЕ МЕНЮ */
+@media (max-width: 425px) {
+  .cab-header {
+    padding: 6px 0;
+    position: relative;
+  }
+
+  .cab-header .wrap {
+    padding: 0 8px;
+    gap: 8px;
+  }
+
+  .cab-brand {
+    gap: 4px;
+    font-size: 0.85rem;
+    flex: 1;
+  }
+
+  .cab-brand .crumbs {
+    font-size: 0.8rem;
+  }
+
+  .cab-user {
+    gap: 4px;
+  }
+
+  .cab-user .avatar {
+    width: 28px;
+    height: 28px;
+  }
+
+  .cab-user .name {
+    display: none;
+  }
+
+  /* Показываем кнопку меню */
+  .nav-toggle {
+    display: block;
+  }
+
+  /* Скрываем обычное меню навигации */
+  .cab-nav {
+    display: none;
+  }
+
+  /* Показываем выпадающее меню */
+  .nav-dropdown-menu {
+    position: absolute;
+    top: calc(100%);
+    left: 0;
+    right: auto;
+    width: 100%;
+  }
+
+  .nav-dropdown-menu a {
+    padding: 10px 14px;
+    font-size: 0.85rem;
+  }
+
+  .user-dropdown {
+    min-width: 100px;
+    top: calc(100% + 8px);
+  }
+
+  .user-dropdown a {
+    padding: 8px 12px;
+    font-size: 11px;
+  }
+
+  .user-dropdown-header {
+    display: flex;
+  }
+}
+
+/* 375px и ниже (iPhone SE) */
+@media (max-width: 375px) {
+  .cab-header {
+    padding: 4px 0;
+  }
+
+  .cab-header .wrap {
+    padding: 0 6px;
+    gap: 4px;
+  }
+
+  .cab-brand {
+    gap: 3px;
+    font-size: 0.8rem;
+    letter-spacing: 0;
+  }
+
+  .cab-brand .crumbs {
+    font-size: 0.75rem;
+  }
+
+  .cab-user {
+    gap: 2px;
+  }
+
+  .cab-user .avatar {
+    width: 26px;
+    height: 26px;
+  }
+
+  .cab-user .name {
+    display: none;
+  }
+
+  .nav-toggle {
+    padding: 6px;
+    font-size: 1.3rem;
+  }
+
+  .nav-dropdown-menu {
+    min-width: 180px;
+  }
+
+  .nav-dropdown-menu a {
+    padding: 8px 12px;
+    font-size: 0.8rem;
+  }
+
+  .user-dropdown {
+    min-width: 90px;
+    right: 0;
+  }
+
+  .user-dropdown a {
+    padding: 6px 10px;
+    font-size: 10px;
+    margin: 2px;
+  }
+}
+
+/* 320px (очень маленькие устройства) */
+@media (max-width: 320px) {
+  .cab-header {
+    padding: 3px 0;
+  }
+
+  .cab-header .wrap {
+    padding: 0 4px;
+    gap: 2px;
+  }
+
+  .cab-brand {
+    gap: 2px;
+    font-size: 0.75rem;
+  }
+
+  .cab-brand .crumbs {
+    font-size: 0.7rem;
+  }
+
+  .cab-user {
+    gap: 2px;
+  }
+
+  .cab-user .avatar {
+    width: 24px;
+    height: 24px;
+  }
+
+  .cab-user .name {
+    display: none;
+  }
+
+  .nav-toggle {
+    padding: 4px;
+    font-size: 1.2rem;
+  }
+
+  .nav-dropdown-menu {
+    min-width: 160px;
+  }
+
+  .nav-dropdown-menu a {
+    padding: 6px 10px;
+    font-size: 0.75rem;
+  }
+
+  .user-dropdown {
+    min-width: 80px;
+  }
+
+  .user-dropdown a {
+    padding: 5px 8px;
+    font-size: 9px;
+    margin: 1px;
+  }
+}

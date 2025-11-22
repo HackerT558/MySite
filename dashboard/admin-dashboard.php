@@ -257,6 +257,7 @@ $positions = ['Стажер','Пиццамейкер','Кассир','Униве
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Управление пользователями</title>
     <link rel="stylesheet" href="../css/app-base.css">
     <link rel="stylesheet" href="../css/app-admin.css">

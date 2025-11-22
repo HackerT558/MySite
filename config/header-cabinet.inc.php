@@ -46,20 +46,42 @@ $active = $active ?? '';
 <link rel="stylesheet" href="../css/cabinet-header.css">
 <header class="cab-header">
   <div class="wrap">
+    <!-- КНОПКА МЕНЮ ГАМБУРГЕР для мобилей -->
+    <button class="nav-toggle" onclick="toggleNavDropdown()" aria-label="Меню навигации">
+      <span>☰</span>
+    </button>
+    
     <div class="cab-brand">
       <span>Dada Pizza</span>
       <span class="crumbs">→ Кабинет сотрудника</span>
     </div>
+    
     <div class="cab-user" onclick="toggleUserDropdown()">
       <img class="avatar" src="<?= $avatarUrl ?>" alt="avatar">
       <span class="name"><?= $userFullName ?></span>
       <div class="user-dropdown" id="userDropdown">
+        <div class="user-dropdown-header">
+          <img class="dropdown-avatar" src="<?= $avatarUrl ?>" alt="avatar">
+          <span class="dropdown-name"><?= $userFullName ?></span>
+        </div>
         <a href="profile.php">Профиль</a>
         <a href="../auth/logout.php">Выйти</a>
       </div>
     </div>
   </div>
+  
+  <!-- ВЫПАДАЮЩЕЕ МЕНЮ ДЛЯ МОБИЛЕЙ -->
+  <div class="nav-dropdown-menu" id="navDropdown">
+    <a class="<?= $active==='schedule'?'active':'' ?>" href="user-dashboard.php">Главная</a>
+    <a class="<?= $active==='contacts'?'active':'' ?>" href="contacts.php">Контакты</a>
+    <a href="courses.php" class="<?= $active === 'courses' ? 'active' : '' ?>">Курсы</a>
+    <a class="<?= $active==='game'?'active':'' ?>" href="game.php">Игра</a>
+    <?php if ($currentLevel >= $roleLevelMap['manager-top']) : ?>
+      <a class="<?= $active==='manage'?'active':'' ?>" href="admin-dashboard.php">Управление</a>
+    <?php endif; ?>
+  </div>
 </header>
+
 <nav class="cab-nav">
   <div class="tabs">
     <a class="tab <?= $active==='schedule'?'active':'' ?>" href="user-dashboard.php">Главная</a>
@@ -76,13 +98,59 @@ $active = $active ?? '';
 </nav>
 
 <script>
+// Управление меню пользователя
 function toggleUserDropdown() {
   const dropdown = document.getElementById('userDropdown');
+  const navDropdown = document.getElementById('navDropdown');
+  
   dropdown.classList.toggle('show');
+  navDropdown.classList.remove('show');
 }
+
+// Управление выпадающим меню навигации (мобили)
+function toggleNavDropdown() {
+  const navDropdown = document.getElementById('navDropdown');
+  const dropdown = document.getElementById('userDropdown');
+  
+  navDropdown.classList.toggle('show');
+  dropdown.classList.remove('show');
+}
+
+// Закрываем оба меню при клике вне них
 document.addEventListener('click', function(event) {
   const userBlock = event.target.closest('.cab-user');
+  const navToggle = event.target.closest('.nav-toggle');
+  const navDropdown = document.getElementById('navDropdown');
   const dropdown = document.getElementById('userDropdown');
-  if (!userBlock && dropdown) dropdown.classList.remove('show');
+  
+  // Закрываем юзер-меню если клик вне блока юзера
+  if (!userBlock && dropdown) {
+    dropdown.classList.remove('show');
+  }
+  
+  // Закрываем навигацию если клик вне кнопки меню и меню
+  if (!navToggle && navDropdown && !navDropdown.contains(event.target)) {
+    navDropdown.classList.remove('show');
+  }
+});
+
+// Закрываем навигацию при клике на ссылку
+document.querySelectorAll('.nav-dropdown-menu a').forEach(link => {
+  link.addEventListener('click', function() {
+    const navDropdown = document.getElementById('navDropdown');
+    if (navDropdown) {
+      navDropdown.classList.remove('show');
+    }
+  });
+});
+
+// Закрываем меню профиля при клике на ссылку (но не на header)
+document.querySelectorAll('.user-dropdown a').forEach(link => {
+  link.addEventListener('click', function() {
+    const dropdown = document.getElementById('userDropdown');
+    if (dropdown) {
+      dropdown.classList.remove('show');
+    }
+  });
 });
 </script>
