@@ -1,6 +1,37 @@
-/* Дополнительные стили для админских страниц: таблицы и аватары */
+/* ==========================================
+   ДОПОЛНИТЕЛЬНЫЕ СТИЛИ ДЛЯ АДМИНСКИХ СТРАНИЦ
+   ========================================== */
 
-.admin-wrap { max-width: 1000px; }
+.admin-wrap {
+  max-width: 1000px;
+}
+
+/* Таблица и прокрутка */
+
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-radius: 12px;
+}
+
+.table-wrapper::-webkit-scrollbar {
+  height: 6px;
+}
+
+.table-wrapper::-webkit-scrollbar-track {
+  background: #f0f0f0;
+  border-radius: 12px;
+}
+
+.table-wrapper::-webkit-scrollbar-thumb {
+  background: #d0d0d0;
+  border-radius: 6px;
+}
+
+.table-wrapper::-webkit-scrollbar-thumb:hover {
+  background: #b0b0b0;
+}
 
 table {
   width: 100%;
@@ -9,43 +40,131 @@ table {
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 4px 24px rgba(0,0,0,.08);
+  min-width: 700px;
 }
+
 th, td {
   padding: 12px 14px;
   border-bottom: 1px solid #eef1f5;
   font-size: 14px;
   vertical-align: top;
+  white-space: nowrap;
 }
-th { background:#f7f8fa; text-align:left; color:#555; }
-tr:last-child td { border-bottom:none; }
 
-/* Компактная таблица */
-.table-compact th, .table-compact td {
+th {
+  background: #f7f8fa;
+  text-align: left;
+  color: #555;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+th:hover {
+  background: #eef1f5;
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+tr:hover {
+  background: #fafafa;
+}
+
+.table-compact th,
+.table-compact td {
   padding: 8px 10px;
   font-size: 13px;
 }
 
-/* Сортировки */
+/* Сортировка */
+
 .th-sort {
-  color:#555;
-  text-decoration:none;
-  display:inline-flex;
-  align-items:center;
-  gap:6px;
+  color: #555;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: color 0.2s;
 }
-.th-sort .arrow { font-size:11px; opacity:.4; }
-.th-sort.active { color:#000; }
-.th-sort.active .arrow { opacity:.9; }
+
+.th-sort:hover,
+.th-sort.active {
+  color: #000;
+}
+
+.th-sort .arrow {
+  font-size: 11px;
+  opacity: .4;
+}
+
+.th-sort.active .arrow {
+  opacity: .9;
+}
 
 /* Кнопки */
-.btn { display:inline-block; background:#f26822; color:#fff; border:none; border-radius:8px; padding:10px 12px; font-size:15px; font-weight:600; cursor:pointer; text-decoration:none; transition:background .2s, transform .15s, box-shadow .2s; }
-.btn:hover { background:#d45915; transform: translateY(-1px); }
-.btn-gray  { background:#e8edf3; color:#333; }
-.btn-red   { background:#fbe6e9; color:#b00020; }
-.btn-orange{ background:#f26822; color:#fff; }
-.link-btn  { background:none; color:#f26822; border:none; padding:0; cursor:pointer; font-weight:600; }
+
+.btn {
+  display: inline-block;
+  background: #f26822;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  box-sizing: border-box;
+  transition: background .2s, transform .15s, box-shadow .2s;
+}
+
+.btn:hover {
+  background: #d45915;
+  transform: translateY(-1px);
+}
+
+.btn-gray {
+  background: #e8edf3;
+  color: #333;
+}
+
+.btn-gray:hover {
+  background: #dbe3ec;
+}
+
+.btn-red {
+  background: #fbe6e9;
+  color: #b00020;
+}
+
+.btn-red:hover {
+  background: #f5d5dc;
+}
+
+.btn-orange {
+  background: #f26822;
+  color: #fff;
+}
+
+.link-btn {
+  background: none;
+  color: #f26822;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+
+.link-btn:hover {
+  color: #d45915;
+}
 
 /* Аватары */
+
 img.avatar-sm,
 .avatar-sm {
   width: 40px;
@@ -55,6 +174,7 @@ img.avatar-sm,
   object-position: center;
   display: block;
 }
+
 .avatar-lg {
   width: 96px;
   height: 96px;
@@ -65,26 +185,774 @@ img.avatar-sm,
   border: 2px solid #eef1f5;
 }
 
-/* Карточки и утилиты */
-.card { background:#fff; padding:22px; border-radius:18px; box-shadow:0 4px 24px rgba(0,0,0,0.08); margin-bottom:18px; }
-.inline { display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
-.row-actions { display:flex; gap:8px; flex-wrap:wrap; }
-.notice { color:#0a7a2f; background:#e6f6ea; border:1px solid #b6e1c2; border-radius:8px; padding:10px 12px; margin-bottom:14px; }
-.error  { color:#b00020; background:#fde7e9; border:1px solid #f5c2c7; border-radius:8px; padding:10px 12px; margin-bottom:14px; }
+/* Карточки */
+
+.card {
+  background: #fff;
+  padding: 22px;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+  margin-bottom: 18px;
+}
+
+/* Утилиты */
+
+.inline,
+.row-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.inline {
+  gap: 10px;
+}
+
+.row-actions {
+  gap: 8px;
+}
+
+.notice,
+.error {
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin-bottom: 14px;
+  font-size: 14px;
+}
+
+.notice {
+  color: #0a7a2f;
+  background: #e6f6ea;
+  border: 1px solid #b6e1c2;
+}
+
+.error {
+  color: #b00020;
+  background: #fde7e9;
+  border: 1px solid #f5c2c7;
+}
 
 /* Модалка */
-.modal { display:none; position:fixed; inset:0; z-index:1000; background:rgba(0,0,0,.45); }
-.modal.open { display:block; }
-.modal__dialog { background:#fff; width:min(720px,92vw); margin:6vh auto; border-radius:14px; box-shadow:0 14px 48px rgba(0,0,0,.18); overflow:hidden; animation:popin .18s ease-out; }
-@keyframes popin { from{ transform:translateY(12px); opacity:.7; } to{ transform:translateY(0); opacity:1; } }
-.modal__head { padding:14px 18px; background:#f7f8fa; display:flex; justify-content:space-between; align-items:center; }
-.modal__title { margin:0; font-size:16px; font-weight:700; }
-.modal__close { border:none; background:none; font-size:22px; line-height:1; cursor:pointer; }
-.modal__body { padding:18px; }
-.modal__row { display:flex; gap:10px; flex-wrap:wrap; margin-bottom:10px; }
+
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(0,0,0,.45);
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.modal.open {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 60px;
+}
+
+.modal__dialog {
+  background: #fff;
+  width: min(720px, 92vw);
+  border-radius: 14px;
+  box-shadow: 0 14px 48px rgba(0,0,0,.18);
+  overflow: hidden;
+  animation: popin .18s ease-out;
+}
+
+@keyframes popin {
+  from {
+    transform: translateY(12px);
+    opacity: .7;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.modal__head {
+  padding: 14px 18px;
+  background: #f7f8fa;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #eef1f5;
+}
+
+.modal__title {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+  color: #222;
+}
+
+.modal__close {
+  border: none;
+  background: none;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s;
+}
+
+.modal__close:hover {
+  color: #f26822;
+}
+
+.modal__body {
+  padding: 18px;
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+.modal__row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
 .modal__row input[type="text"],
 .modal__row input[type="password"],
 .modal__row input[type="email"],
 .modal__row select,
-.modal__row input[type="file"] { padding:10px 12px; border:1px solid #e5e5e5; border-radius:8px; background:#fafafa; font-size:14px; }
-.modal__actions { display:flex; gap:10px; justify-content:flex-end; padding:14px 18px; border-top:1px solid #eef1f5; }
+.modal__row input[type="file"] {
+  padding: 10px 12px;
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
+  background: #fafafa;
+  font-size: 14px;
+  flex: 1;
+  min-width: 200px;
+  box-sizing: border-box;
+}
+
+.modal__row input:focus,
+.modal__row select:focus,
+.modal__row input[type="file"]:focus {
+  outline: none;
+  background: #fff;
+  border-color: #f26822;
+}
+
+.modal__actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  padding: 14px 18px;
+  border-top: 1px solid #eef1f5;
+  background: #fafafa;
+}
+
+/* Формы */
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="file"],
+select,
+textarea {
+  padding: 10px 12px;
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
+  background: #fafafa;
+  font-size: 14px;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="email"]:focus,
+input[type="file"]:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  background: #fff;
+  border-color: #f26822;
+  box-shadow: 0 0 0 3px rgba(242, 104, 34, 0.1);
+}
+
+.form-group {
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  font-weight: 600;
+  color: #333;
+  font-size: 14px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.form-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+
+.form-row > div {
+  flex: 1;
+  min-width: 200px;
+}
+
+.form-row > div:only-child {
+  flex: 1 1 100%;
+}
+
+/* ==========================================
+   МЕДИА-ЗАПРОСЫ
+   ========================================== */
+
+@media (max-width: 1024px) {
+  .admin-wrap {
+    max-width: 100%;
+  }
+
+  .table-wrapper {
+    border-radius: 10px;
+  }
+
+  table {
+    border-radius: 10px;
+    min-width: 700px;
+  }
+
+  th, td {
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+
+  .btn {
+    padding: 8px 10px;
+    font-size: 13px;
+  }
+
+  .card {
+    padding: 18px;
+    border-radius: 10px;
+  }
+
+  .modal__dialog {
+    width: min(600px, 92vw);
+  }
+
+  .modal__body {
+    max-height: 65vh;
+  }
+
+  .modal__row input,
+  .modal__row select,
+  .modal__row input[type="file"] {
+    padding: 9px 10px;
+    font-size: 13px;
+    min-width: 180px;
+  }
+
+  input[type="text"],
+  input[type="password"],
+  input[type="email"],
+  select,
+  input[type="file"],
+  textarea {
+    padding: 9px 10px;
+    font-size: 13px;
+  }
+
+  .form-group {
+    margin-bottom: 12px;
+  }
+
+  .form-row {
+    gap: 10px;
+  }
+
+  .form-row > div {
+    min-width: 180px;
+  }
+}
+
+@media (max-width: 768px) {
+  .admin-wrap {
+    max-width: 100%;
+  }
+
+  .table-wrapper {
+    border-radius: 10px;
+    margin: 0;
+    padding: 0;
+  }
+
+  table {
+    border-radius: 0;
+    min-width: 650px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+  }
+
+  th, td {
+    padding: 10px 8px;
+    font-size: 12px;
+  }
+
+  .btn {
+    padding: 7px 10px;
+    font-size: 12px;
+  }
+
+  .card {
+    padding: 14px;
+    border-radius: 10px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+  }
+
+  .avatar-sm {
+    width: 36px;
+    height: 36px;
+  }
+
+  .avatar-lg {
+    width: 80px;
+    height: 80px;
+  }
+
+  .inline {
+    gap: 6px;
+  }
+
+  .row-actions {
+    gap: 5px;
+  }
+
+  .modal {
+    padding: 10px;
+  }
+
+  .modal.open {
+    padding-top: 40px;
+  }
+
+  .modal__dialog {
+    width: min(90vw, 500px);
+  }
+
+  .modal__head {
+    padding: 12px 14px;
+  }
+
+  .modal__title {
+    font-size: 15px;
+  }
+
+  .modal__body {
+    padding: 14px;
+    max-height: 60vh;
+  }
+
+  .modal__row {
+    gap: 6px;
+    margin-bottom: 8px;
+  }
+
+  .modal__row input,
+  .modal__row select,
+  .modal__row input[type="file"] {
+    padding: 8px 8px;
+    font-size: 12px;
+    min-width: 160px;
+  }
+
+  .modal__actions {
+    padding: 10px 14px;
+    gap: 6px;
+  }
+
+  .notice,
+  .error {
+    padding: 8px 10px;
+    margin-bottom: 10px;
+    font-size: 12px;
+  }
+
+  input[type="text"],
+  input[type="password"],
+  input[type="email"],
+  select,
+  input[type="file"],
+  textarea {
+    padding: 8px 10px;
+    font-size: 12px;
+  }
+
+  .form-group {
+    margin-bottom: 10px;
+    gap: 6px;
+  }
+
+  .form-group label {
+    font-size: 13px;
+  }
+
+  .form-row {
+    gap: 8px;
+    flex-direction: column;
+  }
+
+  .form-row > div {
+    min-width: auto;
+    flex: 1 1 100%;
+  }
+
+  .inline,
+  .row-actions {
+    flex-direction: column;
+  }
+
+  .inline .btn,
+  .row-actions .btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 425px) {
+  .table-wrapper {
+    border-radius: 8px;
+    margin: 0;
+  }
+
+  table {
+    min-width: 600px;
+  }
+
+  th, td {
+    padding: 8px 6px;
+    font-size: 11px;
+  }
+
+  .btn {
+    padding: 6px 8px;
+    font-size: 11px;
+  }
+
+  .card {
+    padding: 12px;
+    border-radius: 8px;
+  }
+
+  .avatar-sm {
+    width: 32px;
+    height: 32px;
+  }
+
+  .avatar-lg {
+    width: 70px;
+    height: 70px;
+  }
+
+  .modal {
+    padding: 8px;
+  }
+
+  .modal.open {
+    padding-top: 30px;
+    align-items: center;
+  }
+
+  .modal__dialog {
+    width: calc(100vw - 16px);
+    max-width: 95vw;
+  }
+
+  .modal__head {
+    padding: 10px 12px;
+  }
+
+  .modal__title {
+    font-size: 14px;
+  }
+
+  .modal__body {
+    padding: 12px;
+    max-height: 55vh;
+  }
+
+  .modal__row {
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 6px;
+  }
+
+  .modal__row input,
+  .modal__row select,
+  .modal__row input[type="file"] {
+    width: 100%;
+    padding: 7px 6px;
+    font-size: 11px;
+    min-width: auto;
+  }
+
+  .modal__actions {
+    padding: 8px 12px;
+    gap: 5px;
+    flex-direction: column;
+  }
+
+  .modal__actions .btn {
+    width: 100%;
+  }
+
+  .notice,
+  .error {
+    padding: 6px 8px;
+    margin-bottom: 8px;
+    font-size: 11px;
+  }
+
+  input[type="text"],
+  input[type="password"],
+  input[type="email"],
+  select,
+  input[type="file"],
+  textarea {
+    padding: 7px 8px;
+    font-size: 11px;
+  }
+
+  .form-group {
+    margin-bottom: 8px;
+    gap: 4px;
+  }
+
+  .form-group label {
+    font-size: 12px;
+  }
+
+  .form-row {
+    gap: 6px;
+  }
+}
+
+@media (max-width: 375px) {
+  .table-wrapper {
+    border-radius: 6px;
+  }
+
+  table {
+    min-width: 550px;
+  }
+
+  th, td {
+    padding: 6px 4px;
+    font-size: 10px;
+  }
+
+  .btn {
+    padding: 5px 6px;
+    font-size: 10px;
+  }
+
+  .card {
+    padding: 10px;
+    border-radius: 6px;
+  }
+
+  .avatar-sm {
+    width: 28px;
+    height: 28px;
+  }
+
+  .avatar-lg {
+    width: 60px;
+    height: 60px;
+    border: 1px solid #eef1f5;
+  }
+
+  .modal.open {
+    padding-top: 20px;
+  }
+
+  .modal__dialog {
+    width: calc(100vw - 10px);
+    max-width: 100%;
+    border-radius: 10px;
+  }
+
+  .modal__head {
+    padding: 8px 10px;
+  }
+
+  .modal__title {
+    font-size: 13px;
+  }
+
+  .modal__body {
+    padding: 10px;
+    max-height: 50vh;
+  }
+
+  .modal__row input,
+  .modal__row select,
+  .modal__row input[type="file"] {
+    padding: 6px 4px;
+    font-size: 10px;
+  }
+
+  .modal__actions {
+    padding: 6px 10px;
+    gap: 4px;
+  }
+
+  .modal__actions .btn {
+    font-size: 9px;
+  }
+
+  .notice,
+  .error {
+    padding: 5px 6px;
+    margin-bottom: 6px;
+    font-size: 10px;
+  }
+
+  input[type="text"],
+  input[type="password"],
+  input[type="email"],
+  select,
+  input[type="file"],
+  textarea {
+    padding: 6px 6px;
+    font-size: 10px;
+  }
+
+  .form-group {
+    margin-bottom: 6px;
+    gap: 3px;
+  }
+
+  .form-group label {
+    font-size: 11px;
+  }
+
+  .form-row {
+    gap: 4px;
+  }
+}
+
+@media (max-width: 320px) {
+  .table-wrapper {
+    border-radius: 6px;
+  }
+
+  table {
+    min-width: 500px;
+  }
+
+  th, td {
+    padding: 4px 2px;
+    font-size: 9px;
+  }
+
+  .btn {
+    padding: 4px 4px;
+    font-size: 9px;
+  }
+
+  .card {
+    padding: 8px;
+    border-radius: 6px;
+  }
+
+  .avatar-sm {
+    width: 24px;
+    height: 24px;
+  }
+
+  .avatar-lg {
+    width: 50px;
+    height: 50px;
+  }
+
+  .modal__dialog {
+    width: calc(100vw - 8px);
+  }
+
+  .modal__head {
+    padding: 6px 8px;
+  }
+
+  .modal__title {
+    font-size: 12px;
+  }
+
+  .modal__body {
+    padding: 8px;
+    max-height: 45vh;
+  }
+
+  .modal__row input,
+  .modal__row select,
+  .modal__row input[type="file"] {
+    padding: 5px 3px;
+    font-size: 9px;
+  }
+
+  .modal__actions {
+    padding: 6px 8px;
+    gap: 2px;
+  }
+
+  .modal__actions .btn {
+    font-size: 8px;
+  }
+
+  .notice,
+  .error {
+    padding: 4px 5px;
+    margin-bottom: 5px;
+    font-size: 9px;
+  }
+
+  input[type="text"],
+  input[type="password"],
+  input[type="email"],
+  select,
+  input[type="file"],
+  textarea {
+    padding: 5px 4px;
+    font-size: 9px;
+  }
+
+  .form-group {
+    margin-bottom: 5px;
+    gap: 2px;
+  }
+
+  .form-group label {
+    font-size: 10px;
+  }
+
+  .form-row {
+    gap: 3px;
+  }
+
+  .modal__close {
+    font-size: 18px;
+  }
+}

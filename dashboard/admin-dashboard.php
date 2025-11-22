@@ -266,7 +266,7 @@ $positions = ['Стажер','Пиццамейкер','Кассир','Униве
     <?php require __DIR__ . '/../config/header-cabinet.inc.php'; ?>
 <div class="container admin-wrap">
     <section>
-        <div class="login-box" style="width:100%;align-items:stretch;">
+        <div class="login-box" style="align-items:stretch;">
             <div class="box-head"><h2>Управление пользователями</h2></div>
 
             <?php if ($notice): ?><div class="notice"><?= htmlspecialchars($notice) ?></div><?php endif; ?>
@@ -295,7 +295,6 @@ $positions = ['Стажер','Пиццамейкер','Кассир','Униве
                     <input type="file" name="avatar" accept="image/*" title="Максимум 25 МБ">
                     <small>Максимальный размер файла: 25 МБ</small>
                     <button class="btn btn-orange" type="submit">Добавить</button>
-                    <a class="btn btn-gray" href="admin-dashboard.php">Назад</a>
                 </form>
             </div>
 
