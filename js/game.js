@@ -170,6 +170,21 @@ class PizzaGame {
         this.leaderboard = uniqueLeaderboard;
     }
     
+// ✅ ВСПОМОГАТЕЛЬНЫЙ МЕТОД - получить позицию относительно canvas
+  getCanvasPosition(clientX, clientY) {
+    const rect = this.canvas.getBoundingClientRect();
+    
+    // Получаем масштаб canvas относительно его displaySize
+    const scaleX = this.canvas.width / rect.width;
+    const scaleY = this.canvas.height / rect.height;
+    
+    // Вычисляем позицию внутри canvas, учитывая масштабирование
+    const x = (clientX - rect.left) * scaleX;
+    const y = (clientY - rect.top) * scaleY;
+    
+    return { x, y };
+  }
+
     init() {
         this.startBtn = document.getElementById('startButton');
         this.restartBtn = document.getElementById('restartButton');
@@ -196,18 +211,20 @@ class PizzaGame {
             this.keys[e.key] = false;
         });
         
-        this.canvas.addEventListener('mousemove', (e) => {
-            const rect = this.canvas.getBoundingClientRect();
-            this.mouseX = e.clientX - rect.left;
-            this.useMouseControl = true;
-        });
-        
-        this.canvas.addEventListener('touchmove', (e) => {
-            e.preventDefault();
-            const rect = this.canvas.getBoundingClientRect();
-            this.mouseX = e.touches[0].clientX - rect.left;
-            this.useMouseControl = true;
-        });
+        // ✅ ИСПРАВЛЕНО: используем getCanvasPosition для мыши
+    this.canvas.addEventListener('mousemove', (e) => {
+      const pos = this.getCanvasPosition(e.clientX, e.clientY);
+      this.mouseX = pos.x;
+      this.useMouseControl = true;
+    });
+
+    // ✅ ИСПРАВЛЕНО: используем getCanvasPosition для сенсора
+    this.canvas.addEventListener('touchmove', (e) => {
+      e.preventDefault();
+      const pos = this.getCanvasPosition(e.touches[0].clientX, e.touches[0].clientY);
+      this.mouseX = pos.x;
+      this.useMouseControl = true;
+    });
         
         this.render();
     }

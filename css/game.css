@@ -1,36 +1,38 @@
 /* game.css - Обновленная версия с оранжевой цветовой схемой */
 
 /* Base styles */
+
 html {
-    font-size: 14px;
-    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    line-height: 1.5;
-    color: #1F2121;
-    background-color: #f1f3f6;
-    -webkit-font-smoothing: antialiased;
-    box-sizing: border-box;
+  font-size: 14px;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.5;
+  color: #1F2121;
+  background-color: #f1f3f6;
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
 }
 
 body {
-    margin: 0;
-    padding: 0;
-    background-color: #f1f3f6;
-    color: #1F2121;
+  margin: 0;
+  padding: 0;
+  background-color: #f1f3f6;
+  color: #1F2121;
 }
 
 *,
 *::before,
 *::after {
-    box-sizing: inherit;
+  box-sizing: inherit;
 }
 
 /* Typography */
+
 h1, h2, h3, h4, h5, h6 {
-    margin: 0;
-    font-weight: 550;
-    line-height: 1.2;
-    color: #1F2121;
-    letter-spacing: -0.01em;
+  margin: 0;
+  font-weight: 550;
+  line-height: 1.2;
+  color: #1F2121;
+  letter-spacing: -0.01em;
 }
 
 h1 { font-size: 30px; }
@@ -43,256 +45,263 @@ h6 { font-size: 14px; }
 p { margin: 0 0 16px 0; }
 
 /* Buttons */
+
 .btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 8px 16px;
-    border-radius: 8px;
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 1.5;
-    cursor: pointer;
-    transition: all 250ms cubic-bezier(0.16, 1, 0.3, 1);
-    border: none;
-    text-decoration: none;
-    position: relative;
-    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.5;
+  cursor: pointer;
+  transition: all 250ms cubic-bezier(0.16, 1, 0.3, 1);
+  border: none;
+  text-decoration: none;
+  position: relative;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
 .btn:focus-visible {
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(242, 104, 34, 0.4);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(242, 104, 34, 0.4);
 }
 
 .btn--primary {
-    background: #f26822;
-    color: #FFFFFF;
+  background: #f26822;
+  color: #FFFFFF;
 }
 
 .btn--primary:hover {
-    background: #d45915;
+  background: #d45915;
 }
 
 .btn--primary:active {
-    background: #c14f12;
+  background: #c14f12;
 }
 
 .btn--secondary {
-    background: rgba(94, 82, 64, 0.12);
-    color: #1F2121;
+  background: rgba(94, 82, 64, 0.12);
+  color: #1F2121;
 }
 
 .btn--secondary:hover {
-    background: rgba(94, 82, 64, 0.2);
+  background: rgba(94, 82, 64, 0.2);
 }
 
 .btn--outline {
-    background: transparent;
-    border: 1px solid rgba(0, 0, 0, 0.12);
-    color: #1F2121;
+  background: transparent;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  color: #1F2121;
 }
 
 .btn--outline:hover {
-    background: rgba(94, 82, 64, 0.12);
+  background: rgba(94, 82, 64, 0.12);
 }
 
 .btn-large {
-    padding: 12px 32px;
-    font-size: 16px;
-    font-weight: 550;
-    border-radius: 10px;
-    min-width: 160px;
+  padding: 12px 32px;
+  font-size: 16px;
+  font-weight: 550;
+  border-radius: 10px;
+  min-width: 160px;
 }
 
 .hidden {
-    display: none !important;
+  display: none !important;
 }
 
 /* Game Styles */
+
 .game-wrap {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px 16px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 16px;
 }
 
 .game-header {
-    text-align: center;
-    margin-bottom: 24px;
+  text-align: center;
+  margin-bottom: 24px;
 }
 
 .game-header h1 {
-    margin: 0 0 16px 0;
-    color: #1F2121;
-    font-size: 30px;
-    font-weight: 600;
-    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    letter-spacing: -0.01em;
-    line-height: 1.2;
+  margin: 0 0 16px 0;
+  color: #1F2121;
+  font-size: 30px;
+  font-weight: 600;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
 }
 
 /* Информационная панель */
+
 .game-info {
-    display: flex;
-    justify-content: center;
-    gap: 24px;
-    flex-wrap: wrap;
-    margin-bottom: 24px;
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
 }
 
 .score-display,
 .timer-display,
 .lives-display {
-    background: #FFFFFF;
-    padding: 12px 20px;
-    border-radius: 12px;
-    font-size: 16px;
-    font-weight: 550;
-    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    color: #1F2121;
-    border: 1px solid rgba(0, 0, 0, 0.12);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    transition: all 250ms cubic-bezier(0.16, 1, 0.3, 1);
+  background: #FFFFFF;
+  padding: 12px 20px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 550;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  color: #1F2121;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: all 250ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .score-display:hover,
 .timer-display:hover,
 .lives-display:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
 }
 
 .score-display span,
 .timer-display span {
-    color: #f26822;
-    font-size: 20px;
-    font-weight: 600;
+  color: #f26822;
+  font-size: 20px;
+  font-weight: 600;
 }
 
 .lives-display span {
-    color: #e74c3c;
-    font-size: 20px;
-    font-weight: 600;
+  color: #e74c3c;
+  font-size: 20px;
+  font-weight: 600;
 }
 
 /* Canvas контейнер */
+
 .game-canvas-container {
-    position: relative;
-    width: 800px;
-    max-width: 100%;
-    margin: 0 auto 24px auto;
-    background: #FFFFFF;
-    border-radius: 18px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-    border: 1px solid rgba(0, 0, 0, 0.12);
-    overflow: hidden;
+  position: relative;
+  width: 800px;
+  max-width: 100%;
+  margin: 0 auto 24px auto;
+  background: #FFFFFF;
+  border-radius: 18px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  overflow: hidden;
 }
 
 #gameCanvas {
-    display: block;
-    width: 100%;
-    height: auto;
-    background-image: url(../uploads/game-bg-processed.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
+  display: block;
+  width: 100%;
+  height: auto;
+  background-image: url(../uploads/game-bg-processed.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 /* Оверлеи игры */
+
 .game-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(33, 33, 33, 0.92);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 32px;
-    text-align: center;
-    z-index: 100;
-    backdrop-filter: blur(4px);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(33, 33, 33, 0.92);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 32px;
+  text-align: center;
+  z-index: 100;
+  backdrop-filter: blur(4px);
 }
 
 .game-overlay.hidden {
-    display: none !important;
+  display: none !important;
 }
 
 .game-overlay h2 {
-    margin: 0 0 16px 0;
-    color: #FFFFFF;
-    font-size: 24px;
-    font-weight: 600;
-    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    letter-spacing: -0.01em;
-    line-height: 1.2;
+  margin: 0 0 16px 0;
+  color: #FFFFFF;
+  font-size: 24px;
+  font-weight: 600;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
 }
 
 .game-overlay p {
-    margin: 0 0 12px 0;
-    color: #e0e0e0;
-    font-size: 14px;
-    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    line-height: 1.5;
+  margin: 0 0 12px 0;
+  color: #e0e0e0;
+  font-size: 14px;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.5;
 }
 
 .game-overlay .btn {
-    margin: 8px;
+  margin: 8px;
 }
 
 /* Управление */
+
 .game-controls {
-    display: flex;
-    justify-content: center;
-    gap: 12px;
-    margin-bottom: 24px;
-    flex-wrap: wrap;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
 }
 
 /* Инструкции */
+
 .game-instructions {
-    max-width: 800px;
-    margin: 0 auto;
-    background: #FFFFFF;
-    padding: 24px;
-    border-radius: 18px;
-    border: 1px solid rgba(0, 0, 0, 0.12);
-    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  max-width: 800px;
+  margin: 0 auto;
+  background: #FFFFFF;
+  padding: 24px;
+  border-radius: 18px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
 }
 
 .game-instructions h3 {
-    margin: 0 0 16px 0;
-    color: #1F2121;
-    font-size: 18px;
-    font-weight: 550;
-    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    letter-spacing: -0.01em;
-    line-height: 1.2;
+  margin: 0 0 16px 0;
+  color: #1F2121;
+  font-size: 18px;
+  font-weight: 550;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
 }
 
 .game-instructions ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 .game-instructions li {
-    padding: 8px 0;
-    font-size: 14px;
-    color: #1F2121;
-    line-height: 1.5;
-    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  padding: 8px 0;
+  font-size: 14px;
+  color: #1F2121;
+  line-height: 1.5;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
 }
 
 .game-instructions li:last-child {
-    border-bottom: none;
+  border-bottom: none;
 }
 
 .game-instructions li strong {
-    color: #f26822;
-    font-weight: 550;
+  color: #f26822;
+  font-weight: 550;
 }
 
 /* ============================================
@@ -300,70 +309,69 @@ p { margin: 0 0 16px 0; }
    ============================================ */
 
 .leaderboard-container {
-    background: #FFFFFF;
-    border-radius: 12px;
-    border: 1px solid rgba(0, 0, 0, 0.12);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    padding: 16px;
-    max-height: 400px;
-    overflow-y: auto;
-    margin: 16px 0;
+  background: #FFFFFF;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  padding: 16px;
+  max-height: 400px;
+  overflow-y: auto;
+  margin: 16px 0;
 }
 
 .leaderboard-title {
-    font-size: 16px;
-    font-weight: 600;
-    color: #1F2121;
-    margin: 0 0 12px 0;
-    text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+  color: #1F2121;
+  margin: 0 0 12px 0;
+  text-align: center;
 }
 
 .leaderboard-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 13px;
-    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
 .leaderboard-table thead {
-    background: rgba(242, 104, 34, 0.1);
-    position: sticky;
-    top: 0;
+  background: rgba(242, 104, 34, 0.1);
+  top: 0;
 }
 
 .leaderboard-table th {
-    padding: 8px 6px;
-    text-align: left;
-    font-weight: 550;
-    color: #f26822;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  padding: 8px 6px;
+  text-align: left;
+  font-weight: 550;
+  color: #f26822;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
 }
 
 .leaderboard-table td {
-    padding: 8px 6px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-    color: #1F2121;
+  padding: 8px 6px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  color: #1F2121;
 }
 
 .leaderboard-table tbody tr:hover {
-    background: rgba(242, 104, 34, 0.04);
+  background: rgba(242, 104, 34, 0.04);
 }
 
 .leaderboard-table tbody tr:last-child td {
-    border-bottom: none;
+  border-bottom: none;
 }
 
 .leaderboard-name {
-    font-weight: 500;
-    max-width: 150px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+  font-weight: 500;
+  max-width: 150px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .leaderboard-date {
-    font-size: 12px;
-    color: #626C71;
+  font-size: 12px;
+  color: #626C71;
 }
 
 .leaderboard-table th:nth-child(1),
@@ -373,24 +381,422 @@ p { margin: 0 0 16px 0; }
 .leaderboard-table td:nth-child(3),
 .leaderboard-table th:nth-child(4),
 .leaderboard-table td:nth-child(4) {
-    text-align: center;
+  text-align: center;
 }
 
 /* Скролл для лидерборда */
+
 .leaderboard-container::-webkit-scrollbar {
-    width: 6px;
+  width: 6px;
 }
 
 .leaderboard-container::-webkit-scrollbar-track {
-    background: rgba(0, 0, 0, 0.05);
-    border-radius: 10px;
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
 }
 
 .leaderboard-container::-webkit-scrollbar-thumb {
-    background: rgba(242, 104, 34, 0.3);
-    border-radius: 10px;
+  background: rgba(242, 104, 34, 0.3);
+  border-radius: 10px;
 }
 
 .leaderboard-container::-webkit-scrollbar-thumb:hover {
-    background: rgba(242, 104, 34, 0.5);
+  background: rgba(242, 104, 34, 0.5);
+}
+
+/* ==========================================
+   АДАПТИВНАЯ ВЕРСТКА (ДОБАВЛЕНО)
+   ========================================== */
+
+@media (max-width: 1024px) {
+  .game-wrap {
+    padding: 16px 12px;
+  }
+
+  .game-header h1 {
+    font-size: 26px;
+  }
+
+  .game-info {
+    gap: 16px;
+  }
+
+  .score-display,
+  .timer-display,
+  .lives-display {
+    padding: 10px 16px;
+    font-size: 14px;
+  }
+
+  .score-display span,
+  .timer-display span,
+  .lives-display span {
+    font-size: 18px;
+  }
+
+  .game-canvas-container {
+    border-radius: 16px;
+  }
+
+  .game-instructions {
+    padding: 20px;
+  }
+
+  .game-instructions h3 {
+    font-size: 16px;
+  }
+
+  .game-instructions li {
+    font-size: 13px;
+  }
+
+  .leaderboard-table {
+    font-size: 12px;
+  }
+
+  .leaderboard-table th,
+  .leaderboard-table td {
+    padding: 6px 4px;
+  }
+}
+
+@media (max-width: 768px) {
+  .game-wrap {
+    padding: 12px 10px;
+  }
+
+  .game-header h1 {
+    font-size: 20px;
+    margin-bottom: 12px;
+  }
+
+  .game-info {
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .score-display,
+  .timer-display,
+  .lives-display {
+    padding: 8px 12px;
+    font-size: 12px;
+    border-radius: 10px;
+  }
+
+  .score-display span,
+  .timer-display span,
+  .lives-display span {
+    font-size: 14px;
+  }
+
+  .game-canvas-container {
+    margin: 0 auto 16px auto;
+    border-radius: 12px;
+  }
+
+  .game-overlay {
+    padding: 20px;
+  }
+
+  .game-overlay h2 {
+    font-size: 18px;
+    margin-bottom: 12px;
+  }
+
+  .game-overlay p {
+    font-size: 12px;
+    margin-bottom: 8px;
+  }
+
+  .game-overlay .btn {
+    margin: 4px;
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+
+  .game-controls {
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  .game-controls .btn {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+
+  .btn-large {
+    padding: 8px 20px;
+    font-size: 12px;
+    min-width: 120px;
+  }
+
+  .game-instructions {
+    padding: 16px;
+    margin: 0 auto;
+    border-radius: 12px;
+  }
+
+  .game-instructions h3 {
+    font-size: 14px;
+    margin-bottom: 12px;
+  }
+
+  .game-instructions li {
+    font-size: 12px;
+    padding: 6px 0;
+  }
+
+  .leaderboard-container {
+    padding: 12px;
+    max-height: 350px;
+    margin: 12px 0;
+  }
+
+  .leaderboard-title {
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
+
+  .leaderboard-table {
+    font-size: 11px;
+  }
+
+  .leaderboard-table th,
+  .leaderboard-table td {
+    padding: 4px 2px;
+  }
+
+  .leaderboard-name {
+    max-width: 100px;
+  }
+
+  .leaderboard-date {
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 425px) {
+  .game-wrap {
+    padding: 10px 8px;
+  }
+
+  .game-header h1 {
+    font-size: 16px;
+    margin-bottom: 8px;
+  }
+
+  .game-info {
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+
+  .score-display,
+  .timer-display,
+  .lives-display {
+    width: 100%;
+    padding: 6px 10px;
+    font-size: 11px;
+  }
+
+  .score-display span,
+  .timer-display span,
+  .lives-display span {
+    font-size: 13px;
+  }
+
+  .game-canvas-container {
+    margin: 0 auto 12px auto;
+    border-radius: 10px;
+  }
+
+  .game-overlay {
+    padding: 16px;
+  }
+
+  .game-overlay h2 {
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
+
+  .game-overlay p {
+    font-size: 11px;
+    margin-bottom: 6px;
+  }
+
+  .game-overlay .btn {
+    margin: 3px;
+    padding: 5px 10px;
+    font-size: 11px;
+  }
+
+  .game-controls {
+    gap: 6px;
+    margin-bottom: 12px;
+  }
+
+  .game-controls .btn {
+    padding: 5px 10px;
+    font-size: 11px;
+    flex: 1;
+    min-width: 60px;
+  }
+
+  .btn-large {
+    padding: 6px 16px;
+    font-size: 11px;
+    min-width: 100px;
+    width: 100%;
+  }
+
+  .game-instructions {
+    padding: 12px;
+    margin: 0 auto;
+    border-radius: 10px;
+  }
+
+  .game-instructions h3 {
+    font-size: 12px;
+    margin-bottom: 8px;
+  }
+
+  .game-instructions li {
+    font-size: 11px;
+    padding: 4px 0;
+  }
+
+  .leaderboard-container {
+    padding: 10px;
+    max-height: 300px;
+    margin: 8px 0;
+  }
+
+  .leaderboard-title {
+    font-size: 12px;
+    margin-bottom: 6px;
+  }
+
+  .leaderboard-table {
+    font-size: 10px;
+  }
+
+  .leaderboard-table th,
+  .leaderboard-table td {
+    padding: 2px 1px;
+  }
+
+  .leaderboard-name {
+    max-width: 80px;
+    font-size: 10px;
+  }
+
+  .leaderboard-date {
+    font-size: 9px;
+  }
+}
+
+@media (max-width: 375px) {
+  .game-wrap {
+    padding: 8px 6px;
+  }
+
+  .game-header h1 {
+    font-size: 14px;
+  }
+
+  .game-info {
+    gap: 6px;
+  }
+
+  .score-display,
+  .timer-display,
+  .lives-display {
+    padding: 4px 8px;
+    font-size: 10px;
+  }
+
+  .score-display span,
+  .timer-display span,
+  .lives-display span {
+    font-size: 11px;
+  }
+
+  .game-overlay h2 {
+    font-size: 12px;
+  }
+
+  .game-overlay p {
+    font-size: 10px;
+  }
+
+  .game-overlay .btn {
+    padding: 4px 8px;
+    font-size: 10px;
+  }
+
+  .game-controls .btn {
+    padding: 4px 8px;
+    font-size: 10px;
+  }
+
+  .game-instructions h3 {
+    font-size: 11px;
+  }
+
+  .game-instructions li {
+    font-size: 10px;
+  }
+
+  .leaderboard-title {
+    font-size: 11px;
+  }
+
+  .leaderboard-table {
+    font-size: 9px;
+  }
+
+  .leaderboard-name {
+    max-width: 60px;
+  }
+}
+
+@media (max-width: 320px) {
+  .game-wrap {
+    padding: 6px 4px;
+  }
+
+  .game-header h1 {
+    font-size: 12px;
+  }
+
+  .game-info {
+    gap: 4px;
+  }
+
+  .score-display,
+  .timer-display,
+  .lives-display {
+    padding: 3px 6px;
+    font-size: 9px;
+  }
+
+  .game-overlay h2 {
+    font-size: 11px;
+  }
+
+  .game-overlay p {
+    font-size: 9px;
+  }
+
+  .game-instructions h3 {
+    font-size: 10px;
+  }
+
+  .game-instructions li {
+    font-size: 9px;
+  }
+
+  .leaderboard-table {
+    font-size: 8px;
+  }
 }
