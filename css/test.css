@@ -1,6 +1,7 @@
 /* ===== STYLES FOR TEST PAGE ===== */
 
 /* Container */
+
 .test-view-wrap {
   max-width: 900px;
   margin: 0 auto;
@@ -8,6 +9,7 @@
 }
 
 /* Breadcrumb */
+
 .breadcrumb {
   margin-bottom: 24px;
   font-size: 14px;
@@ -34,6 +36,7 @@
 }
 
 /* Info Panel */
+
 .test-info-panel {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -41,7 +44,7 @@
   background: linear-gradient(135deg, #f26822 0%, #d45915 100%);
   padding: 20px;
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(242, 104, 34, 0.15);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.04), 0 4px 6px -2px rgba(0, 0, 0, 0.02);
 }
 
 .info-item {
@@ -65,19 +68,22 @@
 }
 
 /* Questions Container */
+
 .questions-container {
   display: flex;
   flex-direction: column;
 }
 
 /* Question Block */
+
 .question-block {
   background: #FFFFFD;
-  border: 2px solid rgba(0, 0, 0, 0.12);
+  border: 1px solid rgba(0, 0, 0, 0.12);
   border-radius: 12px;
   padding: 32px;
   display: none;
   animation: slideIn 300ms ease-out forwards;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
 }
 
 .question-block[data-question-index="1"] {
@@ -96,13 +102,14 @@
 }
 
 /* Question Header */
+
 .question-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 16px;
   padding-bottom: 12px;
-  border-bottom: 2px solid rgba(242, 104, 34, 0.2);
+  border-bottom: 2px solid rgba(0, 0, 0, 0.12);
 }
 
 .question-number {
@@ -113,7 +120,7 @@
   color: #626C71;
   background: rgba(94, 82, 64, 0.12);
   padding: 4px 8px;
-  border-radius: 4px;
+  border-radius: 6px;
 }
 
 .question-progress {
@@ -123,6 +130,7 @@
 }
 
 /* Question Text */
+
 .question-text {
   font-size: 18px;
   font-weight: 550;
@@ -132,6 +140,7 @@
 }
 
 /* Question Options */
+
 .question-options {
   display: flex;
   flex-direction: column;
@@ -182,6 +191,7 @@
 }
 
 /* Question Navigation */
+
 .question-navigation {
   display: flex;
   justify-content: center;
@@ -223,6 +233,7 @@
 }
 
 /* Test Warning */
+
 .test-warning {
   background: rgba(168, 75, 47, 0.1);
   border-left: 4px solid #A84B2F;
@@ -244,6 +255,7 @@
 }
 
 /* Results Header */
+
 .results-header {
   background: linear-gradient(135deg, #f5f5f5 0%, #eee 100%);
   padding: 32px;
@@ -258,6 +270,7 @@
 }
 
 /* Results Status */
+
 .results-status {
   display: flex;
   align-items: center;
@@ -284,6 +297,7 @@
 }
 
 /* Results Summary */
+
 .results-summary {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -317,6 +331,7 @@
 }
 
 /* Results Details */
+
 .results-details {
   padding: 32px;
 }
@@ -408,6 +423,7 @@
 }
 
 /* Results Actions */
+
 .results-actions {
   padding: 32px;
   text-align: center;
@@ -471,4 +487,442 @@
 .btn--secondary:active {
   background: rgba(94, 82, 64, 0.25);
   transform: translateY(0);
+}
+
+/* ==========================================
+   АДАПТИВНАЯ ВЕРСТКА (ДОБАВЛЕНО)
+   ========================================== */
+
+@media (max-width: 1024px) {
+  .test-view-wrap {
+    padding: 24px 12px;
+  }
+
+  .test-info-panel {
+    gap: 12px;
+    padding: 16px;
+  }
+
+  .info-value {
+    font-size: 20px;
+  }
+
+  .question-block {
+    padding: 24px;
+  }
+
+  .question-text {
+    font-size: 16px;
+  }
+
+  .option-label {
+    padding: 12px;
+    font-size: 14px;
+  }
+
+  .results-summary {
+    gap: 12px;
+    padding: 24px;
+  }
+
+  .summary-value {
+    font-size: 24px;
+  }
+
+  .results-header {
+    padding: 24px;
+  }
+
+  .results-header h1 {
+    font-size: 24px;
+  }
+
+  .results-details {
+    padding: 24px;
+  }
+
+  .results-actions {
+    padding: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .test-view-wrap {
+    padding: 16px 10px;
+  }
+
+  .test-info-panel {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    padding: 12px;
+    border-radius: 10px;
+  }
+
+  .info-item {
+    gap: 4px;
+  }
+
+  .info-label {
+    font-size: 10px;
+  }
+
+  .info-value {
+    font-size: 18px;
+  }
+
+  .question-block {
+    padding: 16px;
+    border-radius: 10px;
+  }
+
+  .question-header {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .question-text {
+    font-size: 15px;
+    margin-bottom: 16px;
+  }
+
+  .question-options {
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+
+  .option-label {
+    padding: 12px;
+    font-size: 13px;
+    border-radius: 6px;
+  }
+
+  .question-navigation {
+    gap: 8px;
+    padding-top: 12px;
+  }
+
+  .nav-btn-next,
+  .nav-btn-submit {
+    max-width: none;
+    font-size: 13px;
+    min-height: 40px;
+    padding: 8px 12px;
+  }
+
+  .results-summary {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    padding: 16px;
+  }
+
+  .summary-value {
+    font-size: 20px;
+  }
+
+  .result-item {
+    padding: 12px;
+    border-radius: 8px;
+  }
+
+  .result-header {
+    gap: 8px;
+  }
+
+  .result-icon {
+    width: 24px;
+    height: 24px;
+    font-size: 16px;
+  }
+
+  .results-header {
+    padding: 16px;
+  }
+
+  .results-header h1 {
+    font-size: 20px;
+    margin-bottom: 12px;
+  }
+
+  .results-details {
+    padding: 16px;
+  }
+
+  .results-details h2 {
+    font-size: 16px;
+    margin-bottom: 16px;
+  }
+
+  .results-actions {
+    padding: 16px;
+  }
+
+  .test-warning {
+    padding: 12px;
+    font-size: 12px;
+  }
+
+  .test-error-card {
+    padding: 24px 16px;
+  }
+
+  .error-icon {
+    font-size: 32px;
+  }
+
+  .test-error-card h2 {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 425px) {
+  .test-view-wrap {
+    padding: 12px 8px;
+  }
+
+  .test-info-panel {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    padding: 10px;
+  }
+
+  .info-label {
+    font-size: 9px;
+  }
+
+  .info-value {
+    font-size: 16px;
+  }
+
+  .question-block {
+    padding: 12px;
+  }
+
+  .question-number {
+    font-size: 10px;
+    padding: 2px 6px;
+  }
+
+  .question-progress {
+    font-size: 12px;
+  }
+
+  .question-text {
+    font-size: 13px;
+    margin-bottom: 12px;
+  }
+
+  .option-label {
+    padding: 10px;
+    font-size: 12px;
+    gap: 10px;
+  }
+
+  .option-input {
+    width: 18px;
+    height: 18px;
+  }
+
+  .nav-btn-next,
+  .nav-btn-submit {
+    font-size: 12px;
+    min-height: 36px;
+  }
+
+  .results-summary {
+    gap: 8px;
+    padding: 12px;
+  }
+
+  .summary-item {
+    padding: 12px;
+  }
+
+  .summary-label {
+    font-size: 10px;
+  }
+
+  .summary-value {
+    font-size: 18px;
+  }
+
+  .result-header {
+    flex-wrap: wrap;
+    gap: 6px;
+    font-size: 12px;
+  }
+
+  .result-icon {
+    width: 20px;
+    height: 20px;
+    font-size: 14px;
+  }
+
+  .results-header {
+    padding: 12px;
+  }
+
+  .results-header h1 {
+    font-size: 16px;
+  }
+
+  .results-details {
+    padding: 12px;
+  }
+
+  .results-list {
+    gap: 10px;
+  }
+
+  .result-item {
+    padding: 10px;
+  }
+
+  .result-question {
+    font-size: 12px;
+  }
+
+  .result-points {
+    font-size: 11px;
+  }
+
+  .results-actions {
+    padding: 12px;
+  }
+
+  .test-warning {
+    padding: 10px;
+    font-size: 11px;
+  }
+
+  .test-error-card {
+    padding: 16px 12px;
+  }
+
+  .error-icon {
+    font-size: 28px;
+  }
+
+  .test-error-card h2 {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 375px) {
+  .test-view-wrap {
+    padding: 10px 6px;
+  }
+
+  .test-info-panel {
+    padding: 8px;
+    border-radius: 8px;
+  }
+
+  .info-label {
+    font-size: 8px;
+  }
+
+  .info-value {
+    font-size: 14px;
+  }
+
+  .question-block {
+    padding: 10px;
+    border-radius: 8px;
+  }
+
+  .question-text {
+    font-size: 12px;
+  }
+
+  .option-label {
+    padding: 8px;
+    font-size: 11px;
+  }
+
+  .nav-btn-next,
+  .nav-btn-submit {
+    font-size: 11px;
+  }
+
+  .summary-value {
+    font-size: 16px;
+  }
+
+  .results-header h1 {
+    font-size: 15px;
+  }
+
+  .result-item {
+    padding: 8px;
+  }
+
+  .result-header {
+    font-size: 11px;
+  }
+
+  .result-icon {
+    width: 18px;
+    height: 18px;
+  }
+
+  .results-details h2 {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 320px) {
+  .test-view-wrap {
+    padding: 8px 4px;
+  }
+
+  .test-info-panel {
+    gap: 6px;
+    padding: 6px;
+  }
+
+  .info-value {
+    font-size: 12px;
+  }
+
+  .question-block {
+    padding: 8px;
+  }
+
+  .question-text {
+    font-size: 11px;
+  }
+
+  .option-label {
+    padding: 6px;
+    font-size: 10px;
+  }
+
+  .nav-btn-next,
+  .nav-btn-submit {
+    font-size: 10px;
+  }
+
+  .results-summary {
+    padding: 10px;
+  }
+
+  .summary-value {
+    font-size: 14px;
+  }
+
+  .results-header h1 {
+    font-size: 13px;
+  }
+
+  .results-header {
+    padding: 10px;
+  }
+
+  .results-details {
+    padding: 10px;
+  }
+
+  .results-actions {
+    padding: 10px;
+  }
 }

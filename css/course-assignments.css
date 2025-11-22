@@ -37,6 +37,10 @@
   font-size: 14px;
 }
 
+.form-group input[type="checkbox"]{
+  width: max-content;
+}
+
 .course-info {
   background: #f8f9fa;
   border: 2px solid #e9ecef;
@@ -93,6 +97,10 @@
   border-radius: 4px;
   cursor: pointer;
   transition: background 0.2s;
+}
+
+.user-checkbox input{
+  width: max-content;
 }
 
 .user-checkbox:hover {
@@ -208,4 +216,467 @@
   justify-content: flex-end;
   padding-top: 16px;
   border-top: 1px solid #eee;
+}
+
+/* ==========================================
+   АДАПТИВНАЯ ВЕРСТКА (ДОБАВЛЕНО)
+   ========================================== */
+
+@media (max-width: 1024px) {
+  .assignments-header {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    gap: 12px;
+  }
+
+  .header-actions {
+    width: 100%;
+    gap: 8px;
+  }
+
+  .form-row {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 12px;
+  }
+
+  .form-group input,
+  .form-group select {
+    padding: 8px 10px;
+    font-size: 13px;
+  }
+
+  .course-info {
+    padding: 12px;
+    margin: 12px 0;
+  }
+
+  .users-selection {
+    max-height: 350px;
+    padding: 10px;
+  }
+
+  .position-header {
+    padding: 10px;
+  }
+
+  .position-title {
+    gap: 6px;
+  }
+
+  .assignments-filters input,
+  .assignments-filters select {
+    padding: 6px 10px;
+    font-size: 13px;
+  }
+
+  .user-cell {
+    gap: 1px;
+  }
+
+  .status-badge {
+    padding: 3px 6px;
+    font-size: 11px;
+  }
+
+  .form-actions {
+    gap: 8px;
+    padding-top: 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  .assignments-header {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 16px;
+    gap: 8px;
+  }
+
+  .assignments-header h1 {
+    font-size: 20px;
+    margin: 0;
+  }
+
+  .header-actions {
+    width: 100%;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+
+  .header-actions button {
+    flex: 1;
+    min-width: 100px;
+    padding: 8px 12px;
+    font-size: 12px;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .form-group {
+    margin-bottom: 0;
+  }
+
+  .form-group label {
+    margin-bottom: 3px;
+    font-size: 13px;
+  }
+
+  .form-group input,
+  .form-group select {
+    padding: 6px 8px;
+    font-size: 12px;
+    border-radius: 4px;
+  }
+
+  .course-info {
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 6px;
+  }
+
+  .users-selection {
+    max-height: 300px;
+    padding: 8px;
+    border-radius: 4px;
+  }
+
+  .position-group {
+    margin-bottom: 12px;
+    border-radius: 4px;
+  }
+
+  .position-header {
+    padding: 8px;
+    border-radius: 4px;
+  }
+
+  .position-title {
+    font-size: 13px;
+    gap: 6px;
+  }
+
+  .users-list {
+    padding: 8px;
+  }
+
+  .user-checkbox {
+    padding: 6px;
+    margin-bottom: 2px;
+    font-size: 12px;
+  }
+
+  .user-info small {
+    font-size: 11px;
+  }
+
+  .assignments-filters {
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+
+  .assignments-filters input,
+  .assignments-filters select {
+    padding: 6px 8px;
+    font-size: 12px;
+    flex: 1;
+    min-width: 120px;
+  }
+
+  .table-container {
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  }
+
+  table {
+    font-size: 12px;
+  }
+
+  table th,
+  table td {
+    padding: 10px 8px;
+  }
+
+  .user-cell {
+    font-size: 12px;
+    gap: 1px;
+  }
+
+  .user-cell small {
+    font-size: 10px;
+  }
+
+  .status-badge {
+    padding: 2px 4px;
+    font-size: 10px;
+    border-radius: 3px;
+  }
+
+  .progress-cell {
+    gap: 3px;
+  }
+
+  .lesson-progress {
+    font-size: 12px;
+  }
+
+  .test-progress {
+    font-size: 11px;
+  }
+
+  .form-actions {
+    flex-direction: column;
+    gap: 8px;
+    padding-top: 12px;
+  }
+
+  .form-actions button {
+    width: 100%;
+    padding: 8px 12px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 425px) {
+  .assignments-header h1 {
+    font-size: 16px;
+  }
+
+  .header-actions {
+    gap: 4px;
+  }
+
+  .header-actions button {
+    padding: 6px 10px;
+    font-size: 11px;
+  }
+
+  .form-row {
+    gap: 8px;
+  }
+
+  .form-group label {
+    font-size: 12px;
+  }
+
+  .form-group input,
+  .form-group select {
+    padding: 6px 8px;
+    font-size: 11px;
+  }
+
+  .course-info {
+    padding: 8px;
+    margin: 8px 0;
+    font-size: 12px;
+  }
+
+  .users-selection {
+    max-height: 250px;
+    padding: 6px;
+  }
+
+  .position-header {
+    padding: 6px;
+  }
+
+  .position-title {
+    font-size: 12px;
+    gap: 4px;
+  }
+
+  .users-list {
+    padding: 6px;
+  }
+
+  .user-checkbox {
+    padding: 4px;
+    margin-bottom: 2px;
+    font-size: 11px;
+    gap: 6px;
+  }
+
+  .user-info small {
+    font-size: 10px;
+  }
+
+  .assignments-filters {
+    gap: 6px;
+    margin-bottom: 10px;
+  }
+
+  .assignments-filters input,
+  .assignments-filters select {
+    padding: 5px 6px;
+    font-size: 11px;
+  }
+
+  table {
+    font-size: 11px;
+  }
+
+  table th,
+  table td {
+    padding: 6px 4px;
+  }
+
+  .user-cell {
+    font-size: 11px;
+  }
+
+  .user-cell small {
+    font-size: 9px;
+  }
+
+  .status-badge {
+    padding: 2px 3px;
+    font-size: 9px;
+  }
+
+  .lesson-progress {
+    font-size: 11px;
+  }
+
+  .test-progress {
+    font-size: 10px;
+  }
+
+  .form-actions button {
+    padding: 6px 10px;
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 375px) {
+  .assignments-header h1 {
+    font-size: 14px;
+  }
+
+  .header-actions button {
+    padding: 5px 8px;
+    font-size: 10px;
+  }
+
+  .form-group label {
+    font-size: 11px;
+  }
+
+  .form-group input,
+  .form-group select {
+    padding: 5px 6px;
+    font-size: 10px;
+  }
+
+  .course-info {
+    padding: 6px;
+    font-size: 11px;
+  }
+
+  .users-selection {
+    max-height: 200px;
+  }
+
+  .position-title {
+    font-size: 11px;
+  }
+
+  .user-checkbox {
+    font-size: 10px;
+    padding: 3px;
+  }
+
+  .assignments-filters input,
+  .assignments-filters select {
+    padding: 4px 6px;
+    font-size: 10px;
+  }
+
+  table {
+    font-size: 10px;
+  }
+
+  table th,
+  table td {
+    padding: 4px 2px;
+  }
+
+  .user-cell {
+    font-size: 10px;
+  }
+
+  .status-badge {
+    font-size: 8px;
+    padding: 1px 2px;
+  }
+
+  .form-actions button {
+    padding: 5px 8px;
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 320px) {
+  .assignments-header h1 {
+    font-size: 13px;
+  }
+
+  .header-actions button {
+    padding: 4px 6px;
+    font-size: 9px;
+  }
+
+  .form-group label {
+    font-size: 10px;
+  }
+
+  .form-group input,
+  .form-group select {
+    padding: 4px 5px;
+    font-size: 9px;
+  }
+
+  .course-info {
+    padding: 4px;
+    font-size: 10px;
+  }
+
+  .users-selection {
+    max-height: 150px;
+    padding: 4px;
+  }
+
+  .position-title {
+    font-size: 10px;
+  }
+
+  .user-checkbox {
+    font-size: 9px;
+  }
+
+  .assignments-filters input,
+  .assignments-filters select {
+    padding: 3px 4px;
+    font-size: 9px;
+  }
+
+  table {
+    font-size: 9px;
+  }
+
+  table th,
+  table td {
+    padding: 2px 1px;
+  }
+
+  .status-badge {
+    font-size: 7px;
+  }
+
+  .form-actions button {
+    padding: 4px 6px;
+    font-size: 9px;
+  }
 }

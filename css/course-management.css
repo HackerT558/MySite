@@ -22,6 +22,7 @@
 }
 
 /* Вкладки */
+
 .tabs-container {
   width: 100%;
 }
@@ -82,6 +83,7 @@
 }
 
 /* Подсекции */
+
 .sub-section {
   margin-bottom: 32px;
   padding-bottom: 24px;
@@ -100,6 +102,7 @@
 }
 
 /* Управление уроками */
+
 .lessons-management {
   display: flex;
   flex-direction: column;
@@ -166,6 +169,7 @@
 }
 
 /* Управление вопросами */
+
 .test-info {
   background: #f8f9fa;
   border: 2px solid #e9ecef;
@@ -258,7 +262,10 @@
 }
 
 /* Формы */
-.course-form, .lesson-form, .question-form {
+
+.course-form,
+.lesson-form,
+.question-form {
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -311,4 +318,351 @@
 
 .text-success {
   color: #28a745;
+}
+
+/* ==========================================
+   АДАПТИВНАЯ ВЕРСТКА (ДОБАВЛЕНО)
+   ========================================== */
+
+@media (max-width: 1024px) {
+  .management-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .header-actions {
+    width: 100%;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .tabs-nav {
+    gap: 4px;
+  }
+
+  .tab-btn {
+    padding: 10px 16px;
+    font-size: 14px;
+  }
+
+  .form-row {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 12px;
+  }
+
+  .question-options {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  }
+
+  .lesson-header {
+    gap: 8px;
+  }
+
+  .question-header {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .lesson-actions,
+  .question-actions {
+    gap: 6px;
+  }
+
+  .form-actions {
+    gap: 8px;
+  }
+}
+
+@media (max-width: 768px) {
+  .management-header {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 16px;
+    gap: 8px;
+  }
+
+  .management-header h1 {
+    font-size: 20px;
+    width: 100%;
+  }
+
+  .header-actions {
+    width: 100%;
+    gap: 6px;
+  }
+
+  .header-actions button {
+    flex: 1;
+    min-width: 80px;
+    padding: 8px 12px;
+    font-size: 12px;
+  }
+
+  .tabs-nav {
+    margin-bottom: 16px;
+    border-bottom: 1px solid #e9ecef;
+  }
+
+  .tab-btn {
+    padding: 10px 12px;
+    font-size: 12px;
+    border-bottom: 2px solid transparent;
+  }
+
+  .tab-btn.active {
+    border-bottom-color: #f26822;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .form-group label {
+    font-size: 12px;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    padding: 8px 10px;
+    font-size: 12px;
+  }
+
+  .question-options {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  .option {
+    font-size: 12px;
+    padding: 6px;
+  }
+
+  .lesson-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .lesson-header h4 {
+    font-size: 14px;
+    width: 100%;
+  }
+
+  .lesson-meta {
+    font-size: 12px;
+  }
+
+  .lesson-content-preview {
+    margin: 8px 0;
+    font-size: 12px;
+  }
+
+  .lesson-actions {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+
+  .lesson-actions button {
+    flex: 1;
+    min-width: 70px;
+    font-size: 11px;
+    padding: 6px 8px;
+  }
+
+  .question-header {
+    gap: 6px;
+  }
+
+  .question-number,
+  .question-points {
+    font-size: 11px;
+  }
+
+  .question-text {
+    font-size: 13px;
+  }
+
+  .question-actions {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+
+  .question-actions button {
+    flex: 1;
+    min-width: 70px;
+    font-size: 11px;
+    padding: 6px 8px;
+  }
+
+  .form-actions {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .form-actions button {
+    width: 100%;
+    padding: 8px 12px;
+    font-size: 12px;
+  }
+
+  .sub-section {
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+  }
+
+  .sub-section h3 {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 425px) {
+  .header-actions button {
+    padding: 6px 10px;
+    font-size: 11px;
+  }
+
+  .tab-btn {
+    padding: 8px 10px;
+    font-size: 11px;
+  }
+
+  .tab-btn .count {
+    font-size: 10px;
+  }
+
+  .form-group label {
+    font-size: 11px;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    padding: 6px 8px;
+    font-size: 11px;
+  }
+
+  .lesson-header h4 {
+    font-size: 13px;
+  }
+
+  .lesson-meta {
+    font-size: 11px;
+  }
+
+  .lesson-order {
+    font-size: 10px;
+  }
+
+  .question-number {
+    font-size: 10px;
+  }
+
+  .question-points {
+    font-size: 12px;
+  }
+
+  .question-text {
+    font-size: 12px;
+  }
+
+  .option {
+    font-size: 11px;
+    padding: 4px;
+  }
+
+  .lesson-actions button,
+  .question-actions button {
+    padding: 5px 6px;
+    font-size: 10px;
+  }
+
+  .form-actions button {
+    padding: 6px 10px;
+    font-size: 11px;
+  }
+
+  .sub-section h3 {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 375px) {
+  .header-actions button {
+    padding: 5px 8px;
+    font-size: 10px;
+  }
+
+  .tab-btn {
+    padding: 6px 8px;
+    font-size: 10px;
+  }
+
+  .form-group label {
+    font-size: 10px;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    padding: 5px 6px;
+    font-size: 10px;
+  }
+
+  .lesson-header h4 {
+    font-size: 12px;
+  }
+
+  .question-text {
+    font-size: 11px;
+  }
+
+  .option {
+    font-size: 10px;
+  }
+
+  .sub-section h3 {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 320px) {
+  .header-actions {
+    gap: 3px;
+  }
+
+  .header-actions button {
+    padding: 4px 6px;
+    font-size: 9px;
+  }
+
+  .tab-btn {
+    padding: 4px 6px;
+    font-size: 9px;
+  }
+
+  .form-group label {
+    font-size: 9px;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    padding: 4px 5px;
+    font-size: 9px;
+  }
+
+  .lesson-header h4 {
+    font-size: 11px;
+  }
+
+  .question-text {
+    font-size: 10px;
+  }
+
+  .option {
+    font-size: 9px;
+  }
 }

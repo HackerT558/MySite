@@ -1,6 +1,6 @@
 /* ============================================
-ИСТОРИЯ ПОПЫТОК ТЕСТА - КРАСИВОЕ ОФОРМЛЕНИЕ
-============================================ */
+   ИСТОРИЯ ПОПЫТОК ТЕСТА - КРАСИВОЕ ОФОРМЛЕНИЕ
+   ============================================ */
 
 .test-history {
   margin-top: 32px;
@@ -206,7 +206,6 @@
     opacity: 0;
     transform: translateY(8px);
   }
-
   to {
     opacity: 1;
     transform: translateY(0);
@@ -374,4 +373,320 @@
   color: #626C71;
   text-transform: uppercase;
   letter-spacing: -0.01em;
+}
+
+/* ==========================================
+   АДАПТИВНАЯ ВЕРСТКА (ДОБАВЛЕНО)
+   ========================================== */
+
+@media (max-width: 1024px) {
+  .test-history-header h3 {
+    font-size: 18px;
+  }
+
+  .test-attempt {
+    padding: 14px 16px;
+    gap: 12px;
+  }
+
+  .attempt-indicator {
+    width: 48px;
+    height: 48px;
+    font-size: 24px;
+  }
+
+  .attempt-percentage {
+    font-size: 20px;
+  }
+
+  .test-history-legend {
+    gap: 16px;
+    padding: 12px;
+  }
+
+  .test-history-stats {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 10px;
+  }
+
+  .stat-box {
+    padding: 12px;
+  }
+
+  .stat-value {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .test-history {
+    margin-top: 20px;
+    padding-top: 20px;
+  }
+
+  .test-history-header {
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  .test-history-header h3 {
+    font-size: 16px;
+  }
+
+  .test-history-icon {
+    font-size: 20px;
+  }
+
+  .test-attempt {
+    grid-template-columns: auto 1fr;
+    gap: 10px;
+    align-items: flex-start;
+    padding: 12px;
+    border-radius: 10px;
+  }
+
+  .attempt-indicator {
+    width: 44px;
+    height: 44px;
+    font-size: 20px;
+  }
+
+  .attempt-details {
+    grid-column: 1 / -1;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .attempt-percentage {
+    font-size: 18px;
+  }
+
+  .attempt-date {
+    font-size: 12px;
+  }
+
+  .attempt-rank {
+    font-size: 11px;
+    padding: 2px 6px;
+  }
+
+  .test-history-legend {
+    gap: 12px;
+    padding: 10px;
+    font-size: 12px;
+    margin-bottom: 12px;
+  }
+
+  .legend-dot {
+    width: 10px;
+    height: 10px;
+  }
+
+  .test-history-controls {
+    gap: 6px;
+    margin-bottom: 12px;
+  }
+
+  .history-filter {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+
+  .test-history-stats {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  .stat-box {
+    padding: 10px;
+  }
+
+  .stat-value {
+    font-size: 18px;
+  }
+
+  .stat-label {
+    font-size: 10px;
+  }
+
+  .test-history-empty {
+    padding: 30px 16px;
+  }
+
+  .test-history-empty-icon {
+    font-size: 32px;
+    margin-bottom: 12px;
+  }
+
+  .test-history-empty-text {
+    font-size: 14px;
+  }
+
+  .test-history-empty-hint {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 425px) {
+  .test-history-header h3 {
+    font-size: 14px;
+  }
+
+  .test-history-icon {
+    font-size: 16px;
+  }
+
+  .test-attempt {
+    padding: 10px;
+    gap: 8px;
+  }
+
+  .attempt-indicator {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+    border-radius: 8px;
+  }
+
+  .attempt-score {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .attempt-percentage {
+    font-size: 16px;
+  }
+
+  .attempt-status-badge {
+    font-size: 10px;
+    padding: 2px 8px;
+  }
+
+  .attempt-date {
+    font-size: 11px;
+  }
+
+  .attempt-rank {
+    font-size: 10px;
+  }
+
+  .test-history-controls {
+    gap: 4px;
+  }
+
+  .history-filter {
+    padding: 5px 8px;
+    font-size: 11px;
+  }
+
+  .test-history-stats {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px;
+  }
+
+  .stat-box {
+    padding: 8px;
+  }
+
+  .stat-value {
+    font-size: 16px;
+  }
+
+  .stat-label {
+    font-size: 9px;
+  }
+
+  .test-history-empty {
+    padding: 20px 12px;
+  }
+
+  .test-history-empty-icon {
+    font-size: 28px;
+  }
+
+  .test-history-empty-text {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 375px) {
+  .test-history-header h3 {
+    font-size: 13px;
+  }
+
+  .test-history-icon {
+    font-size: 14px;
+  }
+
+  .test-attempt {
+    padding: 8px;
+    gap: 6px;
+  }
+
+  .attempt-indicator {
+    width: 36px;
+    height: 36px;
+    font-size: 16px;
+  }
+
+  .attempt-percentage {
+    font-size: 14px;
+  }
+
+  .attempt-status-badge {
+    font-size: 9px;
+  }
+
+  .attempt-date {
+    font-size: 10px;
+  }
+
+  .test-history-stats {
+    gap: 5px;
+  }
+
+  .stat-value {
+    font-size: 14px;
+  }
+
+  .stat-label {
+    font-size: 8px;
+  }
+
+  .test-history-empty-icon {
+    font-size: 24px;
+  }
+
+  .test-history-empty-text {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 320px) {
+  .test-history-header h3 {
+    font-size: 12px;
+  }
+
+  .test-attempt {
+    padding: 6px;
+  }
+
+  .attempt-indicator {
+    width: 32px;
+    height: 32px;
+    font-size: 14px;
+  }
+
+  .attempt-percentage {
+    font-size: 12px;
+  }
+
+  .stat-value {
+    font-size: 12px;
+  }
+
+  .test-history-empty-icon {
+    font-size: 20px;
+  }
 }
